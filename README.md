@@ -39,6 +39,7 @@ Switch between them with a single toggle. Your preference is saved.
 - **Dark & light mode** — follows your system preference and remembers your choice.
 - **Instant access** — hosted on GitHub Pages; bookmark it and it's always there.
 - **Collapsible sections** — collapse what you know, focus on what you don't.
+- **Tap to pronounce** — 🔊 buttons on Vietnamese words and phrases use your device's built-in speech engine to read them aloud. No audio files required.
 
 ---
 
