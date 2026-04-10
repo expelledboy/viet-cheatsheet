@@ -1514,8 +1514,10 @@ function applyPronouns(text) {
           var viSpan = document.createElement('span');
           viSpan.className = 'vi-text';
           viSpan.setAttribute('lang', 'vi');
-          viSpan.setAttribute('data-canonical', item.vi);
-          viSpan.textContent = applyPronouns(item.vi);
+          // Only swap pronouns in phrases (contain spaces), not single-word definitions
+          var isPhrase = item.vi.indexOf(' ') !== -1;
+          if (isPhrase) viSpan.setAttribute('data-canonical', item.vi);
+          viSpan.textContent = isPhrase ? applyPronouns(item.vi) : item.vi;
           var eqSpan = document.createElement('span');
           eqSpan.className = 'eq-sign';
           eqSpan.textContent = '=';

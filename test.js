@@ -333,6 +333,22 @@ test('Pronoun selector pills exist', () => {
   assert(pills.length === 6, 'Expected 6 pronoun pills, got ' + pills.length);
 });
 
+test('Single-word definitions are NOT swapped', () => {
+  dom.window.STATE.pronounContext = 'olderMale';
+  dom.window.refreshPronouns();
+  // Find vi-text elements WITHOUT data-canonical (single words)
+  var singleWords = document.querySelectorAll('.vi-text[lang="vi"]:not([data-canonical])');
+  var found = false;
+  singleWords.forEach(function(el) {
+    if (el.textContent === 't\u00F4i' || el.textContent === 'b\u1EA1n' || el.textContent === 'm\u00ECnh') {
+      found = true; // Good — these should NOT be swapped
+    }
+  });
+  assert(found, 'Single-word pronoun definitions should remain unchanged');
+  dom.window.STATE.pronounContext = 'formal';
+  dom.window.refreshPronouns();
+});
+
 test('refreshPronouns updates displayed text', () => {
   dom.window.STATE.pronounContext = 'olderMale';
   dom.window.refreshPronouns();
