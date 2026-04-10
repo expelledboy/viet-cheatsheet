@@ -64,9 +64,18 @@ Add a new object to the appropriate category's `sections` array. Give it the nex
 - If a phrase differs North/South, note both
 - Keep it concise — this is a cheat sheet, not a textbook
 
+## Type safety
+
+`data.js` has a JSDoc type contract with `// @ts-check`. If you open it in VS Code, you'll see red squiggles on malformed sections, missing fields, or wrong block types — before you even open a browser.
+
 ## Testing your changes
 
-Open `index.html` in a browser. Everything renders client-side — no build step needed.
+```sh
+npm install   # first time only — installs jsdom
+node test.js  # 28 tests covering rendering, interaction, and state
+```
+
+The test suite uses jsdom to load the full page and simulate clicks, toggles, and state changes. If tests pass, your change works. Also open `index.html` in a browser to check visual rendering.
 
 ## The spirit of this project
 
