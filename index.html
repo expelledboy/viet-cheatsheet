@@ -560,8 +560,8 @@ body.learning-mode .flashcard.revealed {
 /* ── Reveal All / Hide All ── */
 .reveal-controls {
   display: none;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 6px;
+  margin-bottom: 8px;
 }
 
 body.learning-mode .reveal-controls {
@@ -569,17 +569,16 @@ body.learning-mode .reveal-controls {
 }
 
 .reveal-btn {
-  padding: 6px 14px;
+  padding: 3px 10px;
   font-family: var(--font);
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 600;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 12px;
   background: var(--reveal-btn-bg);
-  color: var(--text-light);
+  color: var(--text-muted);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  min-height: 36px;
   transition: background var(--transition), color var(--transition);
 }
 
@@ -804,14 +803,14 @@ body.hide-known .vocab-item.known-item {
 }
 
 .hide-known-btn {
-  padding: 4px 10px;
+  padding: 3px 10px;
   font-family: var(--font);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 12px;
   background: var(--reveal-btn-bg);
-  color: var(--text-light);
+  color: var(--text-muted);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   white-space: nowrap;
@@ -831,18 +830,24 @@ body.hide-known .vocab-item.known-item {
 
 /* ── Pronoun Selector ── */
 .pronoun-bar {
+  position: sticky;
+  top: 52px;
+  z-index: 90;
+  background: var(--bg);
   max-width: 720px;
-  margin: 8px auto 0;
-  padding: 0 16px;
+  margin: 0 auto;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.2s ease;
 }
 
 .pronoun-bar-label {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 600;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .pronoun-pills {
@@ -852,9 +857,9 @@ body.hide-known .vocab-item.known-item {
 }
 
 .pronoun-pill {
-  padding: 5px 12px;
+  padding: 4px 10px;
   font-family: var(--font);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 600;
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -1180,10 +1185,10 @@ function refreshPronouns() {
 // ── Pronoun System ──
 var PRONOUNS = {
   formal:      { self: 'tôi',  other: 'bạn',  label: 'Formal' },
-  olderMale:   { self: 'em',   other: 'anh',  label: '\u2192 Anh' },
-  olderFemale: { self: 'em',   other: 'ch\u1ECB', label: '\u2192 Ch\u1ECB' },
-  youngerM:    { self: 'anh',  other: 'em',   label: 'Anh \u2192' },
-  youngerF:    { self: 'ch\u1ECB',  other: 'em',   label: 'Ch\u1ECB \u2192' },
+  olderMale:   { self: 'em',   other: 'anh',  label: 'Older \u2642' },
+  olderFemale: { self: 'em',   other: 'ch\u1ECB', label: 'Older \u2640' },
+  youngerM:    { self: 'anh',  other: 'em',   label: 'Younger (I\u2019m \u2642)' },
+  youngerF:    { self: 'ch\u1ECB',  other: 'em',   label: 'Younger (I\u2019m \u2640)' },
   peer:        { self: 'm\u00ECnh', other: 'b\u1EA1n',  label: 'Peer' }
 };
 
@@ -1383,7 +1388,7 @@ function applyPronouns(text) {
         nextDiv.className = 'next-section';
         var nextA = document.createElement('a');
         nextA.href = '#sec-' + nextSec.id;
-        nextA.textContent = 'Next: ' + nextSec.title + ' \u2192';
+        nextA.textContent = 'Keep going \u2192';
         nextA.addEventListener('click', function(ev) {
           var target = document.getElementById('sec-' + nextSec.id);
           if (target && !target.classList.contains('open')) {
