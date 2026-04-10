@@ -806,7 +806,29 @@ const DATA = {
               { vi: "Lúc rảnh bạn thích làm gì?", en: "What do you like doing in your free time?" },
               { vi: "Mình hay đi chụp ảnh.", en: "I usually go take photos." },
               { vi: "Bữa nào đi cùng mình nha!", en: "Come along with me sometime!" }
-            ]}
+            ]},
+            { type: "h3", text: "Hotel Check-in" },
+            { type: "vocab", items: [
+              { vi: "Tôi có đặt phòng rồi.", en: "I have a reservation." },
+              { vi: "Còn phòng không?", en: "Do you have rooms available?" },
+              { vi: "Một đêm bao nhiêu tiền?", en: "How much per night?" },
+              { vi: "Phòng đôi cho ba đêm.", en: "A double room for three nights." },
+              { vi: "Mật khẩu Wi-Fi là gì?", en: "What's the Wi-Fi password?" },
+              { vi: "Tôi phải trả phòng trước mấy giờ?", en: "What time is checkout?" },
+              { vi: "Điều hòa không hoạt động.", en: "The AC isn't working." },
+              { vi: "Cho tôi thêm khăn tắm.", en: "More towels please." },
+              { vi: "Làm ơn gọi taxi giúp tôi.", en: "Please call a taxi for me." }
+            ]},
+            { type: "highlight", html: "<strong>Note:</strong> Vietnamese hotels routinely keep your passport for several hours to register with local police — this is normal and legal, not suspicious." },
+            { type: "h3", text: "Visiting a Temple" },
+            { type: "vocab", items: [
+              { vi: "Tôi có thể vào đây không?", en: "May I enter here?" },
+              { vi: "Tôi phải cởi giày không?", en: "Do I need to take off my shoes?" },
+              { vi: "Tôi chụp ảnh được không?", en: "Can I take photos?" },
+              { vi: "Đây là chùa hay đền?", en: "Is this a pagoda or a temple?" },
+              { vi: "Xin chào thầy.", en: "Hello, monk. (respectful address)" }
+            ]},
+            { type: "highlight", html: "<strong>Etiquette:</strong> Remove shoes before entering inner halls. Cover shoulders and knees. Don't touch statues or altars. Don't point feet at Buddha images. Bow slightly when greeting monks. Entry is often free but donations (5,000–20,000 đồng) into the box are appreciated." }
           ]
         }
       ]
