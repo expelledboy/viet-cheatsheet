@@ -83,9 +83,9 @@ test('All 11 categories rendered', () => {
   assert(dividers.length === 11, `Expected 11 category dividers, got ${dividers.length}`);
 });
 
-test('TOC has links for all sections', () => {
-  const tocLinks = document.querySelectorAll('.toc-list a');
-  assert(tocLinks.length === 28, `Expected 28 TOC links, got ${tocLinks.length}`);
+test('Category tabs rendered for all 11 categories', () => {
+  const tabs = document.querySelectorAll('.category-tab');
+  assert(tabs.length === 11, `Expected 11 category tabs, got ${tabs.length}`);
 });
 
 test('Banner rendered', () => {
@@ -141,28 +141,13 @@ test('Clicking again collapses section', () => {
   assert(!section.classList.contains('open'), 'Section should be collapsed after second click');
 });
 
-// ── TOC Tests ──
-console.log('\nTOC:');
+// ── Category Tab Tests ──
+console.log('\nCategory Tabs:');
 
-test('TOC starts closed', () => {
-  const tocNav = document.getElementById('tocNav');
-  assert(!tocNav.classList.contains('open'), 'TOC should start closed');
-});
-
-test('TOC toggle opens TOC', () => {
-  const tocToggle = document.getElementById('tocToggle');
-  const tocNav = document.getElementById('tocNav');
-  tocToggle.click();
-  assert(tocNav.classList.contains('open'), 'TOC should open');
-});
-
-test('TOC link click auto-expands target section', () => {
-  const tocLink = document.querySelector('.toc-list a[href="#sec-1"]');
-  assert(tocLink, 'No TOC link to sec-1');
-  const targetSection = document.getElementById('sec-1');
-  assert(!targetSection.classList.contains('open'), 'sec-1 should start collapsed');
-  tocLink.click();
-  assert(targetSection.classList.contains('open'), 'sec-1 should be open after TOC click');
+test('Category tabs match category names', () => {
+  const tabs = document.querySelectorAll('.category-tab');
+  assert(tabs[0].textContent === 'Essentials', 'First tab should be Essentials, got: ' + tabs[0].textContent);
+  assert(tabs[tabs.length - 1].textContent === 'Quick Reference', 'Last tab should be Quick Reference');
 });
 
 // ── Learning Mode Tests ──

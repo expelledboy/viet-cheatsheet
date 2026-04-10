@@ -231,80 +231,47 @@ body {
   text-decoration: underline;
 }
 
-/* ── Nav / TOC ── */
-.toc-toggle-btn {
-  display: block;
-  width: 100%;
+/* ── Category Tabs ── */
+.category-tabs {
   max-width: 720px;
   margin: 0 auto;
-  padding: 10px 16px;
-  background: var(--card-bg);
-  border: none;
-  border-bottom: 1px solid var(--border);
-  font-family: var(--font);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--red);
-  text-align: left;
-  cursor: pointer;
+  padding: 6px 16px;
   display: flex;
-  align-items: center;
   gap: 6px;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 
-.toc-toggle-btn .chevron {
-  transition: transform var(--transition);
-  font-size: 0.7rem;
+.category-tabs::-webkit-scrollbar {
+  display: none;
 }
 
-.toc-toggle-btn.open .chevron {
-  transform: rotate(90deg);
-}
-
-.toc-nav {
-  max-width: 720px;
-  margin: 0 auto;
-  background: var(--card-bg);
-  border-bottom: 1px solid var(--border);
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.35s ease;
-}
-
-.toc-nav.open {
-  max-height: 1000px;
-}
-
-.toc-list {
-  list-style: none;
-  padding: 8px 16px 12px;
-}
-
-.toc-group-title {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+.category-tab {
+  padding: 5px 12px;
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: none;
   color: var(--text-muted);
-  padding: 8px 0 4px;
-  margin-top: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: all var(--transition);
 }
 
-.toc-list a {
-  display: block;
-  padding: 6px 12px;
-  font-size: 0.85rem;
-  color: var(--text);
-  text-decoration: none;
-  border-radius: 6px;
-  transition: background var(--transition);
-}
-
-.toc-list a:hover,
-.toc-list a:active {
-  background: var(--red-light);
+.category-tab:hover {
+  border-color: var(--red);
   color: var(--red);
+}
+
+.category-tab.active {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
 }
 
 /* ── Main ── */
@@ -1227,39 +1194,35 @@ function applyPronouns(text) {
   banner.innerHTML = DATA.banner.text + ' <a href="' + DATA.banner.link.url + '" target="_blank" rel="noopener">' + DATA.banner.link.label + '</a> ' + DATA.banner.suffix;
   document.querySelector('.site-header').insertAdjacentElement('afterend', banner);
 
-  // TOC
-  var tocBtn = document.createElement('button');
-  tocBtn.className = 'toc-toggle-btn';
-  tocBtn.id = 'tocToggle';
-  tocBtn.setAttribute('aria-expanded', 'false');
-  tocBtn.innerHTML = '<span class="chevron">&#9654;</span> Sections';
-  banner.insertAdjacentElement('afterend', tocBtn);
+  // Category tabs — horizontal scrollable navigation
+  var tabBar = document.createElement('nav');
+  tabBar.className = 'category-tabs';
+  tabBar.setAttribute('aria-label', 'Category navigation');
 
-  var tocNav = document.createElement('nav');
-  tocNav.className = 'toc-nav';
-  tocNav.id = 'tocNav';
-  tocNav.setAttribute('aria-label', 'Table of Contents');
-  var tocUl = document.createElement('ul');
-  tocUl.className = 'toc-list';
-  tocUl.id = 'tocList';
-
-  DATA.categories.forEach(function(cat) {
-    var groupLi = document.createElement('li');
-    groupLi.className = 'toc-group-title';
-    groupLi.textContent = cat.name;
-    tocUl.appendChild(groupLi);
-    cat.sections.forEach(function(sec) {
-      var li = document.createElement('li');
-      var a = document.createElement('a');
-      a.href = '#sec-' + sec.id;
-      // Strip number prefix and HTML entities for TOC display
-      a.innerHTML = sec.title.replace(/^\d+\.\s*/, '');
-      li.appendChild(a);
-      tocUl.appendChild(li);
+  DATA.categories.forEach(function(cat, i) {
+    var tab = document.createElement('button');
+    tab.className = 'category-tab';
+    tab.textContent = cat.name;
+    tab.setAttribute('data-cat-index', i);
+    tab.addEventListener('click', function() {
+      // Scroll to category divider and expand first section
+      var divider = document.querySelectorAll('.category-divider')[i];
+      if (divider) {
+        divider.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        var firstSection = divider.nextElementSibling;
+        if (firstSection && firstSection.classList.contains('section-card') && !firstSection.classList.contains('open')) {
+          firstSection.classList.add('open');
+          firstSection.querySelector('.section-header').setAttribute('aria-expanded', 'true');
+        }
+      }
+      // Update active tab
+      tabBar.querySelectorAll('.category-tab').forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
     });
+    tabBar.appendChild(tab);
   });
-  tocNav.appendChild(tocUl);
-  tocBtn.insertAdjacentElement('afterend', tocNav);
+
+  banner.insertAdjacentElement('afterend', tabBar);
 
   // Control card — all settings in one card
   var controlCard = document.createElement('div');
@@ -1302,7 +1265,7 @@ function applyPronouns(text) {
   row3.appendChild(resetBtn);
   controlCard.appendChild(row3);
 
-  tocNav.insertAdjacentElement('afterend', controlCard);
+  tabBar.insertAdjacentElement('afterend', controlCard);
 
   // Known phrases panel — appears after 3+ known
   var knownPanel = document.createElement('div');
@@ -1728,32 +1691,25 @@ if (knownPanelToggle) {
   });
 }
 
-// ── TOC Toggle ──
-var tocToggle = document.getElementById('tocToggle');
-var tocNav = document.getElementById('tocNav');
-
-tocToggle.addEventListener('click', function() {
-  var isOpen = tocNav.classList.contains('open');
-  tocNav.classList.toggle('open');
-  tocToggle.classList.toggle('open');
-  tocToggle.setAttribute('aria-expanded', !isOpen);
-});
-
-// Close TOC and auto-expand target section when a link is clicked
-tocNav.querySelectorAll('a').forEach(function(link) {
-  link.addEventListener('click', function() {
-    tocNav.classList.remove('open');
-    tocToggle.classList.remove('open');
-    tocToggle.setAttribute('aria-expanded', 'false');
-    // Auto-expand the target section
-    var targetId = this.getAttribute('href').replace('#', '');
-    var targetSection = document.getElementById(targetId);
-    if (targetSection && !targetSection.classList.contains('open')) {
-      targetSection.classList.add('open');
-      targetSection.querySelector('.section-header').setAttribute('aria-expanded', 'true');
-    }
-  });
-});
+// ── Active Category Tab (intersection observer) ──
+if (typeof IntersectionObserver !== 'undefined') {
+  var catDividers = document.querySelectorAll('.category-divider');
+  var catTabs = document.querySelectorAll('.category-tab');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = Array.from(catDividers).indexOf(entry.target);
+        catTabs.forEach(function(t) { t.classList.remove('active'); });
+        if (catTabs[idx]) {
+          catTabs[idx].classList.add('active');
+          // Scroll tab into view if off-screen
+          catTabs[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+  }, { rootMargin: '-80px 0px -70% 0px' });
+  catDividers.forEach(function(d) { observer.observe(d); });
+}
 
 // ── Sticky Header Shadow ──
 var header = document.getElementById('siteHeader');
