@@ -1,0 +1,2020 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A comprehensive Vietnamese language cheat sheet covering tones, vowels, pronunciation, grammar, phrases, and cultural etiquette.">
+<title>Vietnamese Cheat Sheet</title>
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --red: #DA251D;
+  --red-light: #fcecea;
+  --red-dark: #b81e17;
+  --yellow: #FFCD00;
+  --yellow-light: #fff8e0;
+  --bg: #FAFAFA;
+  --card-bg: #FFFFFF;
+  --header-bg: #FFFFFF;
+  --text: #1a1a1a;
+  --text-light: #555;
+  --text-muted: #888;
+  --border: #e8e8e8;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.1);
+  --radius: 10px;
+  --transition: 0.25s ease;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --neutral-bg: #f7f7f7;
+  --toggle-track-off: #ccc;
+  --toggle-knob: #fff;
+  --banner-border: #f0e0a0;
+  --flashcard-unrevealed-bg: var(--yellow-light);
+  --flashcard-unrevealed-border: #e0c860;
+  --flashcard-unrevealed-text: #c0a030;
+  --flashcard-revealed-bg: #eef9ee;
+  --flashcard-revealed-border: #c0e0c0;
+  --reveal-btn-bg: #fff;
+}
+
+html[data-theme="dark"] {
+  --bg: #1a1a2e;
+  --card-bg: #16213e;
+  --header-bg: #141428;
+  --text: #e2e8f0;
+  --text-light: #94a3b8;
+  --text-muted: #64748b;
+  --border: #2d3a5c;
+  --red-light: #3a1a1a;
+  --red-dark: #f07068;
+  --yellow-light: #2a2610;
+  --shadow: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.4);
+  --neutral-bg: #1e293b;
+  --toggle-track-off: #475569;
+  --toggle-knob: #e2e8f0;
+  --banner-border: #4a4220;
+  --flashcard-unrevealed-bg: #2a2610;
+  --flashcard-unrevealed-border: #5c4e1a;
+  --flashcard-unrevealed-text: #d4a830;
+  --flashcard-revealed-bg: #0f2a1a;
+  --flashcard-revealed-border: #1a4a2a;
+  --reveal-btn-bg: #1e293b;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ── Sticky Header ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow var(--transition), background-color 0.2s ease;
+}
+
+.site-header.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.header-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.header-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--red);
+  white-space: nowrap;
+}
+
+.header-flag {
+  margin-right: 4px;
+}
+
+/* ── Toggle Switch ── */
+.toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.toggle-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  user-select: none;
+}
+
+.toggle-label.active {
+  color: var(--red);
+}
+
+.toggle-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-track {
+  position: absolute;
+  inset: 0;
+  background: var(--toggle-track-off);
+  border-radius: 12px;
+  transition: background var(--transition);
+}
+
+.toggle-switch input:checked + .toggle-track {
+  background: var(--red);
+}
+
+.toggle-track::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: var(--toggle-knob);
+  border-radius: 50%;
+  transition: transform var(--transition);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.toggle-switch input:checked + .toggle-track::after {
+  transform: translateX(20px);
+}
+
+/* ── Banner ── */
+.meetup-banner {
+  background: var(--yellow-light);
+  border-bottom: 1px solid var(--banner-border);
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.meetup-banner a {
+  color: var(--red);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.meetup-banner a:hover {
+  text-decoration: underline;
+}
+
+/* ── Nav / TOC ── */
+.toc-toggle-btn {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  background: var(--card-bg);
+  border: none;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--red);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.toc-toggle-btn .chevron {
+  transition: transform var(--transition);
+  font-size: 0.7rem;
+}
+
+.toc-toggle-btn.open .chevron {
+  transform: rotate(90deg);
+}
+
+.toc-nav {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+}
+
+.toc-nav.open {
+  max-height: 1000px;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 8px 16px 12px;
+}
+
+.toc-group-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  padding: 8px 0 4px;
+  margin-top: 4px;
+}
+
+.toc-list a {
+  display: block;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background var(--transition);
+}
+
+.toc-list a:hover,
+.toc-list a:active {
+  background: var(--red-light);
+  color: var(--red);
+}
+
+/* ── Main ── */
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 8px 16px 60px;
+}
+
+/* ── Section Cards ── */
+.section-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 12px 0;
+  overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 300px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 48px;
+}
+
+.section-header:active {
+  background: var(--red-light);
+}
+
+.section-chevron {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  transition: transform var(--transition);
+  flex-shrink: 0;
+}
+
+.section-card.open .section-chevron {
+  transform: rotate(90deg);
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--red);
+  flex: 1;
+}
+
+.section-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+}
+
+.section-card.open .section-body {
+  max-height: none;
+}
+
+.section-content {
+  padding: 0 16px 16px;
+}
+
+/* ── Category Dividers ── */
+.category-divider {
+  padding: 20px 0 4px;
+}
+
+.category-divider h2 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--red);
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+/* ── Content Styles ── */
+.section-content p {
+  margin-bottom: 10px;
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.section-content h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 16px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-content h3:first-child {
+  margin-top: 0;
+}
+
+.section-content ul {
+  list-style: none;
+  margin-bottom: 12px;
+}
+
+.section-content ul li {
+  padding: 4px 0;
+  font-size: 0.9rem;
+  position: relative;
+  padding-left: 16px;
+}
+
+.section-content ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--red);
+  opacity: 0.5;
+}
+
+.section-content ol {
+  padding-left: 24px;
+  margin-bottom: 12px;
+}
+
+.section-content ol li {
+  padding: 3px 0;
+  font-size: 0.9rem;
+}
+
+/* ── Vocab / Phrase Items ── */
+.vocab-list {
+  list-style: none !important;
+  margin: 0 0 12px !important;
+}
+
+.vocab-list li {
+  padding: 0 !important;
+}
+
+.vocab-list li::before {
+  display: none !important;
+}
+
+.vocab-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--neutral-bg);
+  margin-bottom: 4px;
+  min-height: 44px;
+  flex-wrap: wrap;
+  transition: background-color 0.2s ease;
+}
+
+.vi-text {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.en-text {
+  font-size: 0.88rem;
+  color: var(--text-light);
+}
+
+.eq-sign {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* ── Flashcard mode ── */
+.flashcard {
+  cursor: pointer;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.flashcard .en-text {
+  transition: opacity var(--transition), filter var(--transition);
+}
+
+body.learning-mode .flashcard:not(.revealed) .en-text {
+  opacity: 0;
+  filter: blur(8px);
+  user-select: none;
+  pointer-events: none;
+}
+
+body.learning-mode .flashcard:not(.revealed) .eq-sign {
+  opacity: 0;
+}
+
+body.learning-mode .flashcard:not(.revealed) {
+  background: var(--flashcard-unrevealed-bg);
+  border: 1px dashed var(--flashcard-unrevealed-border);
+}
+
+body.learning-mode .flashcard:not(.revealed)::after {
+  content: 'tap';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--flashcard-unrevealed-text);
+  font-weight: 600;
+}
+
+body.learning-mode .flashcard.revealed {
+  background: var(--flashcard-revealed-bg);
+  border: 1px solid var(--flashcard-revealed-border);
+}
+
+/* ── Reveal All / Hide All ── */
+.reveal-controls {
+  display: none;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+body.learning-mode .reveal-controls {
+  display: flex;
+}
+
+.reveal-btn {
+  padding: 6px 14px;
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--reveal-btn-bg);
+  color: var(--text-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 36px;
+  transition: background var(--transition), color var(--transition);
+}
+
+.reveal-btn:hover {
+  background: var(--red-light);
+  color: var(--red);
+}
+
+/* ── Tables ── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+  font-size: 0.88rem;
+}
+
+.data-table th {
+  text-align: left;
+  font-weight: 600;
+  padding: 8px 10px;
+  background: var(--red-light);
+  color: var(--red-dark);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.data-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table .vi-cell {
+  font-weight: 600;
+}
+
+/* ── Prose blocks ── */
+.prose-block {
+  background: var(--neutral-bg);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  transition: background-color 0.2s ease;
+}
+
+.prose-block p {
+  margin-bottom: 8px;
+}
+
+.prose-block p:last-child {
+  margin-bottom: 0;
+}
+
+.highlight-box {
+  background: var(--yellow-light);
+  border-left: 3px solid var(--yellow);
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 12px;
+  font-size: 0.88rem;
+}
+
+.highlight-box strong {
+  color: var(--red);
+}
+
+/* ── Footer ── */
+.site-footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  transition: color 0.2s ease;
+}
+
+/* ── Theme Toggle Button ── */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--text-light);
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1;
+  padding: 0;
+}
+
+.theme-toggle:hover {
+  background: var(--neutral-bg);
+  color: var(--text);
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  display: none;
+}
+
+html[data-theme="light"] .theme-toggle .icon-moon {
+  display: inline;
+}
+
+html[data-theme="dark"] .theme-toggle .icon-sun {
+  display: inline;
+}
+
+/* ── Theme transition helpers ── */
+.section-card,
+.toc-nav,
+.highlight-box,
+.data-table th,
+.data-table td {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* ── Desktop ── */
+@media (min-width: 640px) {
+  .header-inner {
+    padding: 12px 24px;
+  }
+  .header-title {
+    font-size: 1.25rem;
+  }
+  main {
+    padding: 16px 24px 60px;
+  }
+  .section-content {
+    padding: 0 20px 20px;
+  }
+  .section-title {
+    font-size: 1.05rem;
+  }
+  .vocab-item {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (min-width: 900px) {
+  .section-card {
+    margin: 16px 0;
+  }
+}
+</style>
+<script>
+// Prevent flash of wrong theme on load
+(function() {
+  var saved = localStorage.getItem('theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+</script>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <span class="header-title"><span class="header-flag">&#x1F1FB;&#x1F1F3;</span> Vietnamese Cheat Sheet</span>
+    <div class="toggle-wrap">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="icon-sun">&#9788;</span>
+        <span class="icon-moon">&#9790;</span>
+      </button>
+      <span class="toggle-label active" id="refLabel">Ref</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="modeToggle">
+        <span class="toggle-track"></span>
+      </label>
+      <span class="toggle-label" id="learnLabel">Learn</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── Meetup Banner ── -->
+<div class="meetup-banner">
+  Practice group every Friday 1 PM at <a href="https://maps.app.goo.gl/4nt9jcB7dwA8Ybpn8" target="_blank" rel="noopener">Chillax</a> &mdash; all levels welcome!
+</div>
+
+<!-- ── TOC ── -->
+<button class="toc-toggle-btn" id="tocToggle" aria-expanded="false">
+  <span class="chevron">&#9654;</span> Sections
+</button>
+<nav class="toc-nav" id="tocNav" aria-label="Table of Contents">
+  <ul class="toc-list" id="tocList">
+    <li class="toc-group-title">Getting Started</li>
+    <li><a href="#sec-0">The Core Idea</a></li>
+
+    <li class="toc-group-title">Sound System</li>
+    <li><a href="#sec-1">Phonetics &amp; Tones</a></li>
+    <li><a href="#sec-2">The Hard Vowels</a></li>
+    <li><a href="#sec-3">Pronunciation Rules</a></li>
+
+    <li class="toc-group-title">Typing</li>
+    <li><a href="#sec-4">Telex Input</a></li>
+
+    <li class="toc-group-title">Grammar Basics</li>
+    <li><a href="#sec-5">Pronouns</a></li>
+    <li><a href="#sec-6">Sentence Structure</a></li>
+    <li><a href="#sec-7">Time &amp; Aspect Particles</a></li>
+    <li><a href="#sec-8">Classifiers</a></li>
+
+    <li class="toc-group-title">Vocabulary</li>
+    <li><a href="#sec-9">Time Words</a></li>
+    <li><a href="#sec-10">Numbers</a></li>
+    <li><a href="#sec-17">Common Verbs</a></li>
+    <li><a href="#sec-18">Reactions &amp; Slang</a></li>
+
+    <li class="toc-group-title">Phrases</li>
+    <li><a href="#sec-11">Introductions</a></li>
+    <li><a href="#sec-12">Daily Pleasantries</a></li>
+    <li><a href="#sec-13">Social Language</a></li>
+    <li><a href="#sec-14">Survival Phrases</a></li>
+
+    <li class="toc-group-title">Situations</li>
+    <li><a href="#sec-15">Caf&eacute; Pack</a></li>
+    <li><a href="#sec-16">Navigation</a></li>
+
+    <li class="toc-group-title">Practice</li>
+    <li><a href="#sec-19">Example Sentences</a></li>
+
+    <li class="toc-group-title">Culture</li>
+    <li><a href="#sec-20">Cultural Etiquette</a></li>
+
+    <li class="toc-group-title">Study Guide</li>
+    <li><a href="#sec-21">Study Order</a></li>
+    <li><a href="#sec-22">Beginner Focus</a></li>
+    <li><a href="#sec-25">Final Message</a></li>
+
+    <li class="toc-group-title">Quick Reference</li>
+    <li><a href="#sec-23">Mini Cheat Sheet</a></li>
+    <li><a href="#sec-24">Word Bank</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- GETTING STARTED -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="category-divider"><h2>Getting Started</h2></div>
+
+<!-- Section 0 -->
+<section class="section-card" id="sec-0">
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">0. The Core Idea</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>Vietnamese is very learnable, but beginners need to understand a few things immediately:</p>
+      <ol>
+        <li>Tones matter</li>
+        <li>Vowels matter</li>
+        <li>Pronouns are social</li>
+        <li>Spelling patterns are contextual</li>
+        <li>Typing Vietnamese is easy once you know Telex</li>
+        <li>Speaking imperfectly is better than waiting for perfection</li>
+      </ol>
+      <div class="highlight-box">
+        <strong>Best beginner mindset:</strong><br>
+        Be understandable first, elegant later. Learn the high-frequency daily phrases first. Use Vietnamese often, even if your grammar is simple.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SOUND SYSTEM -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="category-divider"><h2>Sound System</h2></div>
+
+<!-- Section 1 -->
+<section class="section-card" id="sec-1">
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">1. Phonetics &amp; Tones</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>In Vietnamese, tone is part of the word. If you miss the tone, you may change the meaning completely.</p>
+      <h3>The 6 Tones</h3>
+      <p>Using <span lang="vi"><strong>ma</strong></span> as the classic example:</p>
+      <table class="data-table">
+        <thead><tr><th>#</th><th>Name</th><th>Example</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td lang="vi">ngang</td><td lang="vi" class="vi-cell">ma</td><td>flat / mid</td></tr>
+          <tr><td>2</td><td lang="vi">s&#7855;c</td><td lang="vi" class="vi-cell">m&aacute;</td><td>rising</td></tr>
+          <tr><td>3</td><td lang="vi">huy&#7873;n</td><td lang="vi" class="vi-cell">m&agrave;</td><td>falling</td></tr>
+          <tr><td>4</td><td lang="vi">h&#7887;i</td><td lang="vi" class="vi-cell">m&#7843;</td><td>dipping / questioning</td></tr>
+          <tr><td>5</td><td lang="vi">ng&atilde;</td><td lang="vi" class="vi-cell">m&atilde;</td><td>high rising / broken</td></tr>
+          <tr><td>6</td><td lang="vi">n&#7863;ng</td><td lang="vi" class="vi-cell">m&#7841;</td><td>low dropping / heavy</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight-box">
+        <strong>Remember:</strong> Tone changes meaning. Tone is not optional. Written marks matter.
+      </div>
+      <div class="prose-block">
+        <p><strong>Beginner note:</strong> Standard written Vietnamese distinguishes all 6 tones. In much southern speech, <span lang="vi">h&#7887;i</span> and <span lang="vi">ng&atilde;</span> may sound similar or merge somewhat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2 -->
+<section class="section-card" id="sec-2">
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">2. The Hard Vowels</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>These are the vowels English speakers often miss.</p>
+      <h3>Core Vowel Distinctions</h3>
+      <table class="data-table">
+        <thead><tr><th>Letter</th><th>Sound</th></tr></thead>
+        <tbody>
+          <tr><td lang="vi" class="vi-cell">&#259;</td><td>short a; very brief "a"</td></tr>
+          <tr><td lang="vi" class="vi-cell">&acirc;</td><td>short central uh</td></tr>
+          <tr><td lang="vi" class="vi-cell">&ecirc;</td><td>close ay without a strong glide</td></tr>
+          <tr><td lang="vi" class="vi-cell">&ocirc;</td><td>close, clipped oh</td></tr>
+          <tr><td lang="vi" class="vi-cell">&#417;</td><td>relaxed uh/er with rounded lips</td></tr>
+          <tr><td lang="vi" class="vi-cell">&#432;</td><td>like ee, but with rounded lips</td></tr>
+          <tr><td lang="vi" class="vi-cell">&#273;</td><td>normal hard English-like d</td></tr>
+          <tr><td lang="vi" class="vi-cell">d / gi</td><td>often z in the North, often y in the South</td></tr>
+        </tbody>
+      </table>
+      <h3>Vowel Families</h3>
+      <p>Learn these as contrast groups:</p>
+      <ul>
+        <li lang="vi"><strong>a / &#259; / &acirc;</strong></li>
+        <li lang="vi"><strong>o / &ocirc; / &#417;</strong></li>
+        <li lang="vi"><strong>u / &#432;</strong></li>
+        <li lang="vi"><strong>e / &ecirc;</strong></li>
+      </ul>
+      <div class="highlight-box">These are not decorative marks. They are <strong>different vowels</strong>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3 -->
+<section class="section-card" id="sec-3">
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">3. Pronunciation Rules</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>Some Vietnamese letters are pronounced differently, or spelled differently, depending on what letters come next. This is one of the most important reading rules for English speakers.</p>
+
+      <h3>3.1 c / k / qu</h3>
+      <p>These usually represent roughly the same base <em>k</em> sound.</p>
+      <ul>
+        <li><strong>c</strong> before a, o, &ocirc;, &#417;, u, &#432;</li>
+        <li><strong>k</strong> before e, &ecirc;, i</li>
+        <li><strong>q</strong> usually appears as <strong>qu</strong></li>
+      </ul>
+      <p>Examples: <span lang="vi"><strong>c&aacute;</strong></span>, <span lang="vi"><strong>k&#7865;o</strong></span>, <span lang="vi"><strong>quay</strong></span></p>
+      <div class="prose-block">Different spellings, similar base sound &mdash; often just orthographic context.</div>
+
+      <h3>3.2 g / gh</h3>
+      <p>Same base sound, spelling changes by following vowel.</p>
+      <ul>
+        <li><strong>g</strong> before a, o, &ocirc;, &#417;, u, &#432;</li>
+        <li><strong>gh</strong> before e, &ecirc;, i</li>
+      </ul>
+      <p>Examples: <span lang="vi"><strong>ga</strong></span>, <span lang="vi"><strong>gh&#7871;</strong></span>, <span lang="vi"><strong>ghi</strong></span></p>
+
+      <h3>3.3 ng / ngh</h3>
+      <p>Same <em>ng</em> sound (like the end of English "sing"), spelling changes by next vowel.</p>
+      <ul>
+        <li><strong>ng</strong> before a, o, &ocirc;, &#417;, u, &#432;</li>
+        <li><strong>ngh</strong> before e, &ecirc;, i</li>
+      </ul>
+      <p>Examples: <span lang="vi"><strong>nga</strong></span>, <span lang="vi"><strong>nghe</strong></span>, <span lang="vi"><strong>ngh&#7881;</strong></span></p>
+
+      <h3>3.4 gi</h3>
+      <p><span lang="vi"><strong>gi</strong></span> is usually one sound, not separate g + i.</p>
+      <ul>
+        <li>Northern: often like <strong>z</strong></li>
+        <li>Southern: often like <strong>y</strong></li>
+      </ul>
+      <p>Examples: <span lang="vi"><strong>g&igrave;</strong></span>, <span lang="vi"><strong>gi&#7887;i</strong></span>, <span lang="vi"><strong>gi&#7899;i</strong></span></p>
+
+      <h3>3.5 d vs &#273;</h3>
+      <p>These are different letters.</p>
+      <ul>
+        <li><strong lang="vi">&#273;</strong> = hard English-like d</li>
+        <li><strong>d</strong> = often z (North), often y (South)</li>
+      </ul>
+      <p>Examples: <span lang="vi"><strong>&#273;i</strong></span>, <span lang="vi"><strong>d&igrave;</strong></span></p>
+
+      <h3>3.6 qu</h3>
+      <p>Pronounced together, often roughly like <em>kw</em> or closer to <em>w</em> depending on dialect.</p>
+      <p>Examples: <span lang="vi"><strong>qua</strong></span>, <span lang="vi"><strong>qu&ecirc;</strong></span>, <span lang="vi"><strong>qu&ecirc;n</strong></span></p>
+
+      <h3>3.7 nh</h3>
+      <p><strong>nh</strong> = soft <em>ny</em> sound. Similar in spirit to Spanish &ntilde;.</p>
+      <p>Examples: <span lang="vi"><strong>nh&agrave;</strong></span>, <span lang="vi"><strong>nhanh</strong></span></p>
+
+      <h3>3.8 th</h3>
+      <p><strong>th</strong> in Vietnamese is not English "th." It is an aspirated <em>t</em>.</p>
+      <p>Examples: <span lang="vi"><strong>th&ocirc;i</strong></span>, <span lang="vi"><strong>th&iacute;ch</strong></span></p>
+
+      <h3>3.9 ph</h3>
+      <p><strong>ph</strong> = <em>f</em> sound.</p>
+      <p>Examples: <span lang="vi"><strong>ph&#7903;</strong></span>, <span lang="vi"><strong>ph&#7843;i</strong></span></p>
+
+      <h3>3.10 kh</h3>
+      <p><strong>kh</strong> = rough throaty sound, like German <em>Bach</em> or Scottish <em>loch</em>.</p>
+      <p>Examples: <span lang="vi"><strong>kh&ocirc;ng</strong></span>, <span lang="vi"><strong>kh&#7887;e</strong></span></p>
+
+      <h3>3.11 tr and ch</h3>
+      <p>Different sounds, though beginners often hear them as similar at first.</p>
+      <p>Examples: <span lang="vi"><strong>tr&agrave;</strong></span>, <span lang="vi"><strong>cha</strong></span></p>
+
+      <h3>3.12 Tiny Rule</h3>
+      <div class="prose-block">When you see extra letters such as the <strong>h</strong> in <em>gh</em> / <em>ngh</em>, they often do not create a brand-new English-style sound. They often exist to show which vowel can follow while preserving the same base sound.</div>
+
+      <h3>3.13 Memorize as Spelling Families</h3>
+      <ul>
+        <li><strong>c / k / qu</strong></li>
+        <li><strong>g / gh</strong></li>
+        <li><strong>ng / ngh</strong></li>
+        <li><strong>d / gi / &#273;</strong></li>
+        <li><strong>ph / th / kh / nh</strong></li>
+      </ul>
+      <div class="highlight-box">This makes reading Vietnamese <strong>much easier, much faster</strong>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- TYPING -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="category-divider"><h2>Typing</h2></div>
+
+<!-- Section 4 -->
+<section class="section-card" id="sec-4">
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">4. Telex Input</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <h3>4.1 Setup (Android / QWERTY)</h3>
+      <ol>
+        <li>Add Vietnamese in Gboard settings</li>
+        <li>Switch to the Vietnamese keyboard</li>
+        <li>Use Telex input</li>
+      </ol>
+      <p>This is the fastest and most common digital method.</p>
+
+      <h3>4.2 Letter Transformations</h3>
+      <table class="data-table">
+        <thead><tr><th>Type</th><th>Get</th></tr></thead>
+        <tbody>
+          <tr><td>aa</td><td lang="vi" class="vi-cell">&acirc;</td></tr>
+          <tr><td>aw</td><td lang="vi" class="vi-cell">&#259;</td></tr>
+          <tr><td>ee</td><td lang="vi" class="vi-cell">&ecirc;</td></tr>
+          <tr><td>oo</td><td lang="vi" class="vi-cell">&ocirc;</td></tr>
+          <tr><td>ow</td><td lang="vi" class="vi-cell">&#417;</td></tr>
+          <tr><td>uw</td><td lang="vi" class="vi-cell">&#432;</td></tr>
+          <tr><td>dd</td><td lang="vi" class="vi-cell">&#273;</td></tr>
+        </tbody>
+      </table>
+
+      <h3>4.2 Tone Keys</h3>
+      <table class="data-table">
+        <thead><tr><th>Key</th><th>Tone</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>s</td><td lang="vi">s&#7855;c</td><td lang="vi" class="vi-cell">&aacute;</td></tr>
+          <tr><td>f</td><td lang="vi">huy&#7873;n</td><td lang="vi" class="vi-cell">&agrave;</td></tr>
+          <tr><td>r</td><td lang="vi">h&#7887;i</td><td lang="vi" class="vi-cell">&#7843;</td></tr>
+          <tr><td>x</td><td lang="vi">ng&atilde;</td><td lang="vi" class="vi-cell">&atilde;</td></tr>
+          <tr><td>j</td><td lang="vi">n&#7863;ng</td><td lang="vi" class="vi-cell">&#7841;</td></tr>
+          <tr><td>z</td><td colspan="2">remove mark / clear tone</td></tr>
+        </tbody>
+      </table>
+
+      <h3>4.3 Examples</h3>
+      <ul class="vocab-list">
+        <li><div class="vocab-item"><span class="vi-text">tieengs Vieetj</span> <span class="eq-sign">&rarr;</span> <span class="vi-text" lang="vi">ti&#7871;ng Vi&#7879;t</span></div></li>
+        <li><div class="vocab-item"><span class="vi-text">tooi</span> <span class="eq-sign">&rarr;</span> <span class="vi-text" lang="vi">t&ocirc;i</span></div></li>
+        <li><div class="vocab-item"><span class="vi-text">nguwowfi</span> <span class="eq-sign">&rarr;</span> <span class="vi-text" lang="vi">ng&#432;&#7901;i</span></div></li>
+      </ul>
+      <div class="highlight-box"><strong>Tip:</strong> Learn Telex early &mdash; it makes typing, searching, messaging, and note-taking much easier.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- GRAMMAR BASICS -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="category-divider"><h2>Grammar Basics</h2></div>
+
+<!-- Section 5 -->
+<section class="section-card" id="sec-5" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">5. Pronouns</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>Pronouns in Vietnamese are not just grammar. They express relationship, age, respect, warmth, and social role. This is one of the biggest differences from English.</p>
+
+      <h3>5.1 Safe Basics</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">t&ocirc;i</span> <span class="eq-sign">=</span> <span class="en-text">I / me, neutral-polite</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">m&igrave;nh</span> <span class="eq-sign">=</span> <span class="en-text">I / me, softer, warmer, friendlier</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">b&#7841;n</span> <span class="eq-sign">=</span> <span class="en-text">you, neutral/friendly</span></div></li>
+      </ul>
+
+      <h3>5.2 The Sibling Rule</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">anh</span> <span class="eq-sign">=</span> <span class="en-text">older brother / you (male, older) / I (if male &amp; older)</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ch&#7883;</span> <span class="eq-sign">=</span> <span class="en-text">older sister / you (female, older) / I (if female &amp; older)</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">em</span> <span class="eq-sign">=</span> <span class="en-text">younger person / you / I in younger position</span></div></li>
+      </ul>
+
+      <h3>5.3 Elders &amp; Older Adults</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">c&ocirc;</span> <span class="eq-sign">=</span> <span class="en-text">aunt / older woman / teacher</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ch&uacute;</span> <span class="eq-sign">=</span> <span class="en-text">uncle / older man</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">b&aacute;c</span> <span class="eq-sign">=</span> <span class="en-text">older aunt/uncle generation</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&ocirc;ng</span> <span class="eq-sign">=</span> <span class="en-text">grandfather / elderly man</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">b&agrave;</span> <span class="eq-sign">=</span> <span class="en-text">grandmother / elderly woman</span></div></li>
+      </ul>
+
+      <h3>5.4 Very Safe Beginner Rule</h3>
+      <div class="highlight-box">If unsure, use <strong lang="vi">t&ocirc;i</strong> for "I" and <strong lang="vi">b&#7841;n</strong> for "you." Then gradually learn family-style pronouns as you get more comfortable.</div>
+
+      <h3>5.5 Social Note</h3>
+      <div class="prose-block">Vietnamese often uses kinship terms where English would use "you" and "I." This is normal, warm, and culturally important.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6 -->
+<section class="section-card" id="sec-6" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">6. Sentence Structure</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>Vietnamese basic word order is usually: <strong>Subject + Verb + Object</strong></p>
+      <p>This is pleasantly familiar for English speakers.</p>
+
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i &#259;n c&#417;m.</span> <span class="eq-sign">=</span> <span class="en-text">I eat rice.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i th&iacute;ch c&agrave; ph&ecirc;.</span> <span class="eq-sign">=</span> <span class="en-text">I like coffee.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i h&#7885;c ti&#7871;ng Vi&#7879;t.</span> <span class="eq-sign">=</span> <span class="en-text">I study Vietnamese.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i kh&ocirc;ng hi&#7875;u.</span> <span class="eq-sign">=</span> <span class="en-text">I do not understand.</span></div></li>
+      </ul>
+
+      <h3>6.1 Negation</h3>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">kh&ocirc;ng</span> <span class="eq-sign">=</span> <span class="en-text">not / no</span></div></li>
+      </ul>
+
+      <h3>6.2 Existence / Possession</h3>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">c&oacute;</span> <span class="eq-sign">=</span> <span class="en-text">have / there is / yes in some contexts</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Section 7 -->
+<section class="section-card" id="sec-7" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">7. Time, Aspect &amp; Particles</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>Vietnamese does not use tense the way English does. Instead, it often uses time words and particles.</p>
+
+      <h3>7.1 Core Particles</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#273;&atilde;</span> <span class="eq-sign">=</span> <span class="en-text">past / already</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#273;ang</span> <span class="eq-sign">=</span> <span class="en-text">currently / in progress</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">s&#7869;</span> <span class="eq-sign">=</span> <span class="en-text">future / will</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">v&#7915;a</span> <span class="eq-sign">=</span> <span class="en-text">just happened</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ch&#432;a</span> <span class="eq-sign">=</span> <span class="en-text">not yet</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">r&#7891;i</span> <span class="eq-sign">=</span> <span class="en-text">already / finished / then</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">n&#7919;a</span> <span class="eq-sign">=</span> <span class="en-text">more / again</span></div></li>
+      </ul>
+
+      <h3>7.2 Examples</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i &#273;ang h&#7885;c ti&#7871;ng Vi&#7879;t.</span> <span class="eq-sign">=</span> <span class="en-text">I am learning Vietnamese.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i &#273;&atilde; &#259;n r&#7891;i.</span> <span class="eq-sign">=</span> <span class="en-text">I already ate.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i s&#7869; &#273;i.</span> <span class="eq-sign">=</span> <span class="en-text">I will go.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i v&#7915;a &#273;&#7871;n.</span> <span class="eq-sign">=</span> <span class="en-text">I just arrived.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i ch&#432;a hi&#7875;u.</span> <span class="eq-sign">=</span> <span class="en-text">I do not understand yet.</span></div></li>
+      </ul>
+
+      <h3>7.3 Polite &amp; Softening Particles</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#7841;</span> <span class="eq-sign">=</span> <span class="en-text">respectful sentence ending</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">d&#7841;</span> <span class="eq-sign">=</span> <span class="en-text">polite "yes" / polite response starter</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">nh&eacute; / nha</span> <span class="eq-sign">=</span> <span class="en-text">friendly, soft sentence ending</span></div></li>
+      </ul>
+      <p>Examples: <span lang="vi"><strong>D&#7841;, em hi&#7875;u &#7841;.</strong></span> &bull; <span lang="vi"><strong>&#272;i nh&eacute;.</strong></span> &bull; <span lang="vi"><strong>Ng&#7891;i &#273;&acirc;y nha.</strong></span></p>
+      <div class="prose-block">These do a lot of social work in Vietnamese.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 8 -->
+<section class="section-card" id="sec-8" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">8. Classifiers</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>Vietnamese commonly uses classifiers with nouns.</p>
+      <h3>Useful Beginner Classifiers</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">c&aacute;i</span> <span class="eq-sign">=</span> <span class="en-text">general thing / object</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">con</span> <span class="eq-sign">=</span> <span class="en-text">animal</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ng&#432;&#7901;i</span> <span class="eq-sign">=</span> <span class="en-text">person</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ly</span> <span class="eq-sign">=</span> <span class="en-text">glass / cup, especially drinks</span></div></li>
+      </ul>
+      <h3>Examples</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">m&#7897;t c&aacute;i b&agrave;n</span> <span class="eq-sign">=</span> <span class="en-text">one table</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">m&#7897;t con m&egrave;o</span> <span class="eq-sign">=</span> <span class="en-text">one cat</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">m&#7897;t ng&#432;&#7901;i b&#7841;n</span> <span class="eq-sign">=</span> <span class="en-text">one friend</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">m&#7897;t ly c&agrave; ph&ecirc;</span> <span class="eq-sign">=</span> <span class="en-text">one cup of coffee</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- VOCABULARY -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="category-divider"><h2>Vocabulary</h2></div>
+
+<!-- Section 9 -->
+<section class="section-card" id="sec-9" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">9. Time Words</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <h3>9.1 Core Time Words</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">h&ocirc;m nay</span> <span class="eq-sign">=</span> <span class="en-text">today</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">h&ocirc;m qua</span> <span class="eq-sign">=</span> <span class="en-text">yesterday</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ng&agrave;y mai</span> <span class="eq-sign">=</span> <span class="en-text">tomorrow</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">b&acirc;y gi&#7901;</span> <span class="eq-sign">=</span> <span class="en-text">now</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">khi n&agrave;o?</span> <span class="eq-sign">=</span> <span class="en-text">when?</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">bao l&acirc;u?</span> <span class="eq-sign">=</span> <span class="en-text">how long?</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">m&#7845;y gi&#7901;?</span> <span class="eq-sign">=</span> <span class="en-text">what time?</span></div></li>
+      </ul>
+
+      <h3>9.2 Parts of the Day</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">s&aacute;ng</span> <span class="eq-sign">=</span> <span class="en-text">morning</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">tr&#432;a</span> <span class="eq-sign">=</span> <span class="en-text">noon / lunchtime</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">chi&#7873;u</span> <span class="eq-sign">=</span> <span class="en-text">afternoon</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">t&#7889;i</span> <span class="eq-sign">=</span> <span class="en-text">evening</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#273;&ecirc;m</span> <span class="eq-sign">=</span> <span class="en-text">night</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Section 10 -->
+<section class="section-card" id="sec-10" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">10. Numbers</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <h3>10.1 Basic Numbers</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">kh&ocirc;ng</span> <span class="eq-sign">=</span> <span class="en-text">0</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">m&#7897;t</span> <span class="eq-sign">=</span> <span class="en-text">1</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">hai</span> <span class="eq-sign">=</span> <span class="en-text">2</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ba</span> <span class="eq-sign">=</span> <span class="en-text">3</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">b&#7889;n</span> <span class="eq-sign">=</span> <span class="en-text">4</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">n&#259;m</span> <span class="eq-sign">=</span> <span class="en-text">5</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">s&aacute;u</span> <span class="eq-sign">=</span> <span class="en-text">6</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">b&#7843;y</span> <span class="eq-sign">=</span> <span class="en-text">7</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">t&aacute;m</span> <span class="eq-sign">=</span> <span class="en-text">8</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ch&iacute;n</span> <span class="eq-sign">=</span> <span class="en-text">9</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">m&#432;&#7901;i</span> <span class="eq-sign">=</span> <span class="en-text">10</span></div></li>
+      </ul>
+
+      <h3>10.2 Useful Compounds</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">m&#432;&#7901;i m&#7897;t</span> <span class="eq-sign">=</span> <span class="en-text">11</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">hai m&#432;&#417;i</span> <span class="eq-sign">=</span> <span class="en-text">20</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">m&#7897;t tr&#259;m</span> <span class="eq-sign">=</span> <span class="en-text">100</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">m&#7897;t ngh&igrave;n</span> <span class="eq-sign">=</span> <span class="en-text">1,000</span></div></li>
+      </ul>
+      <div class="prose-block">Numbers are essential for food, transport, prices, times, and directions.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 17 -->
+<section class="section-card" id="sec-17" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">17. Common Verbs &amp; Words</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>These are used all the time.</p>
+      <h3>17.1 Core Verbs</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">l&agrave;</span> <span class="eq-sign">=</span> <span class="en-text">to be</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">c&oacute;</span> <span class="eq-sign">=</span> <span class="en-text">to have / there is</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#273;i</span> <span class="eq-sign">=</span> <span class="en-text">to go</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#273;&#7871;n</span> <span class="eq-sign">=</span> <span class="en-text">to come / arrive</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">v&#7873;</span> <span class="eq-sign">=</span> <span class="en-text">to return / go back</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#259;n</span> <span class="eq-sign">=</span> <span class="en-text">to eat</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">u&#7889;ng</span> <span class="eq-sign">=</span> <span class="en-text">to drink</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ng&#7911;</span> <span class="eq-sign">=</span> <span class="en-text">to sleep</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">bi&#7871;t</span> <span class="eq-sign">=</span> <span class="en-text">to know</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">hi&#7875;u</span> <span class="eq-sign">=</span> <span class="en-text">to understand</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">th&iacute;ch</span> <span class="eq-sign">=</span> <span class="en-text">to like</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">mu&#7889;n</span> <span class="eq-sign">=</span> <span class="en-text">to want</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">c&#7847;n</span> <span class="eq-sign">=</span> <span class="en-text">to need</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#273;&#432;&#7907;c</span> <span class="eq-sign">=</span> <span class="en-text">can / okay / receive / acceptable</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#7903;</span> <span class="eq-sign">=</span> <span class="en-text">at / in / to live at</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">v&#7899;i</span> <span class="eq-sign">=</span> <span class="en-text">with</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">cho</span> <span class="eq-sign">=</span> <span class="en-text">give / for</span></div></li>
+      </ul>
+
+      <h3>17.2 Common Function Words</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">n&agrave;y</span> <span class="eq-sign">=</span> <span class="en-text">this</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#273;&oacute; / kia</span> <span class="eq-sign">=</span> <span class="en-text">that</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">r&#7845;t</span> <span class="eq-sign">=</span> <span class="en-text">very</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">r&#7891;i</span> <span class="eq-sign">=</span> <span class="en-text">already</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">n&#7919;a</span> <span class="eq-sign">=</span> <span class="en-text">more / again</span></div></li>
+      </ul>
+
+      <h3>17.3 Question Words</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">g&igrave;</span> <span class="eq-sign">=</span> <span class="en-text">what</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ai</span> <span class="eq-sign">=</span> <span class="en-text">who</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#273;&acirc;u</span> <span class="eq-sign">=</span> <span class="en-text">where</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">bao nhi&ecirc;u</span> <span class="eq-sign">=</span> <span class="en-text">how much / how many</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">m&#7845;y gi&#7901;</span> <span class="eq-sign">=</span> <span class="en-text">what time</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">khi n&agrave;o</span> <span class="eq-sign">=</span> <span class="en-text">when</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Section 18 -->
+<section class="section-card" id="sec-18" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">18. Reactions &amp; Slang</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>Useful to sound more natural and expressive.</p>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Tr&#7901;i &#417;i!</span> <span class="eq-sign">=</span> <span class="en-text">Oh my God! / Oh wow!</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">B&oacute; tay</span> <span class="eq-sign">=</span> <span class="en-text">I give up / what can you do</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">X&#7883;n</span> <span class="eq-sign">=</span> <span class="en-text">high quality / awesome</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Ch&#7845;t</span> <span class="eq-sign">=</span> <span class="en-text">cool / stylish / solid</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#7910;a?</span> <span class="eq-sign">=</span> <span class="en-text">Huh? / Wait, what?</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Ngon qu&aacute;!</span> <span class="eq-sign">=</span> <span class="en-text">So delicious!</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#272;&#7865;p qu&aacute;!</span> <span class="eq-sign">=</span> <span class="en-text">So beautiful!</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">M&#7879;t qu&aacute;!</span> <span class="eq-sign">=</span> <span class="en-text">So tired!</span></div></li>
+      </ul>
+      <div class="prose-block">These are heard constantly in everyday speech.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PHRASES -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="category-divider"><h2>Phrases</h2></div>
+
+<!-- Section 11 -->
+<section class="section-card" id="sec-11" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">11. Introductions</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>Useful self-introduction lines:</p>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i l&agrave; ...</span> <span class="eq-sign">=</span> <span class="en-text">I am ...</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i t&ecirc;n l&agrave; ...</span> <span class="eq-sign">=</span> <span class="en-text">My name is ...</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i &#273;&#7871;n t&#7915; ...</span> <span class="eq-sign">=</span> <span class="en-text">I come from ...</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i s&#7889;ng &#7903; ...</span> <span class="eq-sign">=</span> <span class="en-text">I live in ...</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i n&oacute;i ti&#7871;ng Anh.</span> <span class="eq-sign">=</span> <span class="en-text">I speak English.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i &#273;ang h&#7885;c ti&#7871;ng Vi&#7879;t.</span> <span class="eq-sign">=</span> <span class="en-text">I am learning Vietnamese.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">R&#7845;t vui &#273;&#432;&#7907;c g&#7863;p b&#7841;n.</span> <span class="eq-sign">=</span> <span class="en-text">Nice to meet you.</span></div></li>
+      </ul>
+      <div class="prose-block">You can make a full mini-introduction from only 3&ndash;4 of these.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 12 -->
+<section class="section-card" id="sec-12" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">12. Daily Pleasantries</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <h3>12.1 Greetings</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Xin ch&agrave;o.</span> <span class="eq-sign">=</span> <span class="en-text">Hello.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Ch&agrave;o b&#7841;n.</span> <span class="eq-sign">=</span> <span class="en-text">Hi.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&#7841;m bi&#7879;t.</span> <span class="eq-sign">=</span> <span class="en-text">Goodbye.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">H&#7865;n g&#7863;p l&#7841;i.</span> <span class="eq-sign">=</span> <span class="en-text">See you again.</span></div></li>
+      </ul>
+
+      <h3>12.2 Thanks &amp; Apology</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">C&#7843;m &#417;n.</span> <span class="eq-sign">=</span> <span class="en-text">Thank you.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">C&#7843;m &#417;n nhi&#7873;u.</span> <span class="eq-sign">=</span> <span class="en-text">Thanks a lot.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Kh&ocirc;ng c&oacute; g&igrave;.</span> <span class="eq-sign">=</span> <span class="en-text">You're welcome / no problem.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Xin l&#7895;i.</span> <span class="eq-sign">=</span> <span class="en-text">Sorry / excuse me.</span></div></li>
+      </ul>
+
+      <h3>12.3 Confirmation</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">V&acirc;ng.</span> <span class="eq-sign">=</span> <span class="en-text">yes (polite)</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">D&#7841;.</span> <span class="eq-sign">=</span> <span class="en-text">polite yes / respectful response</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Kh&ocirc;ng.</span> <span class="eq-sign">=</span> <span class="en-text">no</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#272;&#432;&#7907;c.</span> <span class="eq-sign">=</span> <span class="en-text">okay / can / acceptable</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Kh&ocirc;ng sao.</span> <span class="eq-sign">=</span> <span class="en-text">it's okay / no problem</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Section 13 -->
+<section class="section-card" id="sec-13" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">13. Social Language</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <h3>13.1 The Classic Everyday Phrase</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#258;n c&#417;m ch&#432;a?</span> <span class="eq-sign">=</span> <span class="en-text">Have you eaten yet?</span></div></li>
+      </ul>
+      <div class="prose-block">This can function not only as a literal food question, but as a warm social check-in similar to "How are you?" in certain everyday contexts.</div>
+
+      <h3>13.2 Tone &amp; Friendliness</h3>
+      <div class="prose-block">Vietnamese daily speech often sounds relational, not purely informational. Warmth, small particles, and the right pronoun matter a lot.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 14 -->
+<section class="section-card" id="sec-14" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">14. Survival Phrases</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>Extremely useful on a regular day-to-day basis.</p>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i kh&ocirc;ng hi&#7875;u.</span> <span class="eq-sign">=</span> <span class="en-text">I do not understand.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i ch&#432;a hi&#7875;u.</span> <span class="eq-sign">=</span> <span class="en-text">I do not understand yet.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Xin n&oacute;i ch&#7853;m th&ocirc;i.</span> <span class="eq-sign">=</span> <span class="en-text">Please speak slowly.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Xin nh&#7855;c l&#7841;i.</span> <span class="eq-sign">=</span> <span class="en-text">Please repeat.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">C&aacute;i n&agrave;y l&agrave; g&igrave;?</span> <span class="eq-sign">=</span> <span class="en-text">What is this?</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Bao nhi&ecirc;u ti&#7873;n?</span> <span class="eq-sign">=</span> <span class="en-text">How much?</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#7902; &#273;&acirc;u?</span> <span class="eq-sign">=</span> <span class="en-text">Where?</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">... &#7903; &#273;&acirc;u?</span> <span class="eq-sign">=</span> <span class="en-text">Where is ...?</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Nh&agrave; v&#7879; sinh &#7903; &#273;&acirc;u?</span> <span class="eq-sign">=</span> <span class="en-text">Where is the bathroom?</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i mu&#7889;n c&aacute;i n&agrave;y.</span> <span class="eq-sign">=</span> <span class="en-text">I want this.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Gi&uacute;p t&ocirc;i v&#7899;i!</span> <span class="eq-sign">=</span> <span class="en-text">Help me!</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">D&#7915;ng &#7903; &#273;&acirc;y.</span> <span class="eq-sign">=</span> <span class="en-text">Stop here.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i b&#7883; l&#7841;c.</span> <span class="eq-sign">=</span> <span class="en-text">I am lost.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SITUATIONS -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="category-divider"><h2>Situations</h2></div>
+
+<!-- Section 15 -->
+<section class="section-card" id="sec-15" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">15. Caf&eacute; Pack</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>Useful for your Friday speaking meetup and caf&eacute; life in general.</p>
+
+      <h3>15.1 Calling Staff</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Em &#417;i!</span> <span class="eq-sign">=</span> <span class="en-text">Excuse me / calling staff politely</span></div></li>
+      </ul>
+
+      <h3>15.2 Ordering</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Cho t&ocirc;i m&#7897;t ...</span> <span class="eq-sign">=</span> <span class="en-text">Give me one ... / I'd like one ...</span></div></li>
+      </ul>
+
+      <h3>15.3 Drinks</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">C&agrave; ph&ecirc; s&#7919;a &#273;&aacute;</span> <span class="eq-sign">=</span> <span class="en-text">iced milk coffee</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Tr&agrave; &#273;&aacute;</span> <span class="eq-sign">=</span> <span class="en-text">iced tea</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">N&#432;&#7899;c</span> <span class="eq-sign">=</span> <span class="en-text">water</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Bia</span> <span class="eq-sign">=</span> <span class="en-text">beer</span></div></li>
+      </ul>
+
+      <h3>15.4 Customizing</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&Iacute;t &#273;&#432;&#7901;ng</span> <span class="eq-sign">=</span> <span class="en-text">less sugar</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Kh&ocirc;ng &#273;&aacute;</span> <span class="eq-sign">=</span> <span class="en-text">no ice</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Cay</span> <span class="eq-sign">=</span> <span class="en-text">spicy</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Kh&ocirc;ng cay</span> <span class="eq-sign">=</span> <span class="en-text">not spicy</span></div></li>
+      </ul>
+
+      <h3>15.5 Paying</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&iacute;nh ti&#7873;n!</span> <span class="eq-sign">=</span> <span class="en-text">Check / bill please</span></div></li>
+      </ul>
+
+      <h3>15.6 Toasting</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">M&#7897;t, hai, ba, v&ocirc;!</span> <span class="eq-sign">=</span> <span class="en-text">One, two, three, cheers!</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Section 16 -->
+<section class="section-card" id="sec-16" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">16. Navigation</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <h3>16.1 Asking Where</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">... &#7903; &#273;&acirc;u?</span> <span class="eq-sign">=</span> <span class="en-text">Where is ...?</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Nh&agrave; v&#7879; sinh &#7903; &#273;&acirc;u?</span> <span class="eq-sign">=</span> <span class="en-text">Where is the bathroom?</span></div></li>
+      </ul>
+
+      <h3>16.2 Directions</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">R&#7869; tr&aacute;i</span> <span class="eq-sign">=</span> <span class="en-text">turn left</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">R&#7869; ph&#7843;i</span> <span class="eq-sign">=</span> <span class="en-text">turn right</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#272;i th&#7859;ng</span> <span class="eq-sign">=</span> <span class="en-text">go straight</span></div></li>
+      </ul>
+
+      <h3>16.3 Transport</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Xe &ocirc;m</span> <span class="eq-sign">=</span> <span class="en-text">motorbike taxi</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">X&iacute;ch l&ocirc;</span> <span class="eq-sign">=</span> <span class="en-text">rickshaw / cycle taxi</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">D&#7915;ng &#7903; &#273;&acirc;y</span> <span class="eq-sign">=</span> <span class="en-text">stop here</span></div></li>
+      </ul>
+
+      <h3>16.4 Safety / Trouble</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Gi&uacute;p t&ocirc;i v&#7899;i!</span> <span class="eq-sign">=</span> <span class="en-text">Help me!</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i b&#7883; l&#7841;c.</span> <span class="eq-sign">=</span> <span class="en-text">I am lost.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PRACTICE -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="category-divider"><h2>Practice</h2></div>
+
+<!-- Section 19 -->
+<section class="section-card" id="sec-19" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">19. Example Sentences</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i h&#7885;c ti&#7871;ng Vi&#7879;t.</span> <span class="eq-sign">=</span> <span class="en-text">I study Vietnamese.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i &#273;ang h&#7885;c ti&#7871;ng Vi&#7879;t.</span> <span class="eq-sign">=</span> <span class="en-text">I am learning Vietnamese.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i th&iacute;ch c&agrave; ph&ecirc;.</span> <span class="eq-sign">=</span> <span class="en-text">I like coffee.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i mu&#7889;n n&#432;&#7899;c.</span> <span class="eq-sign">=</span> <span class="en-text">I want water.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i kh&ocirc;ng hi&#7875;u.</span> <span class="eq-sign">=</span> <span class="en-text">I do not understand.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i ch&#432;a hi&#7875;u.</span> <span class="eq-sign">=</span> <span class="en-text">I do not understand yet.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i s&#7869; &#273;i.</span> <span class="eq-sign">=</span> <span class="en-text">I will go.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i &#273;&atilde; &#259;n r&#7891;i.</span> <span class="eq-sign">=</span> <span class="en-text">I already ate.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">B&#7841;n kh&#7887;e kh&ocirc;ng?</span> <span class="eq-sign">=</span> <span class="en-text">Are you well?</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">R&#7845;t vui &#273;&#432;&#7907;c g&#7863;p b&#7841;n.</span> <span class="eq-sign">=</span> <span class="en-text">Nice to meet you.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- CULTURE -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="category-divider"><h2>Culture</h2></div>
+
+<!-- Section 20 -->
+<section class="section-card" id="sec-20">
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">20. Cultural Etiquette</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>Social and cultural behaviors that help daily interaction go more smoothly.</p>
+
+      <h3>20.1 Use Both Hands</h3>
+      <div class="prose-block">When giving or receiving items, using two hands can feel more respectful.</div>
+
+      <h3>20.2 Head &amp; Feet</h3>
+      <ul>
+        <li>Avoid touching someone's head.</li>
+        <li>Avoid pointing your feet at people or sacred spaces.</li>
+      </ul>
+
+      <h3>20.3 Shoes Off</h3>
+      <div class="prose-block">Remove shoes before entering a home, and often at temples or certain indoor spaces.</div>
+
+      <h3>20.4 Dress Modestly at Religious Sites</h3>
+      <div class="prose-block">Cover shoulders and knees when visiting temples or religious places.</div>
+
+      <h3>20.5 Greet Elders First</h3>
+      <div class="prose-block">Respect toward elders is important. Use calm, polite, warm speech.</div>
+
+      <h3>20.6 General Demeanor</h3>
+      <div class="prose-block">A calm, smiling, respectful manner goes a long way. Vietnamese communication often values warmth and social sensitivity.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- STUDY GUIDE -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="category-divider"><h2>Study Guide</h2></div>
+
+<!-- Section 21 -->
+<section class="section-card" id="sec-21">
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">21. Study Order</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>Best order to learn:</p>
+      <ol>
+        <li>Tones</li>
+        <li>Hard vowels</li>
+        <li>Contextual spelling/pronunciation families</li>
+        <li>Telex typing</li>
+        <li>Pronouns</li>
+        <li>50 common words</li>
+        <li>10 survival phrases</li>
+        <li>Self-introduction</li>
+        <li>Caf&eacute; / ordering vocabulary</li>
+        <li>Speak often, even imperfectly</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- Section 22 -->
+<section class="section-card" id="sec-22">
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">22. Beginner Focus</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <p>If you only focus on a few things at first, focus on these:</p>
+      <ul>
+        <li>Tones</li>
+        <li>Vowels</li>
+        <li>Typing</li>
+        <li>Pronouns</li>
+        <li>Daily phrases</li>
+        <li>Caf&eacute; language</li>
+        <li>Speaking regularly</li>
+      </ul>
+      <div class="highlight-box"><strong>Main principle:</strong> Speak often, even imperfectly.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 25 -->
+<section class="section-card" id="sec-25">
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">25. Final Message</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <div class="prose-block">
+        <p>Vietnamese becomes much easier once you stop treating it like English with accents and start treating it like its own sound system.</p>
+        <p><strong>Your first wins should be:</strong></p>
+      </div>
+      <ul>
+        <li>Hearing the tones</li>
+        <li>Noticing the vowel differences</li>
+        <li>Using the right pronoun roughly well</li>
+        <li>Typing with Telex</li>
+        <li>Saying short daily phrases confidently</li>
+      </ul>
+      <div class="highlight-box">
+        You do not need perfect grammar to start speaking. You need <strong>repetition, listening, and willingness to speak</strong>.
+      </div>
+      <div class="prose-block">
+        <p>Use Vietnamese every Friday at Chillax, use it in caf&eacute;s, use it with friends, use it badly at first, and keep going.</p>
+        <p><strong>That is how it starts to become natural.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- QUICK REFERENCE -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="category-divider"><h2>Quick Reference</h2></div>
+
+<!-- Section 23 -->
+<section class="section-card" id="sec-23" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">23. Mini Cheat Sheet</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <h3>Pronunciation</h3>
+      <table class="data-table">
+        <thead><tr><th>Letter</th><th>Sound</th></tr></thead>
+        <tbody>
+          <tr><td lang="vi" class="vi-cell">&#259;</td><td>short a</td></tr>
+          <tr><td lang="vi" class="vi-cell">&acirc;</td><td>short uh</td></tr>
+          <tr><td lang="vi" class="vi-cell">&ecirc;</td><td>close ay</td></tr>
+          <tr><td lang="vi" class="vi-cell">&ocirc;</td><td>clipped oh</td></tr>
+          <tr><td lang="vi" class="vi-cell">&#417;</td><td>rounded uh/er</td></tr>
+          <tr><td lang="vi" class="vi-cell">&#432;</td><td>ee with rounded lips</td></tr>
+          <tr><td lang="vi" class="vi-cell">&#273;</td><td>d</td></tr>
+          <tr><td lang="vi" class="vi-cell">d / gi</td><td>z or y depending on dialect</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Context Families</h3>
+      <ul>
+        <li><strong>c / k / qu</strong></li>
+        <li><strong>g / gh</strong></li>
+        <li><strong>ng / ngh</strong></li>
+        <li><strong>d / gi / &#273;</strong></li>
+        <li><strong>ph / th / kh / nh</strong></li>
+      </ul>
+
+      <h3>Telex</h3>
+      <table class="data-table">
+        <thead><tr><th>Type</th><th>Get</th></tr></thead>
+        <tbody>
+          <tr><td>aa</td><td lang="vi" class="vi-cell">&acirc;</td></tr>
+          <tr><td>aw</td><td lang="vi" class="vi-cell">&#259;</td></tr>
+          <tr><td>ee</td><td lang="vi" class="vi-cell">&ecirc;</td></tr>
+          <tr><td>oo</td><td lang="vi" class="vi-cell">&ocirc;</td></tr>
+          <tr><td>ow</td><td lang="vi" class="vi-cell">&#417;</td></tr>
+          <tr><td>uw</td><td lang="vi" class="vi-cell">&#432;</td></tr>
+          <tr><td>dd</td><td lang="vi" class="vi-cell">&#273;</td></tr>
+          <tr><td>s</td><td lang="vi" class="vi-cell">&aacute;</td></tr>
+          <tr><td>f</td><td lang="vi" class="vi-cell">&agrave;</td></tr>
+          <tr><td>r</td><td lang="vi" class="vi-cell">&#7843;</td></tr>
+          <tr><td>x</td><td lang="vi" class="vi-cell">&atilde;</td></tr>
+          <tr><td>j</td><td lang="vi" class="vi-cell">&#7841;</td></tr>
+          <tr><td>z</td><td>clear mark</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Pronouns</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">t&ocirc;i</span> <span class="eq-sign">=</span> <span class="en-text">I</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">b&#7841;n</span> <span class="eq-sign">=</span> <span class="en-text">you</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">anh</span> <span class="eq-sign">=</span> <span class="en-text">older male</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ch&#7883;</span> <span class="eq-sign">=</span> <span class="en-text">older female</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">em</span> <span class="eq-sign">=</span> <span class="en-text">younger person</span></div></li>
+      </ul>
+
+      <h3>Time</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">h&ocirc;m nay</span> <span class="eq-sign">=</span> <span class="en-text">today</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">h&ocirc;m qua</span> <span class="eq-sign">=</span> <span class="en-text">yesterday</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ng&agrave;y mai</span> <span class="eq-sign">=</span> <span class="en-text">tomorrow</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">b&acirc;y gi&#7901;</span> <span class="eq-sign">=</span> <span class="en-text">now</span></div></li>
+      </ul>
+      <p lang="vi"><strong>s&aacute;ng / tr&#432;a / chi&#7873;u / t&#7889;i / &#273;&ecirc;m</strong></p>
+
+      <h3>Useful Phrases</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i l&agrave; ...</span> <span class="eq-sign">=</span> <span class="en-text">I am ...</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i &#273;ang h&#7885;c ti&#7871;ng Vi&#7879;t.</span> <span class="eq-sign">=</span> <span class="en-text">I am learning Vietnamese.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&ocirc;i kh&ocirc;ng hi&#7875;u.</span> <span class="eq-sign">=</span> <span class="en-text">I do not understand.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Xin n&oacute;i ch&#7853;m th&ocirc;i.</span> <span class="eq-sign">=</span> <span class="en-text">Please speak slowly.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Xin nh&#7855;c l&#7841;i.</span> <span class="eq-sign">=</span> <span class="en-text">Please repeat.</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Bao nhi&ecirc;u ti&#7873;n?</span> <span class="eq-sign">=</span> <span class="en-text">How much?</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Nh&agrave; v&#7879; sinh &#7903; &#273;&acirc;u?</span> <span class="eq-sign">=</span> <span class="en-text">Where is the bathroom?</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">C&aacute;i n&agrave;y l&agrave; g&igrave;?</span> <span class="eq-sign">=</span> <span class="en-text">What is this?</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Gi&uacute;p t&ocirc;i v&#7899;i!</span> <span class="eq-sign">=</span> <span class="en-text">Help me!</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#258;n c&#417;m ch&#432;a?</span> <span class="eq-sign">=</span> <span class="en-text">Have you eaten yet?</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Section 24 -->
+<section class="section-card" id="sec-24" data-learnable>
+  <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+    <span class="section-chevron">&#9654;</span>
+    <h2 class="section-title">24. Word Bank</h2>
+  </div>
+  <div class="section-body">
+    <div class="section-content">
+      <h3>Greetings &amp; Social Words</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Xin ch&agrave;o</span> <span class="eq-sign">=</span> <span class="en-text">Hello</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Ch&agrave;o b&#7841;n</span> <span class="eq-sign">=</span> <span class="en-text">Hi</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">T&#7841;m bi&#7879;t</span> <span class="eq-sign">=</span> <span class="en-text">Goodbye</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">H&#7865;n g&#7863;p l&#7841;i</span> <span class="eq-sign">=</span> <span class="en-text">See you again</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">C&#7843;m &#417;n</span> <span class="eq-sign">=</span> <span class="en-text">Thank you</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">C&#7843;m &#417;n nhi&#7873;u</span> <span class="eq-sign">=</span> <span class="en-text">Thanks a lot</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Kh&ocirc;ng c&oacute; g&igrave;</span> <span class="eq-sign">=</span> <span class="en-text">You're welcome</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Xin l&#7895;i</span> <span class="eq-sign">=</span> <span class="en-text">Sorry / excuse me</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">V&acirc;ng</span> <span class="eq-sign">=</span> <span class="en-text">Yes (polite)</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">D&#7841;</span> <span class="eq-sign">=</span> <span class="en-text">Yes (respectful)</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Kh&ocirc;ng</span> <span class="eq-sign">=</span> <span class="en-text">No</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#272;&#432;&#7907;c</span> <span class="eq-sign">=</span> <span class="en-text">Okay / acceptable</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">Kh&ocirc;ng sao</span> <span class="eq-sign">=</span> <span class="en-text">No problem</span></div></li>
+      </ul>
+
+      <h3>Daily Actions</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#259;n</span> <span class="eq-sign">=</span> <span class="en-text">eat</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">u&#7889;ng</span> <span class="eq-sign">=</span> <span class="en-text">drink</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#273;i</span> <span class="eq-sign">=</span> <span class="en-text">go</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">v&#7873;</span> <span class="eq-sign">=</span> <span class="en-text">return</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#273;&#7871;n</span> <span class="eq-sign">=</span> <span class="en-text">arrive</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ng&#7911;</span> <span class="eq-sign">=</span> <span class="en-text">sleep</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">h&#7885;c</span> <span class="eq-sign">=</span> <span class="en-text">study</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">n&oacute;i</span> <span class="eq-sign">=</span> <span class="en-text">speak</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">nghe</span> <span class="eq-sign">=</span> <span class="en-text">listen</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">hi&#7875;u</span> <span class="eq-sign">=</span> <span class="en-text">understand</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">bi&#7871;t</span> <span class="eq-sign">=</span> <span class="en-text">know</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">mu&#7889;n</span> <span class="eq-sign">=</span> <span class="en-text">want</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">th&iacute;ch</span> <span class="eq-sign">=</span> <span class="en-text">like</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">c&#7847;n</span> <span class="eq-sign">=</span> <span class="en-text">need</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">gi&uacute;p</span> <span class="eq-sign">=</span> <span class="en-text">help</span></div></li>
+      </ul>
+
+      <h3>Everyday Objects / Concepts</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">n&#432;&#7899;c</span> <span class="eq-sign">=</span> <span class="en-text">water</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">c&agrave; ph&ecirc;</span> <span class="eq-sign">=</span> <span class="en-text">coffee</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">c&#417;m</span> <span class="eq-sign">=</span> <span class="en-text">rice</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ti&#7873;n</span> <span class="eq-sign">=</span> <span class="en-text">money</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">nh&agrave;</span> <span class="eq-sign">=</span> <span class="en-text">house / home</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">b&#7841;n</span> <span class="eq-sign">=</span> <span class="en-text">friend</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ng&#432;&#7901;i</span> <span class="eq-sign">=</span> <span class="en-text">person</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#273;&#432;&#7901;ng</span> <span class="eq-sign">=</span> <span class="en-text">road / street</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">xe</span> <span class="eq-sign">=</span> <span class="en-text">vehicle</span></div></li>
+      </ul>
+
+      <h3>Questions</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">g&igrave;</span> <span class="eq-sign">=</span> <span class="en-text">what</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ai</span> <span class="eq-sign">=</span> <span class="en-text">who</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#273;&acirc;u</span> <span class="eq-sign">=</span> <span class="en-text">where</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#7903; &#273;&acirc;u</span> <span class="eq-sign">=</span> <span class="en-text">where is</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">bao nhi&ecirc;u</span> <span class="eq-sign">=</span> <span class="en-text">how much / how many</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">m&#7845;y gi&#7901;</span> <span class="eq-sign">=</span> <span class="en-text">what time</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">khi n&agrave;o</span> <span class="eq-sign">=</span> <span class="en-text">when</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">bao l&acirc;u</span> <span class="eq-sign">=</span> <span class="en-text">how long</span></div></li>
+      </ul>
+
+      <h3>Adjectives / Reactions</h3>
+      <div class="reveal-controls"><button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button></div>
+      <ul class="vocab-list">
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ngon</span> <span class="eq-sign">=</span> <span class="en-text">delicious</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">&#273;&#7865;p</span> <span class="eq-sign">=</span> <span class="en-text">beautiful</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">m&#7879;t</span> <span class="eq-sign">=</span> <span class="en-text">tired</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">x&#7883;n</span> <span class="eq-sign">=</span> <span class="en-text">awesome</span></div></li>
+        <li><div class="vocab-item flashcard" onclick="toggleCard(this)"><span class="vi-text" lang="vi">ch&#7845;t</span> <span class="eq-sign">=</span> <span class="en-text">cool / stylish</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  Based on the Vietnamese Master Growth Pack &bull; Practice group at Chillax, Fridays 1 PM
+</footer>
+
+<script>
+// ── Theme Toggle (Light/Dark) ──
+(function() {
+  var html = document.documentElement;
+  var themeBtn = document.getElementById('themeToggle');
+  var saved = localStorage.getItem('theme');
+  var theme;
+
+  if (saved) {
+    theme = saved;
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    theme = 'dark';
+  } else {
+    theme = 'light';
+  }
+
+  html.setAttribute('data-theme', theme);
+
+  themeBtn.addEventListener('click', function() {
+    var current = html.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+
+  // Listen for OS theme changes when no saved preference
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    if (!localStorage.getItem('theme')) {
+      html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    }
+  });
+})();
+
+// ── Mode Toggle ──
+const toggle = document.getElementById('modeToggle');
+const refLabel = document.getElementById('refLabel');
+const learnLabel = document.getElementById('learnLabel');
+
+toggle.addEventListener('change', function() {
+  document.body.classList.toggle('learning-mode', this.checked);
+  refLabel.classList.toggle('active', !this.checked);
+  learnLabel.classList.toggle('active', this.checked);
+  // Reset all cards when switching modes
+  if (!this.checked) {
+    document.querySelectorAll('.flashcard').forEach(function(c) {
+      c.classList.remove('revealed');
+    });
+  }
+});
+
+// ── Flashcard Toggle ──
+function toggleCard(el) {
+  if (document.body.classList.contains('learning-mode')) {
+    el.classList.toggle('revealed');
+  }
+}
+
+// ── Reveal / Hide All ──
+function revealAll(btn) {
+  var list = btn.closest('.section-content').querySelectorAll('.flashcard');
+  list.forEach(function(c) { c.classList.add('revealed'); });
+}
+
+function hideAll(btn) {
+  var list = btn.closest('.section-content').querySelectorAll('.flashcard');
+  list.forEach(function(c) { c.classList.remove('revealed'); });
+}
+
+// ── Section Collapse ──
+document.querySelectorAll('.section-header').forEach(function(header) {
+  header.addEventListener('click', function() {
+    var card = this.closest('.section-card');
+    var isOpen = card.classList.contains('open');
+    card.classList.toggle('open');
+    this.setAttribute('aria-expanded', !isOpen);
+  });
+  header.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      this.click();
+    }
+  });
+});
+
+// ── TOC Toggle ──
+var tocToggle = document.getElementById('tocToggle');
+var tocNav = document.getElementById('tocNav');
+
+tocToggle.addEventListener('click', function() {
+  var isOpen = tocNav.classList.contains('open');
+  tocNav.classList.toggle('open');
+  tocToggle.classList.toggle('open');
+  tocToggle.setAttribute('aria-expanded', !isOpen);
+});
+
+// Close TOC when a link is clicked
+tocNav.querySelectorAll('a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    tocNav.classList.remove('open');
+    tocToggle.classList.remove('open');
+    tocToggle.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// ── Sticky Header Shadow ──
+var header = document.getElementById('siteHeader');
+var scrolled = false;
+
+window.addEventListener('scroll', function() {
+  var shouldScroll = window.scrollY > 10;
+  if (shouldScroll !== scrolled) {
+    scrolled = shouldScroll;
+    header.classList.toggle('scrolled', scrolled);
+  }
+}, { passive: true });
+</script>
+</body>
+</html>
