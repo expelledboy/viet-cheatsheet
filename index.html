@@ -112,11 +112,9 @@ body {
 .header-inner {
   max-width: 720px;
   margin: 0 auto;
-  padding: 10px 16px;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
 }
 
 .header-title {
@@ -133,16 +131,32 @@ body {
   margin-right: 4px;
 }
 
-/* ── Toggle Switch ── */
-.toggle-wrap {
+/* ── Control Card ── */
+.control-card {
+  position: sticky;
+  top: 44px;
+  z-index: 90;
+  max-width: 720px;
+  margin: 8px auto 0;
+  padding: 10px 16px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.control-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-shrink: 0;
 }
 
+/* ── Toggle Switch ── */
 .toggle-label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   color: var(--text-light);
   text-transform: uppercase;
@@ -786,9 +800,9 @@ body.hide-known .vocab-item.known-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 12px;
-  font-size: 0.78rem;
-  color: var(--text-light);
+  margin-bottom: 8px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }
 
 .progress-track {
@@ -832,43 +846,22 @@ body.hide-known .vocab-item.known-item {
   border-color: #38a06c;
 }
 
-/* ── Pronoun Selector ── */
-.pronoun-bar {
-  position: sticky;
-  top: 52px;
-  z-index: 90;
-  background: var(--bg);
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 8px 16px;
-  border-bottom: 1px solid var(--border);
-  transition: background-color 0.2s ease;
-}
-
-.pronoun-bar-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 4px;
-}
-
+/* ── Pronoun Pills ── */
 .pronoun-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
 }
 
 .pronoun-pill {
-  padding: 4px 10px;
+  padding: 3px 9px;
   font-family: var(--font);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
   border: 1px solid var(--border);
-  border-radius: 16px;
-  background: var(--reveal-btn-bg);
-  color: var(--text-light);
+  border-radius: 12px;
+  background: none;
+  color: var(--text-muted);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: all var(--transition);
@@ -1017,6 +1010,7 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
 
 /* ── Theme transition helpers ── */
 .section-card,
+.control-card,
 .toc-nav,
 .highlight-box,
 .data-table th,
@@ -1029,10 +1023,8 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
   .header-title {
     font-size: 0.9rem;
   }
-  .toggle-label {
-    display: none;
-  }
-  .header-inner {
+  .control-card {
+    padding: 8px 12px;
     gap: 6px;
   }
 }
@@ -1090,18 +1082,6 @@ function saveState() { localStorage.setItem('state', JSON.stringify(STATE)); }
 <header class="site-header" id="siteHeader">
   <div class="header-inner">
     <span class="header-title"><span class="header-flag">&#x1F1FB;&#x1F1F3;</span> Vietnamese Cheat Sheet</span>
-    <div class="toggle-wrap">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-        <span class="icon-sun">&#9788;</span>
-        <span class="icon-moon">&#9790;</span>
-      </button>
-      <span class="toggle-label active" id="refLabel">Ref</span>
-      <label class="toggle-switch">
-        <input type="checkbox" id="modeToggle">
-        <span class="toggle-track"></span>
-      </label>
-      <span class="toggle-label" id="learnLabel">Learn</span>
-    </div>
   </div>
 </header>
 
@@ -1281,27 +1261,20 @@ function applyPronouns(text) {
   tocNav.appendChild(tocUl);
   tocBtn.insertAdjacentElement('afterend', tocNav);
 
-  // Total progress bar (visible in learning mode)
-  var totalProgress = document.createElement('div');
-  totalProgress.className = 'progress-bar';
-  totalProgress.id = 'totalProgress';
-  totalProgress.style.maxWidth = '720px';
-  totalProgress.style.margin = '0 auto';
-  totalProgress.style.padding = '8px 16px 0';
-  totalProgress.innerHTML = '<span class="progress-text">0/0 phrases known</span><div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>';
-  var resetBtn = document.createElement('button');
-  resetBtn.className = 'hide-known-btn reset-btn';
-  resetBtn.textContent = 'Reset';
-  resetBtn.addEventListener('click', function() { resetProgress(); });
-  totalProgress.appendChild(resetBtn);
-  tocNav.insertAdjacentElement('afterend', totalProgress);
+  // Control card — all settings in one card
+  var controlCard = document.createElement('div');
+  controlCard.className = 'control-card';
+  controlCard.id = 'controlCard';
 
-  // Pronoun selector
-  var pronounBar = document.createElement('div');
-  pronounBar.className = 'pronoun-bar';
-  pronounBar.innerHTML = '<div class="pronoun-bar-label">Speaking to\u2026</div>';
-  var pillContainer = document.createElement('div');
-  pillContainer.className = 'pronoun-pills';
+  // Row 1: theme toggle + mode toggle
+  var row1 = document.createElement('div');
+  row1.className = 'control-row';
+  row1.innerHTML = '<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><span class="icon-sun">&#9788;</span><span class="icon-moon">&#9790;</span></button><span class="toggle-label active" id="refLabel">Ref</span><label class="toggle-switch"><input type="checkbox" id="modeToggle"><span class="toggle-track"></span></label><span class="toggle-label" id="learnLabel">Learn</span>';
+  controlCard.appendChild(row1);
+
+  // Row 2: pronoun pills
+  var row2 = document.createElement('div');
+  row2.className = 'control-row pronoun-pills';
   Object.keys(PRONOUNS).forEach(function(key) {
     var pill = document.createElement('button');
     pill.className = 'pronoun-pill' + (STATE.pronounContext === key ? ' active' : '');
@@ -1309,21 +1282,34 @@ function applyPronouns(text) {
     pill.addEventListener('click', function() {
       STATE.pronounContext = key;
       saveState();
-      pillContainer.querySelectorAll('.pronoun-pill').forEach(function(p) { p.classList.remove('active'); });
+      row2.querySelectorAll('.pronoun-pill').forEach(function(p) { p.classList.remove('active'); });
       pill.classList.add('active');
       refreshPronouns();
     });
-    pillContainer.appendChild(pill);
+    row2.appendChild(pill);
   });
-  pronounBar.appendChild(pillContainer);
-  totalProgress.insertAdjacentElement('afterend', pronounBar);
+  controlCard.appendChild(row2);
+
+  // Row 3: progress bar + reset
+  var row3 = document.createElement('div');
+  row3.className = 'control-row';
+  row3.id = 'totalProgress';
+  row3.innerHTML = '<span class="progress-text" style="font-size:0.75rem;color:var(--text-muted)">0/0 known</span><div class="progress-track" style="flex:1"><div class="progress-fill" style="width:0%"></div></div>';
+  var resetBtn = document.createElement('button');
+  resetBtn.className = 'hide-known-btn reset-btn';
+  resetBtn.textContent = 'Reset';
+  resetBtn.addEventListener('click', function() { resetProgress(); });
+  row3.appendChild(resetBtn);
+  controlCard.appendChild(row3);
+
+  tocNav.insertAdjacentElement('afterend', controlCard);
 
   // Known phrases panel — appears after 3+ known
   var knownPanel = document.createElement('div');
   knownPanel.id = 'knownPanel';
   knownPanel.className = 'known-panel';
   knownPanel.innerHTML = '<button class="known-panel-toggle" id="knownPanelToggle"><span class="chevron">&#9654;</span> <span class="known-panel-title">Phrases You Know</span> <span class="known-panel-count"></span></button><div class="known-panel-body" id="knownPanelBody"></div>';
-  totalProgress.insertAdjacentElement('afterend', knownPanel);
+  controlCard.insertAdjacentElement('afterend', knownPanel);
 
   // Build flat section list for "next section" links
   var allSections = [];
