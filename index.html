@@ -344,6 +344,51 @@ main {
   flex: 1;
 }
 
+.section-badge {
+  display: none;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--neutral-bg);
+  padding: 2px 8px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+
+body.learning-mode .section-badge {
+  display: inline-block;
+}
+
+.section-badge.complete {
+  background: #38a06c;
+  color: #fff;
+}
+
+/* ── Next Section Link ── */
+.next-section {
+  display: none;
+  margin-top: 16px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+  text-align: right;
+}
+
+body.learning-mode .next-section {
+  display: block;
+}
+
+.next-section a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--red);
+  text-decoration: none;
+}
+
+.next-section a:hover {
+  text-decoration: underline;
+}
+
 .section-body {
   overflow: hidden;
   max-height: 0;
@@ -676,6 +721,122 @@ body.learning-mode .speak-btn {
   display: none;
 }
 
+/* ── Known Button ── */
+.known-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: all var(--transition);
+  padding: 0;
+  line-height: 1;
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+html.no-vi-speech .known-btn {
+  right: 8px;
+}
+
+.known-btn:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.known-btn.checked {
+  background: #38a06c;
+  border-color: #38a06c;
+  color: #fff;
+}
+
+.vocab-item.known-item {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes known-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(56, 160, 108, 0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(56, 160, 108, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 160, 108, 0); }
+}
+
+.known-btn.checked {
+  background: #38a06c;
+  border-color: #38a06c;
+  color: #fff;
+  animation: known-pulse 0.4s ease-out;
+}
+
+body.hide-known .vocab-item.known-item {
+  display: none;
+}
+
+/* ── Progress Bar ── */
+.progress-bar {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 0.78rem;
+  color: var(--text-light);
+}
+
+body.learning-mode .progress-bar {
+  display: flex;
+}
+
+.progress-track {
+  flex: 1;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #38a06c;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.hide-known-btn {
+  padding: 4px 10px;
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--reveal-btn-bg);
+  color: var(--text-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+  transition: background var(--transition), color var(--transition);
+}
+
+.hide-known-btn:hover {
+  background: var(--red-light);
+  color: var(--red);
+}
+
+.hide-known-btn.active {
+  background: #38a06c;
+  color: #fff;
+  border-color: #38a06c;
+}
+
 /* ── Footer ── */
 .site-footer {
   max-width: 720px;
@@ -777,15 +938,21 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
 }
 </style>
 <script>
-// Prevent flash of wrong theme on load
+// ── STATE: single source of truth for all user state ──
+// Loaded before render to prevent flash. Saved on every mutation.
+var STATE = {
+  theme: null,        // 'light' | 'dark' | null (follow OS)
+  mode: 'reference',  // 'reference' | 'learning'
+  known: [],          // Vietnamese strings marked as known
+  hideKnown: false    // whether to hide known items in learning mode
+};
 (function() {
-  var saved = localStorage.getItem('theme');
-  if (saved) {
-    document.documentElement.setAttribute('data-theme', saved);
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  }
+  try { Object.assign(STATE, JSON.parse(localStorage.getItem('state'))); } catch(e) {}
+  // Apply theme immediately to prevent flash
+  var theme = STATE.theme || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
 })();
+function saveState() { localStorage.setItem('state', JSON.stringify(STATE)); }
 </script>
 </head>
 <body>
@@ -817,6 +984,49 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
 
 <script src="data.js"></script>
 <script>
+// ── STATE helpers ──
+var knownSet = new Set(STATE.known || []);
+
+function toggleKnown(vi, btn, div) {
+  if (knownSet.has(vi)) {
+    knownSet.delete(vi);
+    btn.classList.remove('checked');
+    div.classList.remove('known-item');
+  } else {
+    knownSet.add(vi);
+    btn.classList.add('checked');
+    div.classList.add('known-item');
+  }
+  STATE.known = [...knownSet];
+  saveState();
+  updateAllProgress();
+}
+
+function updateAllProgress() {
+  var totalAll = 0, knownAll = 0;
+  document.querySelectorAll('.section-card .progress-bar').forEach(function(bar) {
+    var section = bar.closest('.section-card');
+    var total = section.querySelectorAll('.known-btn').length;
+    var known = section.querySelectorAll('.known-btn.checked').length;
+    totalAll += total;
+    knownAll += known;
+    bar.querySelector('.progress-fill').style.width = total ? (known / total * 100) + '%' : '0%';
+    bar.querySelector('.progress-text').textContent = known + '/' + total + ' known';
+    // Update section header badge
+    var badge = section.querySelector('.section-badge');
+    if (badge) {
+      badge.textContent = known + '/' + total;
+      badge.classList.toggle('complete', known > 0 && known === total);
+    }
+  });
+  // Update total progress in header if it exists
+  var totalBar = document.getElementById('totalProgress');
+  if (totalBar) {
+    totalBar.querySelector('.progress-fill').style.width = totalAll ? (knownAll / totalAll * 100) + '%' : '0%';
+    totalBar.querySelector('.progress-text').textContent = knownAll + '/' + totalAll + ' phrases known';
+  }
+}
+
 // ── Renderer ──
 (function render() {
   var app = document.getElementById('app');
@@ -862,6 +1072,27 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
   tocNav.appendChild(tocUl);
   tocBtn.insertAdjacentElement('afterend', tocNav);
 
+  // Total progress bar (visible in learning mode)
+  var totalProgress = document.createElement('div');
+  totalProgress.className = 'progress-bar';
+  totalProgress.id = 'totalProgress';
+  totalProgress.style.maxWidth = '720px';
+  totalProgress.style.margin = '0 auto';
+  totalProgress.style.padding = '8px 16px 0';
+  totalProgress.innerHTML = '<span class="progress-text">0/0 phrases known</span><div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>';
+  var resetBtn = document.createElement('button');
+  resetBtn.className = 'hide-known-btn';
+  resetBtn.textContent = 'Reset';
+  resetBtn.addEventListener('click', function() { resetProgress(); });
+  totalProgress.appendChild(resetBtn);
+  tocNav.insertAdjacentElement('afterend', totalProgress);
+
+  // Build flat section list for "next section" links
+  var allSections = [];
+  DATA.categories.forEach(function(cat) {
+    cat.sections.forEach(function(sec) { allSections.push(sec); });
+  });
+
   // Main content
   DATA.categories.forEach(function(cat) {
     var divider = document.createElement('div');
@@ -887,15 +1118,53 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
       h2.className = 'section-title';
       h2.innerHTML = sec.title;
       header.appendChild(h2);
+      if (sec.learnable) {
+        var badge = document.createElement('span');
+        badge.className = 'section-badge';
+        badge.setAttribute('data-section-id', sec.id);
+        header.appendChild(badge);
+      }
 
       var body = document.createElement('div');
       body.className = 'section-body';
       var content = document.createElement('div');
       content.className = 'section-content';
 
+      if (sec.learnable) {
+        var progressBar = document.createElement('div');
+        progressBar.className = 'progress-bar';
+        progressBar.innerHTML = '<span class="progress-text">0/0 known</span><div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>';
+        var hkBtn = document.createElement('button');
+        hkBtn.className = 'hide-known-btn';
+        hkBtn.textContent = 'Hide known';
+        hkBtn.addEventListener('click', function() { toggleHideKnown(this); });
+        progressBar.appendChild(hkBtn);
+        content.appendChild(progressBar);
+      }
+
       sec.content.forEach(function(block) {
         renderBlock(block, content, sec.learnable);
       });
+
+      // Next section link
+      var secIdx = allSections.indexOf(sec);
+      if (secIdx < allSections.length - 1) {
+        var nextSec = allSections[secIdx + 1];
+        var nextDiv = document.createElement('div');
+        nextDiv.className = 'next-section';
+        var nextA = document.createElement('a');
+        nextA.href = '#sec-' + nextSec.id;
+        nextA.textContent = 'Next: ' + nextSec.title + ' \u2192';
+        nextA.addEventListener('click', function(ev) {
+          var target = document.getElementById('sec-' + nextSec.id);
+          if (target && !target.classList.contains('open')) {
+            target.classList.add('open');
+            target.querySelector('.section-header').setAttribute('aria-expanded', 'true');
+          }
+        });
+        nextDiv.appendChild(nextA);
+        content.appendChild(nextDiv);
+      }
 
       body.appendChild(content);
       section.appendChild(header);
@@ -1006,7 +1275,16 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
         if (learnable) {
           var rc = document.createElement('div');
           rc.className = 'reveal-controls';
-          rc.innerHTML = '<button class="reveal-btn" onclick="revealAll(this)">Reveal All</button><button class="reveal-btn" onclick="hideAll(this)">Hide All</button>';
+          var revBtn = document.createElement('button');
+          revBtn.className = 'reveal-btn';
+          revBtn.textContent = 'Reveal All';
+          revBtn.addEventListener('click', function() { revealAll(this); });
+          var hideBtn = document.createElement('button');
+          hideBtn.className = 'reveal-btn';
+          hideBtn.textContent = 'Hide All';
+          hideBtn.addEventListener('click', function() { hideAll(this); });
+          rc.appendChild(revBtn);
+          rc.appendChild(hideBtn);
           container.appendChild(rc);
         }
         var ul = document.createElement('ul');
@@ -1015,7 +1293,7 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
           var li = document.createElement('li');
           var div = document.createElement('div');
           div.className = learnable ? 'vocab-item flashcard' : 'vocab-item';
-          if (learnable) div.setAttribute('onclick', 'toggleCard(this)');
+          if (learnable) div.addEventListener('click', function() { toggleCard(this); });
           var viSpan = document.createElement('span');
           viSpan.className = 'vi-text';
           viSpan.setAttribute('lang', 'vi');
@@ -1031,6 +1309,22 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
           div.appendChild(eqSpan);
           div.appendChild(document.createTextNode(' '));
           div.appendChild(enSpan);
+          if (learnable) {
+            var knownBtn = document.createElement('button');
+            knownBtn.className = 'known-btn';
+            knownBtn.setAttribute('aria-label', 'Mark as known');
+            knownBtn.textContent = '\u2713';
+            knownBtn.setAttribute('data-vi', item.vi);
+            if (knownSet.has(item.vi)) {
+              knownBtn.classList.add('checked');
+              div.classList.add('known-item');
+            }
+            knownBtn.addEventListener('click', function(e) {
+              e.stopPropagation();
+              toggleKnown(item.vi, knownBtn, div);
+            });
+            div.appendChild(knownBtn);
+          }
           li.appendChild(div);
           ul.appendChild(li);
         });
@@ -1067,50 +1361,77 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
       }
     }
   }
+  // Update progress bars after render
+  updateAllProgress();
 })();
 
-// ── Theme Toggle (Light/Dark) ──
+function resetProgress() {
+  if (!confirm('Reset all progress? This cannot be undone.')) return;
+  knownSet.clear();
+  STATE.known = [];
+  saveState();
+  document.querySelectorAll('.known-btn').forEach(function(b) { b.classList.remove('checked'); });
+  document.querySelectorAll('.known-item').forEach(function(d) { d.classList.remove('known-item'); });
+  updateAllProgress();
+}
+
+function toggleHideKnown(btn) {
+  STATE.hideKnown = !STATE.hideKnown;
+  saveState();
+  btn.classList.toggle('active', STATE.hideKnown);
+  document.body.classList.toggle('hide-known', STATE.hideKnown);
+  btn.textContent = STATE.hideKnown ? 'Show known' : 'Hide known';
+}
+
+// ── Theme Toggle — reads/writes STATE ──
 (function() {
   var html = document.documentElement;
   var themeBtn = document.getElementById('themeToggle');
-  var saved = localStorage.getItem('theme');
-  var theme;
-
-  if (saved) {
-    theme = saved;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    theme = 'dark';
-  } else {
-    theme = 'light';
-  }
-
-  html.setAttribute('data-theme', theme);
 
   themeBtn.addEventListener('click', function() {
     var current = html.getAttribute('data-theme');
     var next = current === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
+    STATE.theme = next;
+    saveState();
   });
 
-  // Listen for OS theme changes when no saved preference
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-    if (!localStorage.getItem('theme')) {
-      html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-    }
-  });
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (!STATE.theme) {
+        html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+      }
+    });
+  }
 })();
 
-// ── Mode Toggle ──
-const toggle = document.getElementById('modeToggle');
-const refLabel = document.getElementById('refLabel');
-const learnLabel = document.getElementById('learnLabel');
+// ── Mode Toggle — reads/writes STATE ──
+var toggle = document.getElementById('modeToggle');
+var refLabel = document.getElementById('refLabel');
+var learnLabel = document.getElementById('learnLabel');
+
+// Restore mode from STATE
+if (STATE.mode === 'learning') {
+  toggle.checked = true;
+  document.body.classList.add('learning-mode');
+  refLabel.classList.remove('active');
+  learnLabel.classList.add('active');
+}
+// Restore hideKnown from STATE
+if (STATE.hideKnown) {
+  document.body.classList.add('hide-known');
+  document.querySelectorAll('.hide-known-btn').forEach(function(b) {
+    b.classList.add('active');
+    b.textContent = 'Show known';
+  });
+}
 
 toggle.addEventListener('change', function() {
+  STATE.mode = this.checked ? 'learning' : 'reference';
+  saveState();
   document.body.classList.toggle('learning-mode', this.checked);
   refLabel.classList.toggle('active', !this.checked);
   learnLabel.classList.toggle('active', this.checked);
-  // Reset all cards when switching modes
   if (!this.checked) {
     document.querySelectorAll('.flashcard').forEach(function(c) {
       c.classList.remove('revealed');
@@ -1163,12 +1484,19 @@ tocToggle.addEventListener('click', function() {
   tocToggle.setAttribute('aria-expanded', !isOpen);
 });
 
-// Close TOC when a link is clicked
+// Close TOC and auto-expand target section when a link is clicked
 tocNav.querySelectorAll('a').forEach(function(link) {
   link.addEventListener('click', function() {
     tocNav.classList.remove('open');
     tocToggle.classList.remove('open');
     tocToggle.setAttribute('aria-expanded', 'false');
+    // Auto-expand the target section
+    var targetId = this.getAttribute('href').replace('#', '');
+    var targetSection = document.getElementById(targetId);
+    if (targetSection && !targetSection.classList.contains('open')) {
+      targetSection.classList.add('open');
+      targetSection.querySelector('.section-header').setAttribute('aria-expanded', 'true');
+    }
   });
 });
 
