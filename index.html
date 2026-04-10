@@ -345,7 +345,7 @@ main {
 }
 
 .section-badge {
-  display: none;
+  display: inline-block;
   font-size: 0.65rem;
   font-weight: 600;
   color: var(--text-muted);
@@ -354,10 +354,6 @@ main {
   border-radius: 10px;
   flex-shrink: 0;
   transition: all var(--transition);
-}
-
-body.learning-mode .section-badge {
-  display: inline-block;
 }
 
 .section-badge.complete {
@@ -784,16 +780,12 @@ body.hide-known .vocab-item.known-item {
 
 /* ── Progress Bar ── */
 .progress-bar {
-  display: none;
+  display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 12px;
   font-size: 0.78rem;
   color: var(--text-light);
-}
-
-body.learning-mode .progress-bar {
-  display: flex;
 }
 
 .progress-track {
@@ -842,11 +834,6 @@ body.learning-mode .progress-bar {
   max-width: 720px;
   margin: 8px auto 0;
   padding: 0 16px;
-  display: none;
-}
-
-body.learning-mode .pronoun-bar {
-  display: block;
 }
 
 .pronoun-bar-label {
