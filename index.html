@@ -812,7 +812,7 @@ const DATA = {
   },
   categories: [
     {
-      name: "Getting Started",
+      name: "Essentials",
       sections: [
         {
           id: 0,
@@ -830,6 +830,29 @@ const DATA = {
             ]},
             { type: "highlight", html: "<strong>Best beginner mindset:</strong><br>Be understandable first, elegant later. Learn the high-frequency daily phrases first. Use Vietnamese often, even if your grammar is simple." }
           ]
+        },
+        {
+          id: 1,
+          title: "1. Survival Phrases",
+          learnable: true,
+          content: [
+            { type: "p", html: "The phrases that cover 80% of daily situations. Learn these first." },
+            { type: "vocab", items: [
+              { vi: "T\u00F4i kh\u00F4ng hi\u1EC3u.", en: "I do not understand." },
+              { vi: "T\u00F4i ch\u01B0a hi\u1EC3u.", en: "I do not understand yet." },
+              { vi: "Xin n\u00F3i ch\u1EADm th\u00F4i.", en: "Please speak slowly." },
+              { vi: "Xin nh\u1EAFc l\u1EA1i.", en: "Please repeat." },
+              { vi: "C\u00E1i n\u00E0y l\u00E0 g\u00EC?", en: "What is this?" },
+              { vi: "Bao nhi\u00EAu ti\u1EC1n?", en: "How much?" },
+              { vi: "\u1EDE \u0111\u00E2u?", en: "Where?" },
+              { vi: "... \u1EDF \u0111\u00E2u?", en: "Where is ...?" },
+              { vi: "Nh\u00E0 v\u1EC7 sinh \u1EDF \u0111\u00E2u?", en: "Where is the bathroom?" },
+              { vi: "T\u00F4i mu\u1ED1n c\u00E1i n\u00E0y.", en: "I want this." },
+              { vi: "Gi\u00FAp t\u00F4i v\u1EDBi!", en: "Help me!" },
+              { vi: "D\u1EEBng \u1EDF \u0111\u00E2y.", en: "Stop here." },
+              { vi: "T\u00F4i b\u1ECB l\u1EA1c.", en: "I am lost." }
+            ]}
+          ]
         }
       ]
     },
@@ -837,8 +860,8 @@ const DATA = {
       name: "Sound System",
       sections: [
         {
-          id: 1,
-          title: "1. Phonetics &amp; Tones",
+          id: 2,
+          title: "2. Phonetics &amp; Tones",
           learnable: false,
           content: [
             { type: "p", html: "In Vietnamese, tone is part of the word. If you miss the tone, you may change the meaning completely." },
@@ -857,8 +880,8 @@ const DATA = {
           ]
         },
         {
-          id: 2,
-          title: "2. The Hard Vowels",
+          id: 3,
+          title: "3. The Hard Vowels",
           learnable: false,
           content: [
             { type: "p", html: "These are the vowels English speakers often miss." },
@@ -885,8 +908,8 @@ const DATA = {
           ]
         },
         {
-          id: 3,
-          title: "3. Pronunciation Rules",
+          id: 4,
+          title: "4. Pronunciation Rules",
           learnable: false,
           content: [
             { type: "p", html: "Some Vietnamese letters are pronounced differently, or spelled differently, depending on what letters come next. This is one of the most important reading rules for English speakers." },
@@ -964,8 +987,8 @@ const DATA = {
       name: "Typing",
       sections: [
         {
-          id: 4,
-          title: "4. Telex Input",
+          id: 5,
+          title: "5. Telex Input",
           learnable: false,
           content: [
             { type: "h3", text: "4.1 Setup (Android / QWERTY)" },
@@ -1009,8 +1032,8 @@ const DATA = {
       name: "Grammar Basics",
       sections: [
         {
-          id: 5,
-          title: "5. Pronouns",
+          id: 6,
+          title: "6. Pronouns",
           learnable: true,
           content: [
             { type: "p", html: "Pronouns in Vietnamese are not just grammar. They express relationship, age, respect, warmth, and social role. This is one of the biggest differences from English." },
@@ -1041,8 +1064,8 @@ const DATA = {
           ]
         },
         {
-          id: 6,
-          title: "6. Sentence Structure",
+          id: 7,
+          title: "7. Sentence Structure",
           learnable: true,
           content: [
             { type: "p", html: "Vietnamese basic word order is usually: <strong>Subject + Verb + Object</strong>" },
@@ -1064,8 +1087,8 @@ const DATA = {
           ]
         },
         {
-          id: 7,
-          title: "7. Time, Aspect &amp; Particles",
+          id: 8,
+          title: "8. Time, Aspect &amp; Particles",
           learnable: true,
           content: [
             { type: "p", html: "Vietnamese does not use tense the way English does. Instead, it often uses time words and particles." },
@@ -1098,8 +1121,8 @@ const DATA = {
           ]
         },
         {
-          id: 8,
-          title: "8. Classifiers",
+          id: 9,
+          title: "9. Classifiers",
           learnable: true,
           content: [
             { type: "p", html: "Vietnamese commonly uses classifiers with nouns." },
@@ -1125,8 +1148,8 @@ const DATA = {
       name: "Vocabulary",
       sections: [
         {
-          id: 9,
-          title: "9. Time Words",
+          id: 10,
+          title: "10. Time Words",
           learnable: true,
           content: [
             { type: "h3", text: "9.1 Core Time Words" },
@@ -1150,8 +1173,8 @@ const DATA = {
           ]
         },
         {
-          id: 10,
-          title: "10. Numbers",
+          id: 11,
+          title: "11. Numbers",
           learnable: true,
           content: [
             { type: "h3", text: "10.1 Basic Numbers" },
@@ -1179,8 +1202,8 @@ const DATA = {
           ]
         },
         {
-          id: 17,
-          title: "17. Common Verbs &amp; Words",
+          id: 12,
+          title: "12. Common Verbs &amp; Words",
           learnable: true,
           content: [
             { type: "p", html: "These are used all the time." },
@@ -1222,34 +1245,15 @@ const DATA = {
               { vi: "khi n\u00E0o", en: "when" }
             ]}
           ]
-        },
-        {
-          id: 18,
-          title: "18. Reactions &amp; Slang",
-          learnable: true,
-          content: [
-            { type: "p", html: "Useful to sound more natural and expressive." },
-            { type: "vocab", items: [
-              { vi: "Tr\u1EDDi \u01A1i!", en: "Oh my God! / Oh wow!" },
-              { vi: "B\u00F3 tay", en: "I give up / what can you do" },
-              { vi: "X\u1ECBn", en: "high quality / awesome" },
-              { vi: "Ch\u1EA5t", en: "cool / stylish / solid" },
-              { vi: "\u1EE6a?", en: "Huh? / Wait, what?" },
-              { vi: "Ngon qu\u00E1!", en: "So delicious!" },
-              { vi: "\u0110\u1EB9p qu\u00E1!", en: "So beautiful!" },
-              { vi: "M\u1EC7t qu\u00E1!", en: "So tired!" }
-            ]},
-            { type: "prose", html: "These are heard constantly in everyday speech." }
-          ]
         }
       ]
     },
     {
-      name: "Phrases",
+      name: "Daily Phrases",
       sections: [
         {
-          id: 11,
-          title: "11. Introductions",
+          id: 13,
+          title: "13. Introductions",
           learnable: true,
           content: [
             { type: "p", html: "Useful self-introduction lines:" },
@@ -1266,8 +1270,8 @@ const DATA = {
           ]
         },
         {
-          id: 12,
-          title: "12. Daily Pleasantries",
+          id: 14,
+          title: "14. Daily Pleasantries",
           learnable: true,
           content: [
             { type: "h3", text: "12.1 Greetings" },
@@ -1295,136 +1299,399 @@ const DATA = {
           ]
         },
         {
-          id: 13,
-          title: "13. Social Language",
-          learnable: true,
-          content: [
-            { type: "h3", text: "13.1 The Classic Everyday Phrase" },
-            { type: "vocab", items: [
-              { vi: "\u0102n c\u01A1m ch\u01B0a?", en: "Have you eaten yet?" }
-            ]},
-            { type: "prose", html: 'This can function not only as a literal food question, but as a warm social check-in similar to "How are you?" in certain everyday contexts.' },
-            { type: "h3", text: "13.2 Tone &amp; Friendliness" },
-            { type: "prose", html: "Vietnamese daily speech often sounds relational, not purely informational. Warmth, small particles, and the right pronoun matter a lot." }
-          ]
-        },
-        {
-          id: 14,
-          title: "14. Survival Phrases",
-          learnable: true,
-          content: [
-            { type: "p", html: "Extremely useful on a regular day-to-day basis." },
-            { type: "vocab", items: [
-              { vi: "T\u00F4i kh\u00F4ng hi\u1EC3u.", en: "I do not understand." },
-              { vi: "T\u00F4i ch\u01B0a hi\u1EC3u.", en: "I do not understand yet." },
-              { vi: "Xin n\u00F3i ch\u1EADm th\u00F4i.", en: "Please speak slowly." },
-              { vi: "Xin nh\u1EAFc l\u1EA1i.", en: "Please repeat." },
-              { vi: "C\u00E1i n\u00E0y l\u00E0 g\u00EC?", en: "What is this?" },
-              { vi: "Bao nhi\u00EAu ti\u1EC1n?", en: "How much?" },
-              { vi: "\u1EDE \u0111\u00E2u?", en: "Where?" },
-              { vi: "... \u1EDF \u0111\u00E2u?", en: "Where is ...?" },
-              { vi: "Nh\u00E0 v\u1EC7 sinh \u1EDF \u0111\u00E2u?", en: "Where is the bathroom?" },
-              { vi: "T\u00F4i mu\u1ED1n c\u00E1i n\u00E0y.", en: "I want this." },
-              { vi: "Gi\u00FAp t\u00F4i v\u1EDBi!", en: "Help me!" },
-              { vi: "D\u1EEBng \u1EDF \u0111\u00E2y.", en: "Stop here." },
-              { vi: "T\u00F4i b\u1ECB l\u1EA1c.", en: "I am lost." }
-            ]}
-          ]
-        }
-      ]
-    },
-    {
-      name: "Situations",
-      sections: [
-        {
           id: 15,
           title: "15. Caf\u00E9 Pack",
           learnable: true,
           content: [
             { type: "p", html: "Useful for your Friday speaking meetup and caf\u00E9 life in general." },
-            { type: "h3", text: "15.1 Calling Staff" },
+            { type: "h3", text: "Calling Staff" },
             { type: "vocab", items: [
               { vi: "Em \u01A1i!", en: "Excuse me / calling staff politely" }
             ]},
-            { type: "h3", text: "15.2 Ordering" },
+            { type: "h3", text: "Ordering" },
             { type: "vocab", items: [
               { vi: "Cho t\u00F4i m\u1ED9t ...", en: "Give me one ... / I'd like one ..." }
             ]},
-            { type: "h3", text: "15.3 Drinks" },
+            { type: "h3", text: "Drinks" },
             { type: "vocab", items: [
               { vi: "C\u00E0 ph\u00EA s\u1EEFa \u0111\u00E1", en: "iced milk coffee" },
               { vi: "Tr\u00E0 \u0111\u00E1", en: "iced tea" },
               { vi: "N\u01B0\u1EDBc", en: "water" },
               { vi: "Bia", en: "beer" }
             ]},
-            { type: "h3", text: "15.4 Customizing" },
+            { type: "h3", text: "Customizing" },
             { type: "vocab", items: [
               { vi: "\u00CDt \u0111\u01B0\u1EDDng", en: "less sugar" },
               { vi: "Kh\u00F4ng \u0111\u00E1", en: "no ice" },
               { vi: "Cay", en: "spicy" },
               { vi: "Kh\u00F4ng cay", en: "not spicy" }
             ]},
-            { type: "h3", text: "15.5 Paying" },
+            { type: "h3", text: "Paying" },
             { type: "vocab", items: [
               { vi: "T\u00EDnh ti\u1EC1n!", en: "Check / bill please" }
             ]},
-            { type: "h3", text: "15.6 Toasting" },
+            { type: "h3", text: "Toasting" },
             { type: "vocab", items: [
               { vi: "M\u1ED9t, hai, ba, v\u00F4!", en: "One, two, three, cheers!" }
-            ]}
-          ]
-        },
-        {
-          id: 16,
-          title: "16. Navigation",
-          learnable: true,
-          content: [
-            { type: "h3", text: "16.1 Asking Where" },
-            { type: "vocab", items: [
-              { vi: "... \u1EDF \u0111\u00E2u?", en: "Where is ...?" },
-              { vi: "Nh\u00E0 v\u1EC7 sinh \u1EDF \u0111\u00E2u?", en: "Where is the bathroom?" }
-            ]},
-            { type: "h3", text: "16.2 Directions" },
-            { type: "vocab", items: [
-              { vi: "R\u1EBD tr\u00E1i", en: "turn left" },
-              { vi: "R\u1EBD ph\u1EA3i", en: "turn right" },
-              { vi: "\u0110i th\u1EB3ng", en: "go straight" }
-            ]},
-            { type: "h3", text: "16.3 Transport" },
-            { type: "vocab", items: [
-              { vi: "Xe \u00F4m", en: "motorbike taxi" },
-              { vi: "X\u00EDch l\u00F4", en: "rickshaw / cycle taxi" },
-              { vi: "D\u1EEBng \u1EDF \u0111\u00E2y", en: "stop here" }
-            ]},
-            { type: "h3", text: "16.4 Safety / Trouble" },
-            { type: "vocab", items: [
-              { vi: "Gi\u00FAp t\u00F4i v\u1EDBi!", en: "Help me!" },
-              { vi: "T\u00F4i b\u1ECB l\u1EA1c.", en: "I am lost." }
             ]}
           ]
         }
       ]
     },
-    {
-      name: "Practice",
+{
+      name: "Real Conversations",
       sections: [
         {
-          id: 19,
-          title: "19. Example Sentences",
+          id: 16,
+          title: "16. Ordering Food",
           learnable: true,
           content: [
+            { type: "prose", html: "<p>Food is the highest-frequency daily interaction in Vietnam. These are complete exchanges — not just vocabulary.</p>" },
+            { type: "h3", text: "Getting Attention" },
+            { type: "p", html: 'Don\'t wave or say "Hello." Use <strong>[pronoun] + ơi</strong>:' },
             { type: "vocab", items: [
-              { vi: "T\u00F4i h\u1ECDc ti\u1EBFng Vi\u1EC7t.", en: "I study Vietnamese." },
-              { vi: "T\u00F4i \u0111ang h\u1ECDc ti\u1EBFng Vi\u1EC7t.", en: "I am learning Vietnamese." },
-              { vi: "T\u00F4i th\u00EDch c\u00E0 ph\u00EA.", en: "I like coffee." },
-              { vi: "T\u00F4i mu\u1ED1n n\u01B0\u1EDBc.", en: "I want water." },
-              { vi: "T\u00F4i kh\u00F4ng hi\u1EC3u.", en: "I do not understand." },
-              { vi: "T\u00F4i ch\u01B0a hi\u1EC3u.", en: "I do not understand yet." },
-              { vi: "T\u00F4i s\u1EBD \u0111i.", en: "I will go." },
-              { vi: "T\u00F4i \u0111\u00E3 \u0103n r\u1ED3i.", en: "I already ate." },
-              { vi: "B\u1EA1n kh\u1ECFe kh\u00F4ng?", en: "Are you well?" },
-              { vi: "R\u1EA5t vui \u0111\u01B0\u1EE3c g\u1EB7p b\u1EA1n.", en: "Nice to meet you." }
+              { vi: "Em ơi!", en: "Excuse me! (to younger staff — most common)" },
+              { vi: "Chị ơi!", en: "Excuse me! (to older woman)" },
+              { vi: "Anh ơi!", en: "Excuse me! (to older man)" }
+            ]},
+            { type: "highlight", html: '<strong>Key insight:</strong> "Em ơi!" is the single most useful phrase in Vietnamese daily life. It\'s how you get attention at any restaurant, shop, or street stall.' },
+            { type: "h3", text: "Full Phở Exchange" },
+            { type: "vocab", items: [
+              { vi: "Cho tôi một tô phở bò tái.", en: "One rare beef pho please." },
+              { vi: "Tô lớn hay tô nhỏ?", en: "Large or small bowl? (staff asks)" },
+              { vi: "Tô lớn, cảm ơn.", en: "Large, thank you." },
+              { vi: "Cho thêm rau và giá.", en: "Extra herbs and bean sprouts please." },
+              { vi: "Cho tôi thêm nước mắm.", en: "More fish sauce please." },
+              { vi: "Ngon quá!", en: "So delicious!" },
+              { vi: "Tính tiền!", en: "Bill please!" }
+            ]},
+            { type: "h3", text: "Bánh Mì at a Street Stall" },
+            { type: "vocab", items: [
+              { vi: "Cho tôi một ổ bánh mì thịt.", en: "One meat bánh mì please." },
+              { vi: "Ăn cay không?", en: "Do you eat spicy? (vendor asks)" },
+              { vi: "Ít cay thôi.", en: "Just a little spicy." },
+              { vi: "Không hành, thêm rau.", en: "No onion, extra vegetables." },
+              { vi: "Mang đi.", en: "Takeaway / to go." },
+              { vi: "Đặc biệt.", en: "Special (= everything in it)." }
+            ]},
+            { type: "h3", text: "Customizing Food" },
+            { type: "vocab", items: [
+              { vi: "Không cay.", en: "Not spicy." },
+              { vi: "Không hành.", en: "No onion." },
+              { vi: "Không rau mùi.", en: "No cilantro." },
+              { vi: "Ít đường.", en: "Less sugar." },
+              { vi: "Không đá.", en: "No ice." },
+              { vi: "Thêm rau.", en: "Extra vegetables." },
+              { vi: "Tôi ăn chay.", en: "I'm vegetarian." },
+              { vi: "Tôi bị dị ứng với đậu phộng.", en: "I'm allergic to peanuts." },
+              { vi: "Tôi bị dị ứng với hải sản.", en: "I'm allergic to seafood." }
+            ]},
+            { type: "h3", text: "Complimenting the Cook" },
+            { type: "vocab", items: [
+              { vi: "Ngon quá!", en: "So delicious!" },
+              { vi: "Ngon lắm!", en: "Very delicious!" },
+              { vi: "Chị nấu ăn rất giỏi.", en: "You cook really well." },
+              { vi: "Lần sau tôi sẽ quay lại.", en: "I'll come back next time." }
+            ]},
+            { type: "highlight", html: "<strong>Tip:</strong> Saying \"Ngon quá!\" to the cook earns massive goodwill — better portions, warmer service, genuine connection." }
+          ]
+        },
+        {
+          id: 17,
+          title: "17. Getting Around",
+          learnable: true,
+          content: [
+            { type: "h3", text: "Grab / Taxi" },
+            { type: "vocab", items: [
+              { vi: "Tôi muốn đi đến...", en: "I want to go to..." },
+              { vi: "Tôi đang ở trước khách sạn.", en: "I'm in front of the hotel." },
+              { vi: "Chờ tôi một chút nhé.", en: "Wait a moment for me." },
+              { vi: "Bao lâu đến nơi?", en: "How long until we arrive?" },
+              { vi: "Đi chậm thôi.", en: "Please slow down." },
+              { vi: "Dừng ở đây.", en: "Stop here." },
+              { vi: "Khỏi thối.", en: "Keep the change. (natural tipping)" },
+              { vi: "Vui lòng bật đồng hồ.", en: "Please turn on the meter." }
+            ]},
+            { type: "h3", text: "Asking for Recommendations" },
+            { type: "p", html: 'Start any question to a stranger with <span lang="vi"><strong>Cho hỏi...</strong></span> (May I ask...) — it\'s universally polite.' },
+            { type: "vocab", items: [
+              { vi: "Cho hỏi, gần đây có quán ăn ngon không?", en: "Excuse me, is there a good restaurant nearby?" },
+              { vi: "Quán phở nào ngon nhất?", en: "Which phở shop is the best?" },
+              { vi: "Xa không?", en: "Is it far?" },
+              { vi: "Đi bộ được không?", en: "Can I walk there?" },
+              { vi: "Mất bao lâu?", en: "How long does it take?" }
+            ]},
+            { type: "h3", text: "Directions You'll Hear" },
+            { type: "vocab", items: [
+              { vi: "Đi thẳng.", en: "Go straight." },
+              { vi: "Rẽ trái.", en: "Turn left." },
+              { vi: "Rẽ phải.", en: "Turn right." },
+              { vi: "Gần đây thôi.", en: "It's nearby." },
+              { vi: "Hơi xa, nên đi xe.", en: "A bit far, take a vehicle." }
+            ]},
+            { type: "h3", text: "Transport" },
+            { type: "vocab", items: [
+              { vi: "Xe \u00F4m", en: "motorbike taxi" },
+              { vi: "X\u00EDch l\u00F4", en: "rickshaw / cycle taxi" }
+            ]},
+            { type: "h3", text: "Safety / Trouble" },
+            { type: "vocab", items: [
+              { vi: "Gi\u00FAp t\u00F4i v\u1EDBi!", en: "Help me!" },
+              { vi: "T\u00F4i b\u1ECB l\u1EA1c.", en: "I am lost." }
             ]}
+          ]
+        },
+        {
+          id: 18,
+          title: "18. Shopping & Bargaining",
+          learnable: true,
+          content: [
+            { type: "prose", html: "<p>Bargaining is expected at tourist markets. At local wet markets, prices are fairer — gentle negotiation only. <strong>Never</strong> bargain for street food.</p>" },
+            { type: "h3", text: "The Bargaining Rhythm" },
+            { type: "vocab", items: [
+              { vi: "Cái này bao nhiêu tiền?", en: "How much is this?" },
+              { vi: "Đắt quá! / Mắc quá!", en: "Too expensive! (North / South)" },
+              { vi: "Bớt được không?", en: "Can you lower the price?" },
+              { vi: "Giảm giá được không?", en: "Can you give a discount?" },
+              { vi: "Tôi trả một trăm nghìn.", en: "I'll pay 100,000." },
+              { vi: "Tôi mua hai cái.", en: "I'll buy two. (discount trigger)" },
+              { vi: "Thôi, tôi đi xem hàng khác.", en: "I'll look elsewhere. (walk away)" },
+              { vi: "Được rồi, tôi mua.", en: "Okay, I'll buy it." }
+            ]},
+            { type: "highlight", html: "<strong>Price trap:</strong> Vendors drop trailing zeros. \"Ba mươi\" means 30,000 VND, not 30. Always mentally add three zeros." },
+            { type: "h3", text: "Buying Fruit" },
+            { type: "vocab", items: [
+              { vi: "Xoài bao nhiêu một ký?", en: "How much is mango per kilo?" },
+              { vi: "Chín chưa?", en: "Is it ripe?" },
+              { vi: "Ngọt không?", en: "Is it sweet?" },
+              { vi: "Cho tôi một ký rưỡi.", en: "Give me 1.5 kilos." },
+              { vi: "Chị chọn giùm tôi.", en: "Please pick the good ones for me." }
+            ]}
+          ]
+        },
+        {
+          id: 19,
+          title: "19. Daily Situations",
+          learnable: true,
+          content: [
+            { type: "h3", text: "At the Pharmacy" },
+            { type: "p", html: 'Use <span lang="vi"><strong>Tôi bị...</strong></span> (I have / I\'m affected by) + symptom:' },
+            { type: "vocab", items: [
+              { vi: "Tôi bị đau đầu.", en: "I have a headache." },
+              { vi: "Tôi bị đau bụng.", en: "I have a stomachache." },
+              { vi: "Tôi bị sốt.", en: "I have a fever." },
+              { vi: "Tôi bị ho.", en: "I have a cough." },
+              { vi: "Tôi bị cảm.", en: "I have a cold." },
+              { vi: "Tôi bị tiêu chảy.", en: "I have diarrhea." },
+              { vi: "Thuốc này uống thế nào?", en: "How do I take this medicine?" },
+              { vi: "Uống mấy lần một ngày?", en: "How many times a day?" }
+            ]},
+            { type: "h3", text: "Making Friends" },
+            { type: "vocab", items: [
+              { vi: "Anh cũng hay đến đây không?", en: "Do you come here often?" },
+              { vi: "Mình mới đến đây vài tháng.", en: "I've only been here a few months." },
+              { vi: "Nói chuyện với bạn vui lắm.", en: "Enjoyed talking with you." },
+              { vi: "Bạn có Zalo không? Kết bạn đi!", en: "Do you have Zalo? Let's add each other!" },
+              { vi: "Bữa nào rảnh đi cà phê nhé!", en: "When you're free let's get coffee!" }
+            ]},
+            { type: "h3", text: "Work & Family" },
+            { type: "p", html: "Vietnamese people ask about work and family early — it's friendly, not intrusive:" },
+            { type: "vocab", items: [
+              { vi: "Bạn làm nghề gì?", en: "What do you do for work?" },
+              { vi: "Mình dạy tiếng Anh.", en: "I teach English." },
+              { vi: "Bạn có gia đình chưa?", en: "Are you married yet?" },
+              { vi: "Chưa, mình vẫn còn độc thân.", en: "Not yet, still single." },
+              { vi: "Bố mẹ bạn ở đâu?", en: "Where do your parents live?" },
+              { vi: "Nhớ nhà không?", en: "Do you miss home?" }
+            ]},
+            { type: "h3", text: "Expressing Care" },
+            { type: "vocab", items: [
+              { vi: "Cẩn thận nhé.", en: "Take care. / Be careful." },
+              { vi: "Về nhà cẩn thận nhé.", en: "Get home safely." },
+              { vi: "Giữ gìn sức khỏe nhé.", en: "Take care of your health." },
+              { vi: "Mau khỏe nhé.", en: "Get well soon." },
+              { vi: "Nghỉ ngơi nhiều vào nhé.", en: "Rest up." }
+            ]},
+            { type: "h3", text: "Language Practice" },
+            { type: "vocab", items: [
+              { vi: "Tôi đang học tiếng Việt.", en: "I'm learning Vietnamese." },
+              { vi: "Nếu mình nói sai, sửa giùm mình nha!", en: "If I say it wrong, please correct me!" },
+              { vi: "Mình có thể luyện tiếng Việt với bạn không?", en: "Can I practice Vietnamese with you?" },
+              { vi: "Mình muốn trao đổi ngôn ngữ.", en: "I want to do a language exchange." }
+            ]},
+            { type: "highlight", html: '<strong>Magic phrase:</strong> Saying "Tôi đang học tiếng Việt" triggers immediate warmth, slower speech, and encouragement from nearly every Vietnamese person.' }
+          ]
+        }
+      ]
+    },,
+        {
+      name: "Speaking Naturally",
+      sections: [
+        {
+          id: 20,
+          title: "20. Beyond the Textbook",
+          learnable: true,
+          content: [
+            { type: "prose", html: "<p>Textbooks teach phrases that native speakers rarely use. This section covers what people <strong>actually</strong> say.</p>" },
+            { type: "h3", text: "Real Greetings (not Xin chào)" },
+            { type: "p", html: '<span lang="vi"><strong>Xin chào</strong></span> is technically correct but sounds robotic — like a language-learning app. Native speakers greet with <strong>Chào + pronoun</strong>:' },
+            { type: "vocab", items: [
+              { vi: "Chào anh!", en: "Hi! (to older male)" },
+              { vi: "Chào chị!", en: "Hi! (to older female)" },
+              { vi: "Chào em!", en: "Hi! (to younger person)" },
+              { vi: "Chào bạn!", en: "Hi! (to a peer)" },
+              { vi: "Chào anh! Khỏe không?", en: "Hi! How are you?" },
+              { vi: "Khỏe, cảm ơn. Còn bạn?", en: "Well, thanks. And you?" },
+              { vi: "Ăn cơm chưa?", en: "Have you eaten? (= How are you?)" },
+              { vi: "Dạo này thế nào?", en: "How have things been lately?" },
+              { vi: "Có gì mới không?", en: "Anything new?" }
+            ]},
+            { type: "highlight", html: '<strong>Cultural note:</strong> "Ăn cơm chưa?" is not a literal question about food — it\'s a warm social check-in, like "How are you?" Reply: <strong>Ăn rồi</strong> (already ate) or <strong>Chưa</strong> (not yet).' },
+            { type: "h3", text: "Natural Farewells (not Tạm biệt)" },
+            { type: "p", html: '<span lang="vi"><strong>Tạm biệt</strong></span> sounds final and formal — like saying "Farewell." In daily life, use:' },
+            { type: "vocab", items: [
+              { vi: "Chào nhé!", en: "Bye! (casual, most common)" },
+              { vi: "Thôi, mình về nhé.", en: "Okay, I'm heading off." },
+              { vi: "Hẹn gặp lại.", en: "See you again." },
+              { vi: "Sớm gặp lại nhé.", en: "See you soon." },
+              { vi: "Nói chuyện sau nhé.", en: "Talk later." },
+              { vi: "Về nhà cẩn thận nhé.", en: "Get home safely." },
+              { vi: "Bái bai!", en: "Bye bye! (casual, younger people)" }
+            ]},
+            { type: "h3", text: "Saying Yes — It's Not Just Có" },
+            { type: "p", html: "Vietnamese has multiple words for yes, and using the wrong one can be rude:" },
+            { type: "vocab", items: [
+              { vi: "Dạ", en: "Yes (respectful, Southern)" },
+              { vi: "Vâng", en: "Yes (respectful, Northern)" },
+              { vi: "Ừ", en: "Yeah (casual — peers/younger ONLY)" },
+              { vi: "Được", en: "Okay / that works" },
+              { vi: "Rồi", en: "Already done (answers ...chưa? questions)" }
+            ]},
+            { type: "highlight", html: '<strong>Warning:</strong> Using <strong>ừ</strong> with elders or authority figures is genuinely rude, not just informal. Always use <strong>dạ</strong> or <strong>vâng</strong> with anyone older.' },
+            { type: "h3", text: "Saying No Gracefully" },
+            { type: "p", html: "Direct \"không\" can sound blunt. Vietnamese culture values indirectness:" },
+            { type: "vocab", items: [
+              { vi: "Cảm ơn, nhưng mình không được.", en: "Thanks, but I can't." },
+              { vi: "Tiếc quá, lần này mình bận.", en: "Too bad, I'm busy this time." },
+              { vi: "Lần sau nhé?", en: "Next time?" },
+              { vi: "Để mình xem đã nha.", en: "Let me check first. (polite delay)" },
+              { vi: "Chắc là khó quá.", en: "That might be too difficult. (soft no)" }
+            ]}
+          ]
+        },
+        {
+          id: 21,
+          title: "21. Sentence-Ending Particles",
+          learnable: true,
+          content: [
+            { type: "prose", html: "<p>These tiny words at the end of sentences carry <strong>enormous</strong> social weight. They're what makes Vietnamese sound warm, natural, and human. The same sentence with different particles is a completely different speech act.</p>" },
+            { type: "h3", text: "Politeness & Softening" },
+            { type: "vocab", items: [
+              { vi: "Dạ, em hiểu ạ.", en: "Yes, I understand. (respectful — ạ)" },
+              { vi: "Gọi cho em nhé!", en: "Call me, okay? (nhé = soft request)" },
+              { vi: "Nhớ ăn cơm nha.", en: "Remember to eat, okay? (nha = Southern nhé)" },
+              { vi: "Mai gặp nhau nhé.", en: "Let's meet tomorrow, okay?" }
+            ]},
+            { type: "highlight", html: '<strong>ạ</strong> = instant respect upgrade. Add it to the end of any sentence when speaking to elders, customers, or authority. It never sounds wrong.' },
+            { type: "h3", text: "Emphasis & Assertion" },
+            { type: "vocab", items: [
+              { vi: "Tôi đã nói rồi mà!", en: "I already told you! (mà = mild reproach)" },
+              { vi: "Ngon lắm đó!", en: "It's really delicious! (đó = emphasis)" },
+              { vi: "Không thích luôn.", en: "Just don't like it, full stop. (luôn = emphatic)" },
+              { vi: "Đi về rồi.", en: "Already went home. (rồi = completed)" },
+              { vi: "Nè, cái này là gì?", en: "Hey, what's this? (nè = look here, Southern)" }
+            ]},
+            { type: "h3", text: "Questions & Checks" },
+            { type: "vocab", items: [
+              { vi: "Thật hả?", en: "Really? (hả = surprise)" },
+              { vi: "Vậy à?", en: "Oh, is that so? (à = mild surprise)" },
+              { vi: "Đúng không?", en: "Right? / Correct?" },
+              { vi: "Hay chứ!", en: "That's good, obviously! (chứ = of course)" },
+              { vi: "Anh đến nhỉ?", en: "You're coming, right? (nhỉ = expects yes)" }
+            ]},
+            { type: "h3", text: "Calls to Action" },
+            { type: "vocab", items: [
+              { vi: "Ăn đi!", en: "Go ahead and eat! (đi = urging)" },
+              { vi: "Đi nào!", en: "Let's go! (nào = softer)" },
+              { vi: "Về đi thôi.", en: "Let's just go home. (thôi = that's enough)" },
+              { vi: "Kệ nó đi.", en: "Just forget it. / Let it go." }
+            ]}
+          ]
+        },
+        {
+          id: 22,
+          title: "22. Filler Words & Casual Speech",
+          learnable: true,
+          content: [
+            { type: "prose", html: "<p>These are everywhere in natural spoken Vietnamese but completely absent from textbooks. Using them makes you sound like a person having a conversation, not a robot reading a phrasebook.</p>" },
+            { type: "h3", text: "Thinking Sounds" },
+            { type: "vocab", items: [
+              { vi: "Ừ", en: "Uh-huh / yeah (casual only)" },
+              { vi: "Ừm...", en: "Umm... (thinking)" },
+              { vi: "Ờ", en: "Uh / er (hesitation)" },
+              { vi: "À", en: "Oh / ah (realization)" }
+            ]},
+            { type: "h3", text: "Hedging & Explaining" },
+            { type: "vocab", items: [
+              { vi: "Kiểu như là...", en: "It's kinda like... (Gen Z/millennial)" },
+              { vi: "Thật ra là...", en: "Actually... / To be honest..." },
+              { vi: "Nói chung là...", en: "Basically... / Generally..." },
+              { vi: "Ờ thì...", en: "Well, um... (buying time)" }
+            ]},
+            { type: "h3", text: "Common Reactions" },
+            { type: "vocab", items: [
+              { vi: "Thật á?", en: "Really? / No way?" },
+              { vi: "Vậy à?", en: "Oh, is that so?" },
+              { vi: "Mặc kệ nó.", en: "Whatever. / Never mind." },
+              { vi: "Bó tay.", en: "I give up. / Can't do anything." },
+              { vi: "Bình thường thôi.", en: "Just normal. / Nothing special." }
+            ]},
+            { type: "h3", text: "Modern Slang" },
+            { type: "vocab", items: [
+              { vi: "Đỉnh!", en: "Awesome! / Peak!" },
+              { vi: "Toang rồi.", en: "It's ruined. / We're done for." },
+              { vi: "Căng.", en: "Tense. / Intense." },
+              { vi: "Xịn sò.", en: "Fancy. / Premium. / Legit." },
+              { vi: "Cày.", en: "To grind / hustle hard." },
+              { vi: "Phượt.", en: "Motorbike road trip / backpacking." },
+              { vi: "Chém gió.", en: "To talk big / bullshit." },
+              { vi: "Trăm phần trăm!", en: "Bottoms up! (100%!)" }
+            ]},
+            { type: "h3", text: "Reactions & Exclamations" },
+            { type: "vocab", items: [
+              { vi: "Tr\u1EDDi \u01A1i!", en: "Oh my God! / Oh wow!" },
+              { vi: "\u1EE6a?", en: "Huh? / Wait, what?" },
+              { vi: "Ngon qu\u00E1!", en: "So delicious!" },
+              { vi: "\u0110\u1EB9p qu\u00E1!", en: "So beautiful!" },
+              { vi: "M\u1EC7t qu\u00E1!", en: "So tired!" }
+            ]}
+          ]
+        },
+        {
+          id: 23,
+          title: "23. North vs South",
+          learnable: true,
+          content: [
+            { type: "prose", html: "<p>Vietnamese has significant regional differences. Most textbooks teach Northern (Hanoi) Vietnamese. If you're in Ho Chi Minh City or the South, these differences matter daily.</p>" },
+            { type: "table", headers: ["English", "North", "South"], rows: [
+              { cells: ["Yes (respectful)", "Vâng", "Dạ"], viCells: [1, 2], viLang: [1, 2] },
+              { cells: ["Father", "Bố", "Ba"], viCells: [1, 2], viLang: [1, 2] },
+              { cells: ["Mother", "Mẹ", "Má"], viCells: [1, 2], viLang: [1, 2] },
+              { cells: ["I (casual)", "Tớ / Tôi", "Tui"], viCells: [1, 2], viLang: [1, 2] },
+              { cells: ["Bowl", "Bát", "Chén"], viCells: [1, 2], viLang: [1, 2] },
+              { cells: ["Cup / glass", "Cốc", "Ly"], viCells: [1, 2], viLang: [1, 2] },
+              { cells: ["Fruit", "Quả", "Trái"], viCells: [1, 2], viLang: [1, 2] },
+              { cells: ["Softener particle", "Nhé / Nhỉ", "Nha / Nghen"], viCells: [1, 2], viLang: [1, 2] },
+              { cells: ["Oh my god!", "Ối giời ơi", "Trời ơi"], viCells: [1, 2], viLang: [1, 2] }
+            ]},
+            { type: "h3", text: "Pronunciation Differences" },
+            { type: "ul", items: [
+              '<strong>d / gi:</strong> Northern = <em>z</em> sound, Southern = <em>y</em> sound',
+              '<strong>r:</strong> Northern = retroflex <em>r</em>, Southern = like <em>z</em>',
+              '<strong>tr / ch:</strong> Northern = distinct sounds, Southern = often merged',
+              '<strong>Tones:</strong> Southern hỏi and ngã often merge into one tone'
+            ]},
+            { type: "highlight", html: "<strong>Practical advice:</strong> Learn one dialect and stick with it. People understand both. In the South, using <strong>dạ</strong> instead of <strong>vâng</strong> sounds more natural." }
           ]
         }
       ]
@@ -1433,39 +1700,41 @@ const DATA = {
       name: "Culture",
       sections: [
         {
-          id: 20,
-          title: "20. Cultural Etiquette",
+          id: 24,
+          title: "24. Cultural Etiquette",
           learnable: false,
           content: [
             { type: "p", html: "Social and cultural behaviors that help daily interaction go more smoothly." },
-            { type: "h3", text: "20.1 Use Both Hands" },
+            { type: "h3", text: "Use Both Hands" },
             { type: "prose", html: "When giving or receiving items, using two hands can feel more respectful." },
-            { type: "h3", text: "20.2 Head &amp; Feet" },
+            { type: "h3", text: "Head & Feet" },
             { type: "ul", items: [
               "Avoid touching someone's head.",
               "Avoid pointing your feet at people or sacred spaces."
             ]},
-            { type: "h3", text: "20.3 Shoes Off" },
+            { type: "h3", text: "Don't Step Over Objects" },
+            { type: "prose", html: "Never step over books, food, cooking pots, altars, or people. Feet are considered the lowest part of the body — stepping over something transfers disrespect to it. Books carry knowledge, food sustains life, altars carry spiritual significance. Also avoid crossing in front of a funeral procession." },
+            { type: "h3", text: "Shoes Off" },
             { type: "prose", html: "Remove shoes before entering a home, and often at temples or certain indoor spaces." },
-            { type: "h3", text: "20.4 Dress Modestly at Religious Sites" },
+            { type: "h3", text: "Dress Modestly at Religious Sites" },
             { type: "prose", html: "Cover shoulders and knees when visiting temples or religious places." },
-            { type: "h3", text: "20.5 Greet Elders First" },
+            { type: "h3", text: "Greet Elders First" },
             { type: "prose", html: "Respect toward elders is important. Use calm, polite, warm speech." },
-            { type: "h3", text: "20.6 General Demeanor" },
+            { type: "h3", text: "General Demeanor" },
             { type: "prose", html: "A calm, smiling, respectful manner goes a long way. Vietnamese communication often values warmth and social sensitivity." }
           ]
         }
       ]
     },
-    {
+        {
       name: "Study Guide",
       sections: [
         {
-          id: 21,
-          title: "21. Study Order",
+          id: 25,
+          title: "25. Study Order",
           learnable: false,
           content: [
-            { type: "p", html: "Best order to learn:" },
+            { type: "h3", text: "Recommended Learning Order" },
             { type: "ol", items: [
               "Tones",
               "Hard vowels",
@@ -1477,15 +1746,9 @@ const DATA = {
               "Self-introduction",
               "Caf\u00E9 / ordering vocabulary",
               "Speak often, even imperfectly"
-            ]}
-          ]
-        },
-        {
-          id: 22,
-          title: "22. Beginner Focus",
-          learnable: false,
-          content: [
-            { type: "p", html: "If you only focus on a few things at first, focus on these:" },
+            ]},
+            { type: "h3", text: "Best Beginner Focus" },
+            { type: "p", html: "If you only focus on a few things at first:" },
             { type: "ul", items: [
               "Tones",
               "Vowels",
@@ -1497,23 +1760,6 @@ const DATA = {
             ]},
             { type: "highlight", html: "<strong>Main principle:</strong> Speak often, even imperfectly." }
           ]
-        },
-        {
-          id: 25,
-          title: "25. Final Message",
-          learnable: false,
-          content: [
-            { type: "prose", html: "<p>Vietnamese becomes much easier once you stop treating it like English with accents and start treating it like its own sound system.</p><p><strong>Your first wins should be:</strong></p>" },
-            { type: "ul", items: [
-              "Hearing the tones",
-              "Noticing the vowel differences",
-              "Using the right pronoun roughly well",
-              "Typing with Telex",
-              "Saying short daily phrases confidently"
-            ]},
-            { type: "highlight", html: 'You do not need perfect grammar to start speaking. You need <strong>repetition, listening, and willingness to speak</strong>.' },
-            { type: "prose", html: "<p>Use Vietnamese every Friday at Chillax, use it in caf\u00E9s, use it with friends, use it badly at first, and keep going.</p><p><strong>That is how it starts to become natural.</strong></p>" }
-          ]
         }
       ]
     },
@@ -1521,8 +1767,8 @@ const DATA = {
       name: "Quick Reference",
       sections: [
         {
-          id: 23,
-          title: "23. Mini Cheat Sheet",
+          id: 26,
+          title: "26. Mini Cheat Sheet",
           learnable: true,
           content: [
             { type: "h3", text: "Pronunciation" },
@@ -1592,75 +1838,20 @@ const DATA = {
           ]
         },
         {
-          id: 24,
-          title: "24. Word Bank",
-          learnable: true,
+          id: 27,
+          title: "27. Final Message",
+          learnable: false,
           content: [
-            { type: "h3", text: "Greetings &amp; Social Words" },
-            { type: "vocab", items: [
-              { vi: "Xin ch\u00E0o", en: "Hello" },
-              { vi: "Ch\u00E0o b\u1EA1n", en: "Hi" },
-              { vi: "T\u1EA1m bi\u1EC7t", en: "Goodbye" },
-              { vi: "H\u1EB9n g\u1EB7p l\u1EA1i", en: "See you again" },
-              { vi: "C\u1EA3m \u01A1n", en: "Thank you" },
-              { vi: "C\u1EA3m \u01A1n nhi\u1EC1u", en: "Thanks a lot" },
-              { vi: "Kh\u00F4ng c\u00F3 g\u00EC", en: "You're welcome" },
-              { vi: "Xin l\u1ED7i", en: "Sorry / excuse me" },
-              { vi: "V\u00E2ng", en: "Yes (polite)" },
-              { vi: "D\u1EA1", en: "Yes (respectful)" },
-              { vi: "Kh\u00F4ng", en: "No" },
-              { vi: "\u0110\u01B0\u1EE3c", en: "Okay / acceptable" },
-              { vi: "Kh\u00F4ng sao", en: "No problem" }
+            { type: "prose", html: "<p>Vietnamese becomes much easier once you stop treating it like English with accents and start treating it like its own sound system.</p><p><strong>Your first wins should be:</strong></p>" },
+            { type: "ul", items: [
+              "Hearing the tones",
+              "Noticing the vowel differences",
+              "Using the right pronoun roughly well",
+              "Typing with Telex",
+              "Saying short daily phrases confidently"
             ]},
-            { type: "h3", text: "Daily Actions" },
-            { type: "vocab", items: [
-              { vi: "\u0103n", en: "eat" },
-              { vi: "u\u1ED1ng", en: "drink" },
-              { vi: "\u0111i", en: "go" },
-              { vi: "v\u1EC1", en: "return" },
-              { vi: "\u0111\u1EBFn", en: "arrive" },
-              { vi: "ng\u1EE7", en: "sleep" },
-              { vi: "h\u1ECDc", en: "study" },
-              { vi: "n\u00F3i", en: "speak" },
-              { vi: "nghe", en: "listen" },
-              { vi: "hi\u1EC3u", en: "understand" },
-              { vi: "bi\u1EBFt", en: "know" },
-              { vi: "mu\u1ED1n", en: "want" },
-              { vi: "th\u00EDch", en: "like" },
-              { vi: "c\u1EA7n", en: "need" },
-              { vi: "gi\u00FAp", en: "help" }
-            ]},
-            { type: "h3", text: "Everyday Objects / Concepts" },
-            { type: "vocab", items: [
-              { vi: "n\u01B0\u1EDBc", en: "water" },
-              { vi: "c\u00E0 ph\u00EA", en: "coffee" },
-              { vi: "c\u01A1m", en: "rice" },
-              { vi: "ti\u1EC1n", en: "money" },
-              { vi: "nh\u00E0", en: "house / home" },
-              { vi: "b\u1EA1n", en: "friend" },
-              { vi: "ng\u01B0\u1EDDi", en: "person" },
-              { vi: "\u0111\u01B0\u1EDDng", en: "road / street" },
-              { vi: "xe", en: "vehicle" }
-            ]},
-            { type: "h3", text: "Questions" },
-            { type: "vocab", items: [
-              { vi: "g\u00EC", en: "what" },
-              { vi: "ai", en: "who" },
-              { vi: "\u0111\u00E2u", en: "where" },
-              { vi: "\u1EDF \u0111\u00E2u", en: "where is" },
-              { vi: "bao nhi\u00EAu", en: "how much / how many" },
-              { vi: "m\u1EA5y gi\u1EDD", en: "what time" },
-              { vi: "khi n\u00E0o", en: "when" },
-              { vi: "bao l\u00E2u", en: "how long" }
-            ]},
-            { type: "h3", text: "Adjectives / Reactions" },
-            { type: "vocab", items: [
-              { vi: "ngon", en: "delicious" },
-              { vi: "\u0111\u1EB9p", en: "beautiful" },
-              { vi: "m\u1EC7t", en: "tired" },
-              { vi: "x\u1ECBn", en: "awesome" },
-              { vi: "ch\u1EA5t", en: "cool / stylish" }
-            ]}
+            { type: "highlight", html: 'You do not need perfect grammar to start speaking. You need <strong>repetition, listening, and willingness to speak</strong>.' },
+            { type: "prose", html: "<p>Use Vietnamese every Friday at Chillax, use it in caf\u00E9s, use it with friends, use it badly at first, and keep going.</p><p><strong>That is how it starts to become natural.</strong></p>" }
           ]
         }
       ]
