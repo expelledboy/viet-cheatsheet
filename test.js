@@ -263,6 +263,38 @@ test('Total progress bar exists', () => {
   assert(total.textContent.includes('phrases known'), 'Should show phrases known');
 });
 
+// ── Known Panel Tests ──
+console.log('\nKnown Panel:');
+
+test('Known panel hidden when < 3 known', () => {
+  // Reset first
+  dom.window.resetProgress();
+  const panel = document.getElementById('knownPanel');
+  assert(!panel.classList.contains('visible'), 'Panel should be hidden with 0 known');
+});
+
+test('Known panel appears after 3 known phrases', () => {
+  const btns = document.querySelectorAll('.known-btn');
+  btns[0].click(); btns[1].click(); btns[2].click();
+  const panel = document.getElementById('knownPanel');
+  assert(panel.classList.contains('visible'), 'Panel should be visible with 3 known');
+  assert(panel.querySelector('.known-panel-count').textContent === '(3)', 'Count should show (3)');
+});
+
+test('Known panel lists the correct phrases', () => {
+  const panelItems = document.querySelectorAll('.known-panel-list li');
+  assert(panelItems.length === 3, `Expected 3 items in panel, got ${panelItems.length}`);
+});
+
+test('Known panel toggle expands/collapses', () => {
+  const toggle = document.getElementById('knownPanelToggle');
+  const body = document.getElementById('knownPanelBody');
+  toggle.click();
+  assert(body.classList.contains('open'), 'Panel body should be open');
+  toggle.click();
+  assert(!body.classList.contains('open'), 'Panel body should be closed');
+});
+
 // ── Summary ──
 console.log(`\n${passed + failed} tests: ${passed} passed, ${failed} failed\n`);
 process.exit(failed > 0 ? 1 : 0);

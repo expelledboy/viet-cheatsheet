@@ -837,6 +837,86 @@ body.learning-mode .progress-bar {
   border-color: #38a06c;
 }
 
+/* ── Known Phrases Panel ── */
+.known-panel {
+  display: none;
+  max-width: 720px;
+  margin: 8px auto 0;
+  padding: 0 16px;
+}
+
+.known-panel.visible {
+  display: block;
+}
+
+.known-panel-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #38a06c;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+}
+
+.known-panel-toggle .chevron {
+  font-size: 0.7rem;
+  transition: transform var(--transition);
+}
+
+.known-panel-toggle.open .chevron {
+  transform: rotate(90deg);
+}
+
+.known-panel-count {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.known-panel-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.known-panel-body.open {
+  max-height: 2000px;
+}
+
+.known-panel-list {
+  list-style: none;
+  padding: 8px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.known-panel-list li {
+  font-size: 0.82rem;
+  padding: 4px 10px;
+  background: var(--neutral-bg);
+  border-radius: 6px;
+  border-left: 3px solid #38a06c;
+}
+
+.known-panel-list .kp-vi {
+  font-weight: 600;
+}
+
+.known-panel-list .kp-en {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
 /* ── Footer ── */
 .site-footer {
   max-width: 720px;
@@ -1025,6 +1105,27 @@ function updateAllProgress() {
     totalBar.querySelector('.progress-fill').style.width = totalAll ? (knownAll / totalAll * 100) + '%' : '0%';
     totalBar.querySelector('.progress-text').textContent = knownAll + '/' + totalAll + ' phrases known';
   }
+
+  // Update known phrases panel
+  var panel = document.getElementById('knownPanel');
+  var panelBody = document.getElementById('knownPanelBody');
+  if (panel && panelBody) {
+    var THRESHOLD = 3;
+    panel.classList.toggle('visible', knownAll >= THRESHOLD);
+    panel.querySelector('.known-panel-count').textContent = '(' + knownAll + ')';
+    // Build phrase list from all checked buttons
+    var items = document.querySelectorAll('.known-btn.checked');
+    var html = '<ul class="known-panel-list">';
+    items.forEach(function(btn) {
+      var vocabItem = btn.closest('.vocab-item');
+      var vi = vocabItem.querySelector('.vi-text').textContent;
+      var enEl = vocabItem.querySelector('.en-text');
+      var en = enEl ? enEl.textContent : '';
+      html += '<li><span class="kp-vi">' + vi + '</span> <span class="kp-en">' + en + '</span></li>';
+    });
+    html += '</ul>';
+    panelBody.innerHTML = html;
+  }
 }
 
 // ── Renderer ──
@@ -1086,6 +1187,13 @@ function updateAllProgress() {
   resetBtn.addEventListener('click', function() { resetProgress(); });
   totalProgress.appendChild(resetBtn);
   tocNav.insertAdjacentElement('afterend', totalProgress);
+
+  // Known phrases panel — appears after 3+ known
+  var knownPanel = document.createElement('div');
+  knownPanel.id = 'knownPanel';
+  knownPanel.className = 'known-panel';
+  knownPanel.innerHTML = '<button class="known-panel-toggle" id="knownPanelToggle"><span class="chevron">&#9654;</span> <span class="known-panel-title">Phrases You Know</span> <span class="known-panel-count"></span></button><div class="known-panel-body" id="knownPanelBody"></div>';
+  totalProgress.insertAdjacentElement('afterend', knownPanel);
 
   // Build flat section list for "next section" links
   var allSections = [];
@@ -1472,6 +1580,16 @@ document.querySelectorAll('.section-header').forEach(function(header) {
     }
   });
 });
+
+// ── Known Panel Toggle ──
+var knownPanelToggle = document.getElementById('knownPanelToggle');
+var knownPanelBody = document.getElementById('knownPanelBody');
+if (knownPanelToggle) {
+  knownPanelToggle.addEventListener('click', function() {
+    knownPanelToggle.classList.toggle('open');
+    knownPanelBody.classList.toggle('open');
+  });
+}
 
 // ── TOC Toggle ──
 var tocToggle = document.getElementById('tocToggle');
