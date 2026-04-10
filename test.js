@@ -295,6 +295,44 @@ test('Known panel toggle expands/collapses', () => {
   assert(!body.classList.contains('open'), 'Panel body should be closed');
 });
 
+// ── Subsection Toggle Tests ──
+console.log('\nSubsection Toggle:');
+
+test('Subsection toggles exist on h3 elements in learnable sections', () => {
+  const toggles = document.querySelectorAll('.subsection-toggle');
+  assert(toggles.length > 0, 'No subsection toggles found');
+});
+
+test('Clicking subsection toggle reveals flashcards in that sub-section only', () => {
+  // Enable learning mode
+  dom.window.STATE.mode = 'learning';
+  document.body.classList.add('learning-mode');
+
+  // Open a section with multiple h3s
+  var section = document.querySelector('[data-learnable]');
+  section.classList.add('open');
+
+  var toggles = section.querySelectorAll('.subsection-toggle');
+  if (toggles.length > 0) {
+    var toggle = toggles[0];
+    var h3 = toggle.closest('h3');
+    // Find the vocab list after this h3
+    var sibling = h3.nextElementSibling;
+    while (sibling && !sibling.classList.contains('vocab-list')) {
+      sibling = sibling.nextElementSibling;
+    }
+    if (sibling) {
+      var cards = sibling.querySelectorAll('.flashcard');
+      assert(cards.length > 0, 'Should have flashcards');
+      assert(!cards[0].classList.contains('revealed'), 'Cards should start hidden');
+      toggle.click();
+      assert(cards[0].classList.contains('revealed'), 'Cards should be revealed after toggle');
+      toggle.click();
+      assert(!cards[0].classList.contains('revealed'), 'Cards should be hidden after second toggle');
+    }
+  }
+});
+
 // ── Pronoun System Tests ──
 console.log('\nPronoun System:');
 

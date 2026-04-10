@@ -427,6 +427,8 @@ body.learning-mode .next-section {
   font-weight: 700;
   color: var(--text);
   margin: 16px 0 8px;
+  display: flex;
+  align-items: center;
   padding-bottom: 4px;
   border-bottom: 1px solid var(--border);
 }
@@ -558,33 +560,35 @@ body.learning-mode .flashcard.revealed {
 }
 
 /* ── Reveal All / Hide All ── */
-.reveal-controls {
+/* ── Subsection Toggle ── */
+.subsection-toggle {
   display: none;
-  gap: 4px;
-  flex-shrink: 0;
-}
-
-body.learning-mode .reveal-controls {
-  display: flex;
-}
-
-.reveal-btn {
-  padding: 3px 10px;
-  font-family: var(--font);
-  font-size: 0.7rem;
-  font-weight: 600;
+  background: none;
   border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--reveal-btn-bg);
+  border-radius: 10px;
+  padding: 1px 8px;
+  font-size: 0.65rem;
   color: var(--text-muted);
   cursor: pointer;
+  margin-left: 8px;
+  vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
-  transition: background var(--transition), color var(--transition);
+  transition: all var(--transition);
 }
 
-.reveal-btn:hover {
-  background: var(--red-light);
+body.learning-mode .subsection-toggle {
+  display: inline-block;
+}
+
+.subsection-toggle:hover {
+  border-color: var(--red);
   color: var(--red);
+}
+
+.subsection-toggle.revealed {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
 }
 
 /* ── Tables ── */
@@ -1353,19 +1357,6 @@ function applyPronouns(text) {
       h2.innerHTML = sec.title;
       header.appendChild(h2);
       if (sec.learnable) {
-        var headerControls = document.createElement('div');
-        headerControls.className = 'reveal-controls';
-        var revBtn = document.createElement('button');
-        revBtn.className = 'reveal-btn';
-        revBtn.textContent = 'Show';
-        revBtn.addEventListener('click', function(e) { e.stopPropagation(); revealAll(this); });
-        var hideBtn = document.createElement('button');
-        hideBtn.className = 'reveal-btn';
-        hideBtn.textContent = 'Hide';
-        hideBtn.addEventListener('click', function(e) { e.stopPropagation(); hideAll(this); });
-        headerControls.appendChild(revBtn);
-        headerControls.appendChild(hideBtn);
-        header.appendChild(headerControls);
         var badge = document.createElement('span');
         badge.className = 'section-badge';
         badge.setAttribute('data-section-id', sec.id);
@@ -1519,6 +1510,18 @@ function applyPronouns(text) {
         break;
       }
       case 'vocab': {
+        // Add a reveal toggle to the preceding h3 if in a learnable section
+        if (learnable) {
+          var prevEl = container.lastElementChild;
+          if (prevEl && prevEl.tagName === 'H3' && !prevEl.querySelector('.subsection-toggle')) {
+            var toggle = document.createElement('button');
+            toggle.className = 'subsection-toggle';
+            toggle.textContent = '\u25C9';  // ◉ eye-like icon
+            toggle.setAttribute('aria-label', 'Toggle answers');
+            toggle.setAttribute('title', 'Show/hide answers');
+            prevEl.appendChild(toggle);
+          }
+        }
         var ul = document.createElement('ul');
         ul.className = 'vocab-list';
         block.items.forEach(function(item) {
@@ -1609,6 +1612,27 @@ function resetProgress() {
   document.querySelectorAll('.known-item').forEach(function(d) { d.classList.remove('known-item'); });
   updateAllProgress();
 }
+
+// ── Subsection Toggle (reveal/hide per h3) ──
+document.addEventListener('click', function(e) {
+  var toggle = e.target.closest('.subsection-toggle');
+  if (!toggle) return;
+  e.stopPropagation();
+  toggle.classList.toggle('revealed');
+  // Find the next vocab-list after this h3
+  var h3 = toggle.closest('h3');
+  var sibling = h3.nextElementSibling;
+  while (sibling) {
+    if (sibling.classList.contains('vocab-list')) {
+      sibling.querySelectorAll('.flashcard').forEach(function(card) {
+        card.classList.toggle('revealed', toggle.classList.contains('revealed'));
+      });
+      break;
+    }
+    if (sibling.tagName === 'H3') break; // hit next sub-section
+    sibling = sibling.nextElementSibling;
+  }
+});
 
 function toggleHideKnown(btn) {
   STATE.hideKnown = !STATE.hideKnown;
