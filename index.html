@@ -531,19 +531,21 @@ body.learning-mode .flashcard:not(.revealed) .eq-sign {
 body.learning-mode .flashcard:not(.revealed) {
   background: var(--flashcard-unrevealed-bg);
   border: 1px dashed var(--flashcard-unrevealed-border);
+  padding-left: 40px;
 }
 
-body.learning-mode .flashcard:not(.revealed)::after {
+body.learning-mode .flashcard:not(.revealed)::before {
   content: 'tap';
   position: absolute;
-  right: 12px;
+  left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--flashcard-unrevealed-text);
   font-weight: 600;
+  opacity: 0.6;
 }
 
 body.learning-mode .flashcard.revealed {
@@ -708,9 +710,7 @@ html.no-vi-speech .speak-btn {
   display: none;
 }
 
-body.learning-mode .speak-btn {
-  display: none;
-}
+/* speak buttons stay visible in learning mode */
 
 /* ── Known Button ── */
 .known-btn {
