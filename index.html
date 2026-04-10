@@ -2176,16 +2176,19 @@ window.addEventListener('scroll', function() {
   function injectButtons() {
     // Vocab items with Vietnamese text
     document.querySelectorAll('.vocab-item').forEach(function(item) {
+      if (item.querySelector('.speak-btn')) return; // guard against double injection
       var viEl = item.querySelector('.vi-text[lang="vi"]');
       if (!viEl) return;
-      makeBtn(function() { return viEl.textContent; }, item);
+      makeBtn(function() { return viEl.textContent.replace(/\uD83D\uDD0A/g, '').trim(); }, item);
     });
 
-    // Table cells — only single clean tokens (skip cells with "/" like "d / gi")
+    // Table cells — only multi-char syllables (skip single vowel letters and "d / gi")
     document.querySelectorAll('.vi-cell').forEach(function(cell) {
+      if (cell.querySelector('.speak-btn')) return; // guard against double injection
       var text = cell.textContent.trim();
-      if (!text || text.indexOf('/') !== -1) return;
-      makeBtn(function() { return text; }, cell);
+      if (!text || text.indexOf('/') !== -1 || text.length <= 1) return;
+      var captured = text;
+      makeBtn(function() { return captured; }, cell);
     });
   }
 
