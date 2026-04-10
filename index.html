@@ -115,6 +115,7 @@ body {
   padding: 8px 16px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .header-title {
@@ -134,11 +135,11 @@ body {
 /* ── Control Card ── */
 .control-card {
   position: sticky;
-  top: 44px;
+  top: 50px;
   z-index: 90;
   max-width: 720px;
-  margin: 8px auto 0;
-  padding: 10px 16px;
+  margin: 6px auto 0;
+  padding: 8px 16px;
   background: var(--card-bg);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -156,9 +157,9 @@ body {
 
 /* ── Toggle Switch ── */
 .toggle-label {
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 600;
-  color: var(--text-light);
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.03em;
   user-select: none;
@@ -170,8 +171,8 @@ body {
 
 .toggle-switch {
   position: relative;
-  width: 44px;
-  height: 24px;
+  width: 32px;
+  height: 18px;
   cursor: pointer;
 }
 
@@ -198,16 +199,20 @@ body {
   position: absolute;
   top: 2px;
   left: 2px;
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
   background: var(--toggle-knob);
   border-radius: 50%;
   transition: transform var(--transition);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .toggle-switch input:checked + .toggle-track::after {
-  transform: translateX(20px);
+  transform: translateX(14px);
+}
+
+.toggle-track {
+  border-radius: 9px;
 }
 
 /* ── Banner ── */
@@ -232,15 +237,21 @@ body {
 }
 
 /* ── Category Tabs ── */
+.category-tabs-wrapper {
+  position: relative;
+  margin: 0 -16px;
+  padding: 0 16px;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent);
+  mask-image: linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent);
+}
+
 .category-tabs {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 6px 16px;
   display: flex;
   gap: 6px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  padding: 2px 0;
 }
 
 .category-tabs::-webkit-scrollbar {
@@ -940,26 +951,24 @@ body.hide-known .vocab-item.known-item {
 /* ── Theme Toggle Button ── */
 .theme-toggle {
   background: none;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  width: 36px;
-  height: 36px;
+  border: none;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   font-size: 1.1rem;
-  color: var(--text-light);
   flex-shrink: 0;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   -webkit-tap-highlight-color: transparent;
   line-height: 1;
   padding: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
 }
 
 .theme-toggle:hover {
-  background: var(--neutral-bg);
-  color: var(--text);
+  opacity: 1;
 }
 
 .theme-toggle .icon-sun,
@@ -1049,6 +1058,7 @@ function saveState() { localStorage.setItem('state', JSON.stringify(STATE)); }
 <header class="site-header" id="siteHeader">
   <div class="header-inner">
     <span class="header-title"><span class="header-flag">&#x1F1FB;&#x1F1F3;</span> Vietnamese Cheat Sheet</span>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><span class="icon-sun">&#x2600;&#xFE0F;</span><span class="icon-moon">&#x1F319;</span></button>
   </div>
 </header>
 
@@ -1099,7 +1109,7 @@ function updateAllProgress() {
   var totalBar = document.getElementById('totalProgress');
   if (totalBar) {
     totalBar.querySelector('.progress-fill').style.width = totalAll ? (knownAll / totalAll * 100) + '%' : '0%';
-    totalBar.querySelector('.progress-text').textContent = knownAll + '/' + totalAll + ' phrases known';
+    totalBar.querySelector('.progress-text').textContent = knownAll + '/' + totalAll;
   }
 
   // Update known phrases panel
@@ -1194,7 +1204,16 @@ function applyPronouns(text) {
   banner.innerHTML = DATA.banner.text + ' <a href="' + DATA.banner.link.url + '" target="_blank" rel="noopener">' + DATA.banner.link.label + '</a> ' + DATA.banner.suffix;
   document.querySelector('.site-header').insertAdjacentElement('afterend', banner);
 
-  // Category tabs — horizontal scrollable navigation
+  // Control card will be inserted after banner
+
+  // Control card — all settings in one card
+  var controlCard = document.createElement('div');
+  controlCard.className = 'control-card';
+  controlCard.id = 'controlCard';
+
+  // Row 0: category tabs
+  var tabWrapper = document.createElement('div');
+  tabWrapper.className = 'category-tabs-wrapper';
   var tabBar = document.createElement('nav');
   tabBar.className = 'category-tabs';
   tabBar.setAttribute('aria-label', 'Category navigation');
@@ -1205,7 +1224,6 @@ function applyPronouns(text) {
     tab.textContent = cat.name;
     tab.setAttribute('data-cat-index', i);
     tab.addEventListener('click', function() {
-      // Scroll to category divider and expand first section
       var divider = document.querySelectorAll('.category-divider')[i];
       if (divider) {
         divider.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1215,25 +1233,15 @@ function applyPronouns(text) {
           firstSection.querySelector('.section-header').setAttribute('aria-expanded', 'true');
         }
       }
-      // Update active tab
       tabBar.querySelectorAll('.category-tab').forEach(function(t) { t.classList.remove('active'); });
       tab.classList.add('active');
     });
     tabBar.appendChild(tab);
   });
+  tabWrapper.appendChild(tabBar);
+  controlCard.appendChild(tabWrapper);
 
-  banner.insertAdjacentElement('afterend', tabBar);
-
-  // Control card — all settings in one card
-  var controlCard = document.createElement('div');
-  controlCard.className = 'control-card';
-  controlCard.id = 'controlCard';
-
-  // Row 1: theme toggle + mode toggle
-  var row1 = document.createElement('div');
-  row1.className = 'control-row';
-  row1.innerHTML = '<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><span class="icon-sun">&#9788;</span><span class="icon-moon">&#9790;</span></button><span class="toggle-label active" id="refLabel">Ref</span><label class="toggle-switch"><input type="checkbox" id="modeToggle"><span class="toggle-track"></span></label><span class="toggle-label" id="learnLabel">Learn</span>';
-  controlCard.appendChild(row1);
+  // (theme toggle is now in the header)
 
   // Row 2: pronoun pills
   var row2 = document.createElement('div');
@@ -1253,11 +1261,28 @@ function applyPronouns(text) {
   });
   controlCard.appendChild(row2);
 
-  // Row 3: progress bar + reset
+  // Row 3: mode toggle + progress bar + reset
   var row3 = document.createElement('div');
   row3.className = 'control-row';
   row3.id = 'totalProgress';
-  row3.innerHTML = '<span class="progress-text" style="font-size:0.75rem;color:var(--text-muted)">0/0 known</span><div class="progress-track" style="flex:1"><div class="progress-fill" style="width:0%"></div></div>';
+  // Compact mode toggle
+  var modeWrap = document.createElement('div');
+  modeWrap.className = 'control-row';
+  modeWrap.style.gap = '4px';
+  modeWrap.style.flexShrink = '0';
+  modeWrap.innerHTML = '<span class="toggle-label active" id="refLabel">Ref</span><label class="toggle-switch"><input type="checkbox" id="modeToggle"><span class="toggle-track"></span></label><span class="toggle-label" id="learnLabel">Learn</span>';
+  row3.appendChild(modeWrap);
+  // Progress
+  var progText = document.createElement('span');
+  progText.className = 'progress-text';
+  progText.style.cssText = 'font-size:0.72rem;color:var(--text-muted);margin-left:8px';
+  progText.textContent = '0/0';
+  row3.appendChild(progText);
+  var progTrack = document.createElement('div');
+  progTrack.className = 'progress-track';
+  progTrack.style.flex = '1';
+  progTrack.innerHTML = '<div class="progress-fill" style="width:0%"></div>';
+  row3.appendChild(progTrack);
   var resetBtn = document.createElement('button');
   resetBtn.className = 'hide-known-btn reset-btn';
   resetBtn.textContent = 'Reset';
@@ -1265,7 +1290,7 @@ function applyPronouns(text) {
   row3.appendChild(resetBtn);
   controlCard.appendChild(row3);
 
-  tabBar.insertAdjacentElement('afterend', controlCard);
+  banner.insertAdjacentElement('afterend', controlCard);
 
   // Known phrases panel — appears after 3+ known
   var knownPanel = document.createElement('div');
@@ -1695,6 +1720,7 @@ if (knownPanelToggle) {
 if (typeof IntersectionObserver !== 'undefined') {
   var catDividers = document.querySelectorAll('.category-divider');
   var catTabs = document.querySelectorAll('.category-tab');
+  var catTabBar = document.querySelector('.category-tabs');
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
@@ -1702,8 +1728,11 @@ if (typeof IntersectionObserver !== 'undefined') {
         catTabs.forEach(function(t) { t.classList.remove('active'); });
         if (catTabs[idx]) {
           catTabs[idx].classList.add('active');
-          // Scroll tab into view if off-screen
-          catTabs[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          // Scroll tab bar HORIZONTALLY only — never scroll the page
+          var tabLeft = catTabs[idx].offsetLeft;
+          var tabWidth = catTabs[idx].offsetWidth;
+          var barWidth = catTabBar.offsetWidth;
+          catTabBar.scrollTo({ left: tabLeft - (barWidth / 2) + (tabWidth / 2), behavior: 'smooth' });
         }
       }
     });

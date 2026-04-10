@@ -245,7 +245,8 @@ test('Next section links exist in learning mode', () => {
 test('Total progress bar exists', () => {
   const total = document.getElementById('totalProgress');
   assert(total, 'No total progress bar');
-  assert(total.textContent.includes('phrases known'), 'Should show phrases known');
+  assert(total.querySelector('.progress-text'), 'Should have progress text');
+  assert(total.querySelector('.progress-fill'), 'Should have progress fill');
 });
 
 // ── Known Panel Tests ──
