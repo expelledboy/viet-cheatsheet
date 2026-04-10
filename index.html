@@ -432,7 +432,7 @@ main {
 
 .vocab-item {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 8px;
   padding: 8px 12px;
   border-radius: 8px;
@@ -597,6 +597,66 @@ body.learning-mode .reveal-controls {
 
 .highlight-box strong {
   color: var(--red);
+}
+
+/* ── Speak Button ── */
+.speak-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 4px 6px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--transition), background var(--transition);
+  line-height: 1;
+  min-width: 32px;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.speak-btn:hover {
+  color: var(--red);
+  background: var(--red-light);
+}
+
+.speak-btn.speaking {
+  color: var(--red);
+  animation: pulse-speak 0.8s ease-in-out infinite;
+}
+
+@keyframes pulse-speak {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.vocab-item {
+  position: relative;
+}
+
+.vocab-item .speak-btn {
+  margin-left: auto;
+}
+
+.vi-cell .speak-btn {
+  margin-left: 4px;
+  font-size: 0.75rem;
+  min-width: 24px;
+  min-height: 24px;
+  padding: 2px 4px;
+  vertical-align: middle;
+}
+
+html.no-vi-speech .speak-btn {
+  display: none;
+}
+
+body.learning-mode .speak-btn {
+  display: none;
 }
 
 /* ── Footer ── */
@@ -2033,6 +2093,124 @@ window.addEventListener('scroll', function() {
     header.classList.toggle('scrolled', scrolled);
   }
 }, { passive: true });
+
+// ── Speech Synthesis (Pronunciation) ──
+(function() {
+  var synth = window.speechSynthesis;
+  if (!synth) {
+    document.documentElement.classList.add('no-vi-speech');
+    return;
+  }
+
+  var viVoice = null;
+  var currentBtn = null;
+  var warmedUp = false;
+
+  function warmUp() {
+    if (warmedUp) return;
+    warmedUp = true;
+    // Prime the audio context with a silent utterance so first real speak is instant
+    var primer = new SpeechSynthesisUtterance('');
+    primer.volume = 0;
+    synth.speak(primer);
+  }
+
+  // Warm up on first user interaction with the page
+  document.addEventListener('touchstart', warmUp, { once: true, passive: true });
+  document.addEventListener('click', warmUp, { once: true });
+
+  function findViVoice() {
+    var voices = synth.getVoices();
+    for (var i = 0; i < voices.length; i++) {
+      if (voices[i].lang && voices[i].lang.replace('_', '-').indexOf('vi') === 0) {
+        viVoice = voices[i];
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function speak(text, btn) {
+    warmUp();
+    synth.cancel();
+    if (currentBtn) currentBtn.classList.remove('speaking');
+
+    if (currentBtn === btn) {
+      currentBtn = null;
+      return;
+    }
+
+    var utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'vi-VN';
+    utter.rate = 0.85;
+    utter.voice = viVoice;
+
+    btn.classList.add('speaking');
+    currentBtn = btn;
+
+    utter.onend = function() {
+      btn.classList.remove('speaking');
+      if (currentBtn === btn) currentBtn = null;
+    };
+    utter.onerror = function() {
+      btn.classList.remove('speaking');
+      if (currentBtn === btn) currentBtn = null;
+    };
+
+    synth.speak(utter);
+  }
+
+  function makeBtn(getTextFn, container) {
+    var btn = document.createElement('button');
+    btn.className = 'speak-btn';
+    btn.setAttribute('aria-label', 'Listen');
+    btn.setAttribute('title', 'Listen');
+    btn.textContent = '\uD83D\uDD0A';
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      speak(getTextFn(), btn);
+    });
+    container.appendChild(btn);
+  }
+
+  function injectButtons() {
+    // Vocab items with Vietnamese text
+    document.querySelectorAll('.vocab-item').forEach(function(item) {
+      var viEl = item.querySelector('.vi-text[lang="vi"]');
+      if (!viEl) return;
+      makeBtn(function() { return viEl.textContent; }, item);
+    });
+
+    // Table cells — only single clean tokens (skip cells with "/" like "d / gi")
+    document.querySelectorAll('.vi-cell').forEach(function(cell) {
+      var text = cell.textContent.trim();
+      if (!text || text.indexOf('/') !== -1) return;
+      makeBtn(function() { return text; }, cell);
+    });
+  }
+
+  function init() {
+    if (synth.getVoices().length === 0) {
+      // Voices load async on some browsers (Chrome)
+      synth.addEventListener('voiceschanged', function handler() {
+        synth.removeEventListener('voiceschanged', handler);
+        if (findViVoice()) {
+          injectButtons();
+        } else {
+          document.documentElement.classList.add('no-vi-speech');
+        }
+      });
+    } else {
+      if (findViVoice()) {
+        injectButtons();
+      } else {
+        document.documentElement.classList.add('no-vi-speech');
+      }
+    }
+  }
+
+  init();
+})();
 </script>
 </body>
 </html>
