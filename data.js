@@ -1,3 +1,27 @@
+// @ts-check
+
+/**
+ * @typedef {{ vi: string, en: string }} VocabItem
+ * @typedef {{ input: string, output: string }} TelexItem
+ * @typedef {{ cells: string[], viCells?: number[], viLang?: number[], colspan?: Record<number,number> }} TableRow
+ *
+ * @typedef {| { type: "p", html: string }
+ *           | { type: "h3", text: string }
+ *           | { type: "vocab", items: VocabItem[] }
+ *           | { type: "telex", items: TelexItem[] }
+ *           | { type: "table", headers: string[], rows: TableRow[] }
+ *           | { type: "ol", items: string[] }
+ *           | { type: "ul", items: string[], viLang?: boolean }
+ *           | { type: "highlight", html: string }
+ *           | { type: "prose", html: string }
+ * } ContentBlock
+ *
+ * @typedef {{ id: number, title: string, learnable: boolean, content: ContentBlock[] }} Section
+ * @typedef {{ name: string, sections: Section[] }} Category
+ * @typedef {{ banner: { text: string, link: { url: string, label: string }, suffix: string }, categories: Category[] }} DataModel
+ */
+
+/** @type {DataModel} */
 const DATA = {
   banner: {
     text: "Practice group every Friday 1 PM at",
