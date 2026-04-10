@@ -1081,7 +1081,7 @@ function updateAllProgress() {
   totalProgress.style.padding = '8px 16px 0';
   totalProgress.innerHTML = '<span class="progress-text">0/0 phrases known</span><div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>';
   var resetBtn = document.createElement('button');
-  resetBtn.className = 'hide-known-btn';
+  resetBtn.className = 'hide-known-btn reset-btn';
   resetBtn.textContent = 'Reset';
   resetBtn.addEventListener('click', function() { resetProgress(); });
   totalProgress.appendChild(resetBtn);
@@ -1420,7 +1420,7 @@ if (STATE.mode === 'learning') {
 // Restore hideKnown from STATE
 if (STATE.hideKnown) {
   document.body.classList.add('hide-known');
-  document.querySelectorAll('.hide-known-btn').forEach(function(b) {
+  document.querySelectorAll('.hide-known-btn:not(.reset-btn)').forEach(function(b) {
     b.classList.add('active');
     b.textContent = 'Show known';
   });
