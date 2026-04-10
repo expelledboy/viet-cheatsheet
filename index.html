@@ -560,8 +560,8 @@ body.learning-mode .flashcard.revealed {
 /* ── Reveal All / Hide All ── */
 .reveal-controls {
   display: none;
-  gap: 6px;
-  margin-bottom: 8px;
+  gap: 4px;
+  flex-shrink: 0;
 }
 
 body.learning-mode .reveal-controls {
@@ -1353,6 +1353,19 @@ function applyPronouns(text) {
       h2.innerHTML = sec.title;
       header.appendChild(h2);
       if (sec.learnable) {
+        var headerControls = document.createElement('div');
+        headerControls.className = 'reveal-controls';
+        var revBtn = document.createElement('button');
+        revBtn.className = 'reveal-btn';
+        revBtn.textContent = 'Show';
+        revBtn.addEventListener('click', function(e) { e.stopPropagation(); revealAll(this); });
+        var hideBtn = document.createElement('button');
+        hideBtn.className = 'reveal-btn';
+        hideBtn.textContent = 'Hide';
+        hideBtn.addEventListener('click', function(e) { e.stopPropagation(); hideAll(this); });
+        headerControls.appendChild(revBtn);
+        headerControls.appendChild(hideBtn);
+        header.appendChild(headerControls);
         var badge = document.createElement('span');
         badge.className = 'section-badge';
         badge.setAttribute('data-section-id', sec.id);
@@ -1506,21 +1519,6 @@ function applyPronouns(text) {
         break;
       }
       case 'vocab': {
-        if (learnable) {
-          var rc = document.createElement('div');
-          rc.className = 'reveal-controls';
-          var revBtn = document.createElement('button');
-          revBtn.className = 'reveal-btn';
-          revBtn.textContent = 'Reveal All';
-          revBtn.addEventListener('click', function() { revealAll(this); });
-          var hideBtn = document.createElement('button');
-          hideBtn.className = 'reveal-btn';
-          hideBtn.textContent = 'Hide All';
-          hideBtn.addEventListener('click', function() { hideAll(this); });
-          rc.appendChild(revBtn);
-          rc.appendChild(hideBtn);
-          container.appendChild(rc);
-        }
         var ul = document.createElement('ul');
         ul.className = 'vocab-list';
         block.items.forEach(function(item) {
@@ -1685,13 +1683,13 @@ function toggleCard(el) {
 
 // ── Reveal / Hide All ──
 function revealAll(btn) {
-  var list = btn.closest('.section-content').querySelectorAll('.flashcard');
-  list.forEach(function(c) { c.classList.add('revealed'); });
+  var section = btn.closest('.section-card');
+  if (section) section.querySelectorAll('.flashcard').forEach(function(c) { c.classList.add('revealed'); });
 }
 
 function hideAll(btn) {
-  var list = btn.closest('.section-content').querySelectorAll('.flashcard');
-  list.forEach(function(c) { c.classList.remove('revealed'); });
+  var section = btn.closest('.section-card');
+  if (section) section.querySelectorAll('.flashcard').forEach(function(c) { c.classList.remove('revealed'); });
 }
 
 // ── Section Collapse ──
