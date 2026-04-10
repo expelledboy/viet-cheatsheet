@@ -1,0 +1,820 @@
+🇻🇳 THE MASTER VIETNAMESE GROWTH PACK
+
+Vietnamese Practice Group
+
+We meet regularly on Friday at 1:00 PM at Chillax to practice speaking Vietnamese together:
+
+Chillax: https://maps.app.goo.gl/4nt9jcB7dwA8Ybpn8
+
+All levels are welcome, as long as you try to speak at least 20% Vietnamese during the session.
+
+Goal: practice speaking Vietnamese together in a friendly, low-pressure, encouraging environment.
+
+⸻
+
+0. THE CORE IDEA
+
+Vietnamese is very learnable, but beginners need to understand a few things immediately:
+	1.	Tones matter
+	2.	Vowels matter
+	3.	Pronouns are social
+	4.	Spelling patterns are contextual
+	5.	Typing Vietnamese is easy once you know Telex
+	6.	Speaking imperfectly is better than waiting for perfection
+
+Best beginner mindset:
+	•	Be understandable first, elegant later.
+	•	Learn the high-frequency daily phrases first.
+	•	Use Vietnamese often, even if your grammar is simple.
+
+⸻
+
+1. PHONETICS & TONES
+
+In Vietnamese, tone is part of the word. If you miss the tone, you may change the meaning completely.
+
+The 6 Tones
+
+Using ma as the classic example:
+	1.	ngang — ma — flat / mid
+	2.	sắc — má — rising
+	3.	huyền — mà — falling
+	4.	hỏi — mả — dipping / questioning
+	5.	ngã — mã — high rising / broken / glottalized
+	6.	nặng — mạ — low dropping / heavy
+
+Simple memory:
+	•	tone changes meaning
+	•	tone is not optional
+	•	written marks matter
+
+Beginner note:
+	•	Standard written Vietnamese distinguishes all 6 tones.
+	•	In much southern speech, hỏi and ngã may sound similar or merge somewhat.
+
+⸻
+
+2. THE HARD VOWELS FIRST
+
+These are the vowels English speakers often miss.
+
+Core vowel distinctions
+	•	ă = short a; very brief “a”
+	•	â = short central uh
+	•	ê = close ay without a strong glide
+	•	ô = close, clipped oh
+	•	ơ = relaxed uh/er with rounded lips
+	•	ư = like ee, but with rounded lips
+	•	đ = normal hard English-like d
+	•	d / gi = often z in the North, often y in the South
+
+Important vowel families
+
+Learn these as contrast groups:
+	•	a / ă / â
+	•	o / ô / ơ
+	•	u / ư
+	•	e / ê
+
+These are not decorative marks. They are different vowels.
+
+⸻
+
+3. CONTEXT-BASED PRONUNCIATION RULES
+
+Some Vietnamese letters are pronounced differently, or are spelled differently, depending on what letters come next.
+
+This is one of the most important reading rules for English speakers.
+
+3.1 c / k / qu
+
+These usually represent roughly the same base k sound.
+	•	c before a, o, ô, ơ, u, ư
+	•	k before e, ê, i
+	•	q usually appears as qu
+
+Examples:
+	•	cá
+	•	kẹo
+	•	quay
+
+Beginner takeaway:
+	•	different spellings, similar base sound
+	•	often just orthographic context
+
+3.2 g / gh
+
+These represent the same base sound, but spelling changes depending on the following vowel.
+	•	g before a, o, ô, ơ, u, ư
+	•	gh before e, ê, i
+
+Examples:
+	•	ga
+	•	ghế
+	•	ghi
+
+3.3 ng / ngh
+
+These represent the same ng sound, like the end of English sing, but spelling changes depending on the next vowel.
+	•	ng before a, o, ô, ơ, u, ư
+	•	ngh before e, ê, i
+
+Examples:
+	•	nga
+	•	nghe
+	•	nghỉ
+
+3.4 gi
+
+gi is usually learned as one sound together, not as a separate English-style g + i.
+	•	Northern: often like z
+	•	Southern: often like y
+
+Examples:
+	•	gì
+	•	giỏi
+	•	giới
+
+3.5 d vs đ
+
+These are different letters.
+	•	đ = hard English-like d
+	•	d = often z in the North, often y in the South
+
+Examples:
+	•	đi
+	•	dì
+
+3.6 qu
+
+qu is usually pronounced together, often roughly like kw or sometimes closer to w, depending on the word and dialect.
+
+Examples:
+	•	qua
+	•	quê
+	•	quên
+
+3.7 nh
+
+nh = soft ny sound
+
+Think of something similar in spirit to Spanish ñ.
+
+Examples:
+	•	nhà
+	•	nhanh
+
+3.8 th
+
+th in Vietnamese is not English “th.”
+It is an aspirated t.
+
+Examples:
+	•	thôi
+	•	thích
+
+3.9 ph
+
+ph = f sound
+
+Examples:
+	•	phở
+	•	phải
+
+3.10 kh
+
+kh = rough throaty sound
+
+It can feel a bit like the sound in German Bach or Scottish loch.
+
+Examples:
+	•	không
+	•	khỏe
+
+3.11 tr and ch
+
+These are different, though beginners often hear them as similar at first.
+
+Examples:
+	•	trà
+	•	cha
+
+3.12 Tiny rule to remember
+
+When you see extra letters such as the h in gh / ngh, they often do not create a brand-new English-style sound.
+They often exist to show which vowel can follow while preserving the same base sound.
+
+3.13 Best way to memorize these
+
+Memorize these as spelling families:
+	•	c / k / qu
+	•	g / gh
+	•	ng / ngh
+	•	d / gi / đ
+	•	ph / th / kh / nh
+
+This makes reading Vietnamese much easier, much faster.
+
+⸻
+
+4. TYPING VIETNAMESE ON A PHONE OR KEYBOARD
+
+4.1 Android / standard QWERTY
+
+To type Vietnamese on Android using a standard QWERTY keyboard:
+	1.	Add Vietnamese in Gboard settings
+	2.	Switch to the Vietnamese keyboard
+	3.	Use Telex input
+
+This is the fastest and most common digital method.
+
+4.2 Telex typing rules
+
+Letter transformations
+	•	aa = â
+	•	aw = ă
+	•	ee = ê
+	•	oo = ô
+	•	ow = ơ
+	•	uw = ư
+	•	dd = đ
+
+Tone keys
+	•	s = sắc = á
+	•	f = huyền = à
+	•	r = hỏi = ả
+	•	x = ngã = ã
+	•	j = nặng = ạ
+	•	z = remove mark / clear tone in Telex convention
+
+4.3 Examples
+	•	tieengs Vieetj → tiếng Việt
+	•	tooi → tôi
+	•	nguwowfi → người
+
+Beginner advice:
+	•	Learn Telex early
+	•	It makes typing, searching, messaging, and note-taking much easier
+
+⸻
+
+5. PRONOUNS: THE SOCIAL ENGINE OF VIETNAMESE
+
+Pronouns in Vietnamese are not just grammar. They express relationship, age, respect, warmth, and social role.
+
+This is one of the biggest differences from English.
+
+5.1 Safe basics
+	•	tôi = I / me, neutral-polite
+	•	mình = I / me, softer, warmer, friendlier
+	•	bạn = you, neutral/friendly
+
+5.2 The sibling rule
+	•	anh = older brother / you (male, older than speaker) / I (if you are male and older in context)
+	•	chị = older sister / you (female, older than speaker) / I (if you are female and older in context)
+	•	em = younger person / you / I in younger position
+
+5.3 Elders and older adults
+	•	cô = aunt / older woman / teacher in some contexts
+	•	chú = uncle / older man
+	•	bác = older aunt/uncle generation
+	•	ông = grandfather / elderly man
+	•	bà = grandmother / elderly woman
+
+5.4 Very safe beginner rule
+
+If unsure, use:
+	•	tôi for “I”
+	•	bạn for “you”
+
+Then gradually learn family-style pronouns as you get more comfortable.
+
+5.5 Social note
+
+Vietnamese often uses kinship terms where English would use “you” and “I.”
+This is normal, warm, and culturally important.
+
+⸻
+
+6. BASIC SENTENCE STRUCTURE
+
+Vietnamese basic word order is usually:
+
+Subject + Verb + Object
+
+This is pleasantly familiar for English speakers.
+
+Examples:
+	•	Tôi ăn cơm. = I eat rice.
+	•	Tôi thích cà phê. = I like coffee.
+	•	Tôi học tiếng Việt. = I study Vietnamese.
+	•	Tôi không hiểu. = I do not understand.
+
+6.1 Negation
+	•	không = not / no
+
+Example:
+	•	Tôi không hiểu. = I do not understand.
+
+6.2 Existence / possession
+	•	có = have / there is / yes in some contexts
+
+⸻
+
+7. TIME, ASPECT, AND COMMON PARTICLES
+
+Vietnamese does not use tense the way English does. Instead, it often uses time words and particles.
+
+7.1 Core time/aspect particles
+	•	đã = past / already
+	•	đang = currently / in progress
+	•	sẽ = future / will
+	•	vừa = just happened
+	•	chưa = not yet
+	•	rồi = already / finished / then
+	•	nữa = more / again
+
+7.2 Examples
+	•	Tôi đang học tiếng Việt. = I am learning Vietnamese.
+	•	Tôi đã ăn rồi. = I already ate.
+	•	Tôi sẽ đi. = I will go.
+	•	Tôi vừa đến. = I just arrived.
+	•	Tôi chưa hiểu. = I do not understand yet.
+
+7.3 Polite and softening particles
+	•	ạ = respectful sentence ending
+	•	dạ = polite “yes” / polite response starter
+	•	nhé / nha = friendly, soft sentence ending
+
+Examples:
+	•	Dạ, em hiểu ạ.
+	•	Đi nhé.
+	•	Ngồi đây nha.
+
+These do a lot of social work in Vietnamese.
+
+⸻
+
+8. CLASSIFIERS
+
+Vietnamese commonly uses classifiers with nouns.
+
+Useful beginner classifiers:
+	•	cái = general thing / object
+	•	con = animal
+	•	người = person
+	•	ly = glass / cup, especially drinks
+
+Examples:
+	•	một cái bàn = one table
+	•	một con mèo = one cat
+	•	một người bạn = one friend
+	•	một ly cà phê = one cup of coffee
+
+⸻
+
+9. TIME WORDS & PARTS OF THE DAY
+
+9.1 Core time words
+	•	hôm nay = today
+	•	hôm qua = yesterday
+	•	ngày mai = tomorrow
+	•	bây giờ = now
+	•	khi nào? = when?
+	•	bao lâu? = how long?
+	•	mấy giờ? = what time?
+
+9.2 Parts of the day
+	•	sáng = morning
+	•	trưa = noon / lunchtime
+	•	chiều = afternoon
+	•	tối = evening
+	•	đêm = night
+
+⸻
+
+10. NUMBERS
+
+10.1 Basic numbers
+	•	0 = không
+	•	1 = một
+	•	2 = hai
+	•	3 = ba
+	•	4 = bốn
+	•	5 = năm
+	•	6 = sáu
+	•	7 = bảy
+	•	8 = tám
+	•	9 = chín
+	•	10 = mười
+
+10.2 Useful compounds
+	•	11 = mười một
+	•	20 = hai mươi
+	•	100 = một trăm
+	•	1,000 = một nghìn
+
+Numbers are essential for food, transport, prices, times, and directions.
+
+⸻
+
+11. INTRODUCING YOURSELF
+
+Useful self-introduction lines:
+	•	Tôi là … = I am …
+	•	Tôi tên là … = My name is …
+	•	Tôi đến từ … = I come from …
+	•	Tôi sống ở … = I live in …
+	•	Tôi nói tiếng Anh. = I speak English.
+	•	Tôi đang học tiếng Việt. = I am learning Vietnamese.
+	•	Rất vui được gặp bạn. = Nice to meet you.
+
+You can make a full mini-introduction from only 3–4 of these.
+
+⸻
+
+12. DAILY PLEASANTRIES
+
+12.1 Greetings
+	•	Xin chào. = Hello.
+	•	Chào bạn. = Hi.
+	•	Tạm biệt. = Goodbye.
+	•	Hẹn gặp lại. = See you again.
+
+12.2 Thanks and apology
+	•	Cảm ơn. = Thank you.
+	•	Cảm ơn nhiều. = Thanks a lot.
+	•	Không có gì. = You are welcome / no problem.
+	•	Xin lỗi. = Sorry / excuse me.
+
+12.3 Confirmation
+	•	Vâng. = yes (polite)
+	•	Dạ. = polite yes / respectful response
+	•	Không. = no
+	•	Được. = okay / can / acceptable
+	•	Không sao. = it is okay / no problem
+
+⸻
+
+13. VERY VIETNAMESE EVERYDAY SOCIAL LANGUAGE
+
+13.1 The classic everyday phrase
+	•	Ăn cơm chưa? = Have you eaten yet?
+
+This can function not only as a literal food question, but as a warm social check-in similar to “How are you?” in certain everyday contexts.
+
+13.2 Tone and friendliness matter
+
+Vietnamese daily speech often sounds relational, not purely informational.
+Warmth, small particles, and the right pronoun matter a lot.
+
+⸻
+
+14. DAILY SURVIVAL PHRASES
+
+These are extremely useful on a regular day-to-day basis.
+	•	Tôi không hiểu. = I do not understand.
+	•	Tôi chưa hiểu. = I do not understand yet.
+	•	Xin nói chậm thôi. = Please speak slowly.
+	•	Xin nhắc lại. = Please repeat.
+	•	Cái này là gì? = What is this?
+	•	Bao nhiêu tiền? = How much?
+	•	Ở đâu? = Where?
+	•	… ở đâu? = Where is …?
+	•	Nhà vệ sinh ở đâu? = Where is the bathroom?
+	•	Tôi muốn cái này. = I want this.
+	•	Giúp tôi với! = Help me!
+	•	Dừng ở đây. = Stop here.
+	•	Tôi bị lạc. = I am lost.
+
+⸻
+
+15. THE CHILLAX CAFÉ PACK
+
+Useful for your Friday speaking meetup and café life in general.
+
+15.1 Calling staff
+	•	Em ơi! = Excuse me / calling staff politely
+
+15.2 Ordering
+	•	Cho tôi một … = Give me one … / I would like one …
+
+15.3 Drinks
+	•	Cà phê sữa đá = iced milk coffee
+	•	Trà đá = iced tea
+	•	Nước = water
+	•	Bia = beer
+
+15.4 Customizing food and drinks
+	•	Ít đường = less sugar
+	•	Không đá = no ice
+	•	Cay = spicy
+	•	Không cay = not spicy
+
+15.5 Paying
+	•	Tính tiền! = Check / bill please
+
+15.6 Toasting
+	•	Một, hai, ba, vô! = One, two, three, cheers!
+
+⸻
+
+16. NAVIGATION & MOVING AROUND
+
+16.1 Asking where
+	•	… ở đâu? = Where is …?
+	•	Nhà vệ sinh ở đâu? = Where is the bathroom?
+
+16.2 Directions
+	•	Rẽ trái = turn left
+	•	Rẽ phải = turn right
+	•	Đi thẳng = go straight
+
+16.3 Transport terms
+	•	Xe ôm = motorbike taxi
+	•	Cyclo / xích lô = rickshaw / cycle taxi
+	•	Dừng ở đây = stop here
+
+16.4 Safety / trouble
+	•	Giúp tôi với! = Help me!
+	•	Tôi bị lạc. = I am lost.
+
+⸻
+
+17. SUPER-COMMON VERBS & HIGH-FREQUENCY WORDS
+
+These are used all the time.
+
+17.1 Core verbs
+	•	là = to be
+	•	có = to have / there is
+	•	đi = to go
+	•	đến = to come / arrive
+	•	về = to return / go back
+	•	ăn = to eat
+	•	uống = to drink
+	•	ngủ = to sleep
+	•	biết = to know
+	•	hiểu = to understand
+	•	thích = to like
+	•	muốn = to want
+	•	cần = to need
+	•	được = can / okay / receive / acceptable depending on context
+	•	ở = at / in / to live at
+	•	với = with
+	•	cho = give / for
+
+17.2 Common function words
+	•	này = this
+	•	đó / kia = that
+	•	rất = very
+	•	rồi = already
+	•	nữa = more / again
+
+17.3 Common question words
+	•	gì = what
+	•	ai = who
+	•	đâu = where
+	•	bao nhiêu = how much / how many
+	•	mấy giờ = what time
+	•	khi nào = when
+
+⸻
+
+18. REACTIONS, EXCLAMATIONS & SLANG
+
+Useful to sound more natural and expressive.
+	•	Trời ơi! = Oh my God! / Oh wow!
+	•	Bó tay = I give up / what can you do / my hands are tied
+	•	Xịn = high quality / awesome
+	•	Chất = cool / stylish / solid
+	•	Ủa? = Huh? / Wait, what?
+	•	Ngon quá! = So delicious!
+	•	Đẹp quá! = So beautiful!
+	•	Mệt quá! = So tired!
+
+These are heard constantly in everyday speech.
+
+⸻
+
+19. EXAMPLES OF SIMPLE DAILY SENTENCES
+	•	Tôi học tiếng Việt. = I study Vietnamese.
+	•	Tôi đang học tiếng Việt. = I am learning Vietnamese.
+	•	Tôi thích cà phê. = I like coffee.
+	•	Tôi muốn nước. = I want water.
+	•	Tôi không hiểu. = I do not understand.
+	•	Tôi chưa hiểu. = I do not understand yet.
+	•	Tôi sẽ đi. = I will go.
+	•	Tôi đã ăn rồi. = I already ate.
+	•	Bạn khỏe không? = Are you well?
+	•	Rất vui được gặp bạn. = Nice to meet you.
+
+⸻
+
+20. CULTURAL ETIQUETTE: THE VIBE
+
+These are the kinds of social and cultural behaviors that help daily interaction go more smoothly.
+
+20.1 Use both hands
+
+When giving or receiving items, using two hands can feel more respectful.
+
+20.2 Head and feet
+	•	Avoid touching someone’s head.
+	•	Avoid pointing your feet at people or sacred spaces.
+
+20.3 Shoes off
+
+Remove shoes before entering a home, and often at temples or certain indoor spaces.
+
+20.4 Dress modestly at religious sites
+
+Cover shoulders and knees when visiting temples or religious places.
+
+20.5 Greet elders first
+
+Respect toward elders is important.
+Use calm, polite, warm speech.
+
+20.6 General demeanor
+
+A calm, smiling, respectful manner goes a long way.
+Vietnamese communication often values warmth and social sensitivity.
+
+⸻
+
+21. BEGINNER STUDY ORDER
+
+Best order to learn:
+	1.	tones
+	2.	hard vowels
+	3.	contextual spelling/pronunciation families
+	4.	Telex typing
+	5.	pronouns
+	6.	50 common words
+	7.	10 survival phrases
+	8.	self-introduction
+	9.	café / ordering vocabulary
+	10.	speak often, even imperfectly
+
+⸻
+
+22. BEST BEGINNER FOCUS FOR REAL LIFE
+
+If you only focus on a few things at first, focus on these:
+	•	tones
+	•	vowels
+	•	typing
+	•	pronouns
+	•	daily phrases
+	•	café language
+	•	speaking regularly
+
+Main principle:
+Speak often, even imperfectly.
+
+⸻
+
+23. ULTRA-USEFUL MINI CHEAT SHEET
+
+Pronunciation
+	•	ă = short a
+	•	â = short uh
+	•	ê = close ay
+	•	ô = clipped oh
+	•	ơ = rounded uh/er
+	•	ư = ee with rounded lips
+	•	đ = d
+	•	d / gi = z or y depending on dialect
+
+Context families
+	•	c / k / qu
+	•	g / gh
+	•	ng / ngh
+	•	d / gi / đ
+	•	ph / th / kh / nh
+
+Telex
+	•	aa â
+	•	aw ă
+	•	ee ê
+	•	oo ô
+	•	ow ơ
+	•	uw ư
+	•	dd đ
+	•	s á
+	•	f à
+	•	r ả
+	•	x ã
+	•	j ạ
+	•	z clear mark
+
+Pronouns
+	•	tôi = I
+	•	bạn = you
+	•	anh = older male
+	•	chị = older female
+	•	em = younger person
+
+Time
+	•	hôm nay = today
+	•	hôm qua = yesterday
+	•	ngày mai = tomorrow
+	•	bây giờ = now
+	•	sáng / trưa / chiều / tối / đêm
+
+Useful phrases
+	•	Tôi là …
+	•	Tôi đang học tiếng Việt.
+	•	Tôi không hiểu.
+	•	Xin nói chậm thôi.
+	•	Xin nhắc lại.
+	•	Bao nhiêu tiền?
+	•	Nhà vệ sinh ở đâu?
+	•	Cái này là gì?
+	•	Giúp tôi với!
+	•	Ăn cơm chưa?
+
+⸻
+
+24. FULL WORD BANK FOR DAILY USE
+
+Greetings and social words
+	•	Xin chào
+	•	Chào bạn
+	•	Tạm biệt
+	•	Hẹn gặp lại
+	•	Cảm ơn
+	•	Cảm ơn nhiều
+	•	Không có gì
+	•	Xin lỗi
+	•	Vâng
+	•	Dạ
+	•	Không
+	•	Được
+	•	Không sao
+
+Daily actions
+	•	ăn
+	•	uống
+	•	đi
+	•	về
+	•	đến
+	•	ngủ
+	•	học
+	•	nói
+	•	nghe
+	•	hiểu
+	•	biết
+	•	muốn
+	•	thích
+	•	cần
+	•	giúp
+
+Everyday objects / concepts
+	•	nước
+	•	cà phê
+	•	cơm
+	•	tiền
+	•	nhà
+	•	bạn
+	•	người
+	•	đường
+	•	xe
+
+Questions
+	•	gì
+	•	ai
+	•	đâu
+	•	ở đâu
+	•	bao nhiêu
+	•	mấy giờ
+	•	khi nào
+	•	bao lâu
+
+Adjectives / reactions
+	•	ngon
+	•	đẹp
+	•	mệt
+	•	xịn
+	•	chất
+
+⸻
+
+25. FINAL MESSAGE FOR LEARNERS
+
+Vietnamese becomes much easier once you stop treating it like English with accents and start treating it like its own sound system.
+
+Your first wins should be:
+	•	hearing the tones
+	•	noticing the vowel differences
+	•	using the right pronoun roughly well
+	•	typing with Telex
+	•	saying short daily phrases confidently
+
+You do not need perfect grammar to start speaking.
+You need repetition, listening, and willingness to speak.
+
+Use Vietnamese every Friday at Chillax, use it in cafés, use it with friends, use it badly at first, and keep going.
+
+That is how it starts to become natural.
