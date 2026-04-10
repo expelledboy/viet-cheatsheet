@@ -328,6 +328,14 @@ test('applyPronouns handles peer context (mình/bạn)', () => {
   assert(result === 'Mình đang học tiếng Việt.', 'Should swap Tôi→Mình, got: ' + result);
 });
 
+test('applyPronouns protects "kết bạn" (friend, not you)', () => {
+  dom.window.STATE.pronounContext = 'olderMale';
+  var result = dom.window.applyPronouns('Bạn có Zalo không? Kết bạn đi!');
+  assert(result.includes('Kết bạn'), 'Should protect "kết bạn", got: ' + result);
+  assert(result.startsWith('Anh'), 'First Bạn should swap to Anh, got: ' + result);
+  dom.window.STATE.pronounContext = 'formal';
+});
+
 test('Pronoun selector pills exist', () => {
   var pills = document.querySelectorAll('.pronoun-pill');
   assert(pills.length === 6, 'Expected 6 pronoun pills, got ' + pills.length);

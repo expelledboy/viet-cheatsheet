@@ -1189,16 +1189,41 @@ var PRONOUNS = {
 
 function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
+// Compounds where bạn means "friend" (noun), not "you" (pronoun)
+var PROTECTED = ['k\u1EBFt b\u1EA1n', 'ng\u01B0\u1EDDi b\u1EA1n', 'b\u1EA1n b\u00E8'];
+
 function applyPronouns(text) {
   if (!STATE.pronounContext || STATE.pronounContext === 'formal') return text;
   var p = PRONOUNS[STATE.pronounContext];
   if (!p) return text;
+  // Protect compound words where bạn = friend (case-insensitive)
+  var restored = [];
+  PROTECTED.forEach(function(compound, i) {
+    var re = new RegExp(compound.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+    var match;
+    while ((match = re.exec(text)) !== null) {
+      var placeholder = '\x00P' + i + '_' + restored.length + '\x00';
+      restored.push({ placeholder: placeholder, original: match[0], index: match.index });
+    }
+    // Replace from end to preserve indices
+    for (var j = restored.length - 1; j >= 0; j--) {
+      var r = restored[j];
+      if (r.index !== undefined) {
+        text = text.substring(0, r.index) + r.placeholder + text.substring(r.index + r.original.length);
+        delete r.index; // consumed
+      }
+    }
+  });
   // Replace capitalized forms (sentence start)
   text = text.replace(/\bT\u00F4i\b/g, capitalize(p.self));
   text = text.replace(/\bB\u1EA1n\b/g, capitalize(p.other));
   // Replace lowercase forms (mid-sentence)
   text = text.replace(/\bt\u00F4i\b/g, p.self);
   text = text.replace(/\bb\u1EA1n\b/g, p.other);
+  // Restore protected compounds
+  restored.forEach(function(r) {
+    text = text.split(r.placeholder).join(r.original);
+  });
   return text;
 }
 
