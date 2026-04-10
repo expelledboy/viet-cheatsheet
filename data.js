@@ -55,6 +55,7 @@ const DATA = {
           learnable: true,
           content: [
             { type: "p", html: "The phrases that cover 80% of daily situations. Learn these first." },
+            { type: "highlight", html: 'These examples use <strong>tôi</strong> — safe and polite with anyone. As you get comfortable, swap it for the right kinship pronoun (em/anh/chị) based on who you\'re talking to. In learning mode, use the pronoun selector to see how phrases change. See §6 for the full pronoun system.' },
             { type: "vocab", items: [
               { vi: "T\u00F4i kh\u00F4ng hi\u1EC3u.", en: "I do not understand." },
               { vi: "T\u00F4i ch\u01B0a hi\u1EC3u.", en: "I do not understand yet." },

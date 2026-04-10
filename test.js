@@ -295,6 +295,62 @@ test('Known panel toggle expands/collapses', () => {
   assert(!body.classList.contains('open'), 'Panel body should be closed');
 });
 
+// ── Pronoun System Tests ──
+console.log('\nPronoun System:');
+
+test('applyPronouns exists and handles formal (no change)', () => {
+  dom.window.STATE.pronounContext = 'formal';
+  var result = dom.window.applyPronouns('Tôi không hiểu.');
+  assert(result === 'Tôi không hiểu.', 'Formal should not change text, got: ' + result);
+});
+
+test('applyPronouns swaps Tôi → Em for olderMale context', () => {
+  dom.window.STATE.pronounContext = 'olderMale';
+  var result = dom.window.applyPronouns('Tôi không hiểu.');
+  assert(result === 'Em không hiểu.', 'Should swap Tôi→Em, got: ' + result);
+});
+
+test('applyPronouns swaps lowercase tôi mid-sentence', () => {
+  dom.window.STATE.pronounContext = 'olderMale';
+  var result = dom.window.applyPronouns('Cho tôi một cái này.');
+  assert(result === 'Cho em một cái này.', 'Should swap tôi→em, got: ' + result);
+});
+
+test('applyPronouns swaps bạn → anh for olderMale context', () => {
+  dom.window.STATE.pronounContext = 'olderMale';
+  var result = dom.window.applyPronouns('Bạn khỏe không?');
+  assert(result === 'Anh khỏe không?', 'Should swap Bạn→Anh, got: ' + result);
+});
+
+test('applyPronouns handles peer context (mình/bạn)', () => {
+  dom.window.STATE.pronounContext = 'peer';
+  var result = dom.window.applyPronouns('Tôi đang học tiếng Việt.');
+  assert(result === 'Mình đang học tiếng Việt.', 'Should swap Tôi→Mình, got: ' + result);
+});
+
+test('Pronoun selector pills exist', () => {
+  var pills = document.querySelectorAll('.pronoun-pill');
+  assert(pills.length === 6, 'Expected 6 pronoun pills, got ' + pills.length);
+});
+
+test('refreshPronouns updates displayed text', () => {
+  dom.window.STATE.pronounContext = 'olderMale';
+  dom.window.refreshPronouns();
+  var viTexts = document.querySelectorAll('.vi-text[data-canonical]');
+  var found = false;
+  viTexts.forEach(function(el) {
+    if (el.getAttribute('data-canonical').indexOf('Tôi') === 0) {
+      assert(el.textContent.indexOf('Em') === 0 || el.textContent.indexOf('em') >= 0,
+        'Display should show Em, got: ' + el.textContent);
+      found = true;
+    }
+  });
+  assert(found, 'Should find at least one swapped vi-text');
+  // Reset
+  dom.window.STATE.pronounContext = 'formal';
+  dom.window.refreshPronouns();
+});
+
 // ── Summary ──
 console.log(`\n${passed + failed} tests: ${passed} passed, ${failed} failed\n`);
 process.exit(failed > 0 ? 1 : 0);

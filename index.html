@@ -837,6 +837,58 @@ body.learning-mode .progress-bar {
   border-color: #38a06c;
 }
 
+/* ── Pronoun Selector ── */
+.pronoun-bar {
+  max-width: 720px;
+  margin: 8px auto 0;
+  padding: 0 16px;
+  display: none;
+}
+
+body.learning-mode .pronoun-bar {
+  display: block;
+}
+
+.pronoun-bar-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.pronoun-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pronoun-pill {
+  padding: 5px 12px;
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--reveal-btn-bg);
+  color: var(--text-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: all var(--transition);
+}
+
+.pronoun-pill:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.pronoun-pill.active {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
 /* ── Known Phrases Panel ── */
 .known-panel {
   display: none;
@@ -1021,10 +1073,11 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
 // ── STATE: single source of truth for all user state ──
 // Loaded before render to prevent flash. Saved on every mutation.
 var STATE = {
-  theme: null,        // 'light' | 'dark' | null (follow OS)
-  mode: 'reference',  // 'reference' | 'learning'
-  known: [],          // Vietnamese strings marked as known
-  hideKnown: false    // whether to hide known items in learning mode
+  theme: null,           // 'light' | 'dark' | null (follow OS)
+  mode: 'reference',     // 'reference' | 'learning'
+  known: [],             // Vietnamese strings (canonical form) marked as known
+  hideKnown: false,      // whether to hide known items in learning mode
+  pronounContext: 'formal' // 'formal' | 'olderMale' | 'olderFemale' | 'youngerM' | 'youngerF' | 'peer'
 };
 (function() {
   try { Object.assign(STATE, JSON.parse(localStorage.getItem('state'))); } catch(e) {}
@@ -1128,6 +1181,40 @@ function updateAllProgress() {
   }
 }
 
+function refreshPronouns() {
+  // Update all vocab vi-text from their canonical form
+  document.querySelectorAll('.vi-text[data-canonical]').forEach(function(el) {
+    el.textContent = applyPronouns(el.getAttribute('data-canonical'));
+  });
+  // Refresh known panel display
+  updateAllProgress();
+}
+
+// ── Pronoun System ──
+var PRONOUNS = {
+  formal:      { self: 'tôi',  other: 'bạn',  label: 'Formal' },
+  olderMale:   { self: 'em',   other: 'anh',  label: '\u2192 Anh' },
+  olderFemale: { self: 'em',   other: 'ch\u1ECB', label: '\u2192 Ch\u1ECB' },
+  youngerM:    { self: 'anh',  other: 'em',   label: 'Anh \u2192' },
+  youngerF:    { self: 'ch\u1ECB',  other: 'em',   label: 'Ch\u1ECB \u2192' },
+  peer:        { self: 'm\u00ECnh', other: 'b\u1EA1n',  label: 'Peer' }
+};
+
+function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+function applyPronouns(text) {
+  if (!STATE.pronounContext || STATE.pronounContext === 'formal') return text;
+  var p = PRONOUNS[STATE.pronounContext];
+  if (!p) return text;
+  // Replace capitalized forms (sentence start)
+  text = text.replace(/\bT\u00F4i\b/g, capitalize(p.self));
+  text = text.replace(/\bB\u1EA1n\b/g, capitalize(p.other));
+  // Replace lowercase forms (mid-sentence)
+  text = text.replace(/\bt\u00F4i\b/g, p.self);
+  text = text.replace(/\bb\u1EA1n\b/g, p.other);
+  return text;
+}
+
 // ── Renderer ──
 (function render() {
   var app = document.getElementById('app');
@@ -1187,6 +1274,28 @@ function updateAllProgress() {
   resetBtn.addEventListener('click', function() { resetProgress(); });
   totalProgress.appendChild(resetBtn);
   tocNav.insertAdjacentElement('afterend', totalProgress);
+
+  // Pronoun selector
+  var pronounBar = document.createElement('div');
+  pronounBar.className = 'pronoun-bar';
+  pronounBar.innerHTML = '<div class="pronoun-bar-label">Speaking to\u2026</div>';
+  var pillContainer = document.createElement('div');
+  pillContainer.className = 'pronoun-pills';
+  Object.keys(PRONOUNS).forEach(function(key) {
+    var pill = document.createElement('button');
+    pill.className = 'pronoun-pill' + (STATE.pronounContext === key ? ' active' : '');
+    pill.textContent = PRONOUNS[key].label;
+    pill.addEventListener('click', function() {
+      STATE.pronounContext = key;
+      saveState();
+      pillContainer.querySelectorAll('.pronoun-pill').forEach(function(p) { p.classList.remove('active'); });
+      pill.classList.add('active');
+      refreshPronouns();
+    });
+    pillContainer.appendChild(pill);
+  });
+  pronounBar.appendChild(pillContainer);
+  totalProgress.insertAdjacentElement('afterend', pronounBar);
 
   // Known phrases panel — appears after 3+ known
   var knownPanel = document.createElement('div');
@@ -1405,7 +1514,8 @@ function updateAllProgress() {
           var viSpan = document.createElement('span');
           viSpan.className = 'vi-text';
           viSpan.setAttribute('lang', 'vi');
-          viSpan.textContent = item.vi;
+          viSpan.setAttribute('data-canonical', item.vi);
+          viSpan.textContent = applyPronouns(item.vi);
           var eqSpan = document.createElement('span');
           eqSpan.className = 'eq-sign';
           eqSpan.textContent = '=';
