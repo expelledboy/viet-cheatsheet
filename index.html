@@ -1057,9 +1057,25 @@ const DATA = {
               { vi: "\u00F4ng", en: "grandfather / elderly man" },
               { vi: "b\u00E0", en: "grandmother / elderly woman" }
             ]},
-            { type: "h3", text: "5.4 Very Safe Beginner Rule" },
-            { type: "highlight", html: 'If unsure, use <strong lang="vi">t\u00F4i</strong> for "I" and <strong lang="vi">b\u1EA1n</strong> for "you." Then gradually learn family-style pronouns as you get more comfortable.' },
-            { type: "h3", text: "5.5 Social Note" },
+            { type: "h3", text: "The Pronoun Shift" },
+            { type: "prose", html: "Pronouns change based on WHO you're talking to, not who you are. If you're a 25-year-old woman talking to a 30-year-old man, you call yourself <strong>em</strong> and him <strong>anh</strong>. Five minutes later, talking to a 20-year-old guy, you flip: you're <strong>chị</strong>, he's <strong>em</strong>. The pronouns change; your age doesn't." },
+            { type: "h3", text: "Getting Attention: [pronoun] + ơi" },
+            { type: "vocab", items: [
+              { vi: "Em \u01A1i!", en: "Hey! (to younger person / staff)" },
+              { vi: "Anh \u01A1i!", en: "Hey! (to older male)" },
+              { vi: "Ch\u1ECB \u01A1i!", en: "Hey! (to older female)" }
+            ]},
+            { type: "highlight", html: "This is how you get attention at restaurants, shops, and street stalls. Not \"Hello!\" — not waving — <strong>[pronoun] + ơi</strong>." },
+            { type: "h3", text: "Casual & Close Friends" },
+            { type: "vocab", items: [
+              { vi: "t\u1EDBi", en: "I (informal, friends)" },
+              { vi: "tui", en: "I (Southern casual)" },
+              { vi: "tao", en: "I (very close friends ONLY — rude otherwise)" },
+              { vi: "m\u00E0y", en: "you (very close friends ONLY — rude otherwise)" }
+            ]},
+            { type: "highlight", html: '<strong>Warning:</strong> <strong>tao / mày</strong> are intimate pronouns for close friends. Using them with anyone else "will cause a fight" — every native speaker source agrees on this.' },
+            { type: "h3", text: "Safe Beginner Rule" },
+            { type: "highlight", html: 'If unsure, use <strong lang="vi">t\u00F4i</strong> for "I" and <strong lang="vi">b\u1EA1n</strong> for "you." It sounds slightly formal but never offends. Then gradually learn family-style pronouns as you get more comfortable.' },
             { type: "prose", html: 'Vietnamese often uses kinship terms where English would use "you" and "I." This is normal, warm, and culturally important.' }
           ]
         },
@@ -1365,6 +1381,26 @@ const DATA = {
               { vi: "Ngon quá!", en: "So delicious!" },
               { vi: "Tính tiền!", en: "Bill please!" }
             ]},
+            { type: "h3", text: "Eating Here or Takeaway" },
+            { type: "vocab", items: [
+              { vi: "Ăn tại đây hay mang đi?", en: "Eating here or takeaway? (staff asks)" },
+              { vi: "Ăn tại đây.", en: "Eating here." },
+              { vi: "Mang đi.", en: "Takeaway / to go." }
+            ]},
+            { type: "h3", text: "Paying" },
+            { type: "vocab", items: [
+              { vi: "Tính tiền!", en: "Bill please!" },
+              { vi: "Bao nhiêu tất cả?", en: "How much in total?" },
+              { vi: "Tôi trả tiền mặt.", en: "I'll pay cash." },
+              { vi: "Trả thẻ được không?", en: "Can I pay by card?" },
+              { vi: "Em giữ lại đi.", en: "Keep the change." }
+            ]},
+            { type: "h3", text: "What's Good Here?" },
+            { type: "vocab", items: [
+              { vi: "Hôm nay có món gì ngon?", en: "What's good today?" },
+              { vi: "Món nào bán chạy nhất?", en: "What's the most popular dish?" },
+              { vi: "Anh/chị hay ăn gì?", en: "What do you usually eat? (asking locals)" }
+            ]},
             { type: "h3", text: "Bánh Mì at a Street Stall" },
             { type: "vocab", items: [
               { vi: "Cho tôi một ổ bánh mì thịt.", en: "One meat bánh mì please." },
@@ -1458,7 +1494,14 @@ const DATA = {
               { vi: "Thôi, tôi đi xem hàng khác.", en: "I'll look elsewhere. (walk away)" },
               { vi: "Được rồi, tôi mua.", en: "Okay, I'll buy it." }
             ]},
+            { type: "h3", text: "Vendor Responses You'll Hear" },
+            { type: "vocab", items: [
+              { vi: "Không được, lỗ lắm.", en: "Can't, I'd lose money." },
+              { vi: "Giá đó là giá tốt rồi.", en: "That's already a good price." },
+              { vi: "Hàng tốt lắm.", en: "The quality is very good." }
+            ]},
             { type: "highlight", html: "<strong>Price trap:</strong> Vendors drop trailing zeros. \"Ba mươi\" means 30,000 VND, not 30. Always mentally add three zeros." },
+            { type: "prose", html: "<p><strong>Bargaining tips:</strong> Start at 40-50% of asking price at tourist markets, 80-90% at local markets. Smile throughout — anger kills the deal. Buying multiple items is a strong discount trigger. The walk-away is legitimate and often works. But if you agree on a price, you're obligated to buy.</p>" },
             { type: "h3", text: "Buying Fruit" },
             { type: "vocab", items: [
               { vi: "Xoài bao nhiêu một ký?", en: "How much is mango per kilo?" },
@@ -1519,12 +1562,37 @@ const DATA = {
               { vi: "Mình có thể luyện tiếng Việt với bạn không?", en: "Can I practice Vietnamese with you?" },
               { vi: "Mình muốn trao đổi ngôn ngữ.", en: "I want to do a language exchange." }
             ]},
-            { type: "highlight", html: '<strong>Magic phrase:</strong> Saying "Tôi đang học tiếng Việt" triggers immediate warmth, slower speech, and encouragement from nearly every Vietnamese person.' }
+            { type: "highlight", html: '<strong>Magic phrase:</strong> Saying "Tôi đang học tiếng Việt" triggers immediate warmth, slower speech, and encouragement from nearly every Vietnamese person.' },
+            { type: "h3", text: "Getting a Haircut" },
+            { type: "vocab", items: [
+              { vi: "Tôi muốn cắt tóc.", en: "I'd like a haircut." },
+              { vi: "Cắt tóc giá bao nhiêu?", en: "How much for a haircut? (ask first!)" },
+              { vi: "Cắt ngắn thôi.", en: "Just cut it short." },
+              { vi: "Đừng cắt ngắn quá.", en: "Don't cut it too short." },
+              { vi: "Tỉa một chút thôi.", en: "Just a trim." },
+              { vi: "Tôi muốn cắt kiểu này.", en: "I want this style. (show a photo)" },
+              { vi: "Được rồi, cảm ơn.", en: "That's good, thank you." }
+            ]},
+            { type: "h3", text: "Pharmacy — What They'll Say Back" },
+            { type: "vocab", items: [
+              { vi: "Uống một ngày ba lần.", en: "Take three times a day." },
+              { vi: "Uống trước bữa ăn.", en: "Take before meals." },
+              { vi: "Uống sau bữa ăn.", en: "Take after meals." },
+              { vi: "Tôi bị dị ứng với...", en: "I'm allergic to..." },
+              { vi: "Chúc anh/chị mau khỏe.", en: "Hope you feel better soon. (pharmacist says)" }
+            ]},
+            { type: "h3", text: "Hobbies & Weekend Plans" },
+            { type: "vocab", items: [
+              { vi: "Cuối tuần này bạn có kế hoạch gì không?", en: "Do you have plans this weekend?" },
+              { vi: "Lúc rảnh bạn thích làm gì?", en: "What do you like doing in your free time?" },
+              { vi: "Mình hay đi chụp ảnh.", en: "I usually go take photos." },
+              { vi: "Bữa nào đi cùng mình nha!", en: "Come along with me sometime!" }
+            ]}
           ]
         }
       ]
-    },,
-        {
+    },
+    {
       name: "Speaking Naturally",
       sections: [
         {
@@ -1576,7 +1644,32 @@ const DATA = {
               { vi: "Lần sau nhé?", en: "Next time?" },
               { vi: "Để mình xem đã nha.", en: "Let me check first. (polite delay)" },
               { vi: "Chắc là khó quá.", en: "That might be too difficult. (soft no)" }
-            ]}
+            ]},
+            { type: "h3", text: "The Được Spectrum" },
+            { type: "p", html: "One word, many emotional registers:" },
+            { type: "vocab", items: [
+              { vi: "Được!", en: "Okay! Sure! (willing)" },
+              { vi: "Được rồi.", en: "Okay, I get it. (mild impatience)" },
+              { vi: "Được thôi.", en: "I guess it's fine... (reluctant)" },
+              { vi: "Thôi được rồi.", en: "Alright, fine. (resigned acceptance)" }
+            ]},
+            { type: "h3", text: "Intensifiers: rất vs lắm vs quá" },
+            { type: "p", html: "Three ways to say 'very' — different feel:" },
+            { type: "vocab", items: [
+              { vi: "Rất ngon.", en: "Very delicious. (formal / written feel)" },
+              { vi: "Ngon lắm!", en: "Really delicious! (casual spoken)" },
+              { vi: "Ngon quá!", en: "So delicious! (exclamatory)" }
+            ]},
+            { type: "highlight", html: "<strong>Rule of thumb:</strong> <strong>rất</strong> goes BEFORE the adjective (formal). <strong>lắm</strong> and <strong>quá</strong> go AFTER (casual/spoken). In daily conversation, <strong>lắm</strong> and <strong>quá</strong> are what you'll hear and use." },
+            { type: "h3", text: "Answering Questions: chưa vs không" },
+            { type: "p", html: 'When someone asks a <strong>...chưa?</strong> question, answer with <strong>rồi</strong> or <strong>chưa</strong> — NOT có/không:' },
+            { type: "vocab", items: [
+              { vi: "Ăn cơm chưa? → Ăn rồi.", en: "Eaten yet? → Already ate. (correct)" },
+              { vi: "Ăn cơm chưa? → Chưa.", en: "Eaten yet? → Not yet. (correct)" },
+              { vi: "Bạn có thích không? → Có.", en: "Do you like it? → Yes. (correct)" },
+              { vi: "Bạn có thích không? → Không.", en: "Do you like it? → No. (correct)" }
+            ]},
+            { type: "highlight", html: 'Answering a <strong>chưa</strong> question with <strong>không</strong> sounds like you\'re rejecting the concept entirely. "Ăn cơm chưa?" → "Không" sounds like you refuse to eat rice as a concept.' }
           ]
         },
         {
