@@ -1,0 +1,12 @@
+{
+  "name": "viet-cheatsheet",
+  "private": true,
+  "description": "Free, mobile-first Vietnamese language cheat sheet with progress tracking and pronoun context switching.",
+  "license": "MIT",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "devDependencies": {
+    "jsdom": "^29.0.2"
+  }
+}

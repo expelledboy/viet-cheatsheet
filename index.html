@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A free, mobile-first Vietnamese cheat sheet with 28 sections — survival phrases, food ordering, bargaining, grammar, tones, and real conversation patterns. Two modes: reference and self-quiz. No app needed.">
+<meta name="description" content="Free Vietnamese cheat sheet with progress tracking and pronoun context switching. 28 sections: survival phrases, food ordering, bargaining, real conversations, sentence particles, and more. Tap to pronounce. Quiz yourself. Track what you know. No app needed.">
 <title>Vietnamese Cheat Sheet — Learn Vietnamese Fast</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇻🇳</text></svg>">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Vietnamese Cheat Sheet">
-<meta property="og:description" content="28 sections of practical Vietnamese — survival phrases, food ordering, bargaining, natural speech patterns. Reference mode + self-quiz. Free, mobile-first, no app needed.">
+<meta property="og:title" content="Vietnamese Cheat Sheet — Reference + Practice Tool">
+<meta property="og:description" content="28 sections of practical Vietnamese with progress tracking. Switch pronoun context to see how phrases change. Tap to pronounce. Quiz yourself. Track what you know. Free, mobile-first, zero dependencies.">
 <meta property="og:url" content="https://expelledboy.github.io/viet-cheatsheet/">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Vietnamese Cheat Sheet">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vietnamese Cheat Sheet">
-<meta name="twitter:description" content="28 sections of practical Vietnamese — survival phrases, ordering food, bargaining, natural speech. Free, mobile-first, self-quiz mode.">
+<meta name="twitter:title" content="Vietnamese Cheat Sheet — Reference + Practice Tool">
+<meta name="twitter:description" content="28 sections of practical Vietnamese with progress tracking and pronoun switching. Tap to pronounce. Quiz yourself. Free, mobile-first.">
 <style>
 *, *::before, *::after {
   box-sizing: border-box;
@@ -925,6 +925,13 @@ body.hide-known .vocab-item.known-item {
   background: var(--neutral-bg);
   border-radius: 6px;
   border-left: 3px solid #38a06c;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--transition);
+}
+
+.known-panel-list li:active {
+  background: var(--red-light);
 }
 
 .known-panel-list .kp-vi {
@@ -1127,7 +1134,7 @@ function updateAllProgress() {
       var vi = vocabItem.querySelector('.vi-text').textContent;
       var enEl = vocabItem.querySelector('.en-text');
       var en = enEl ? enEl.textContent : '';
-      html += '<li><span class="kp-vi">' + vi + '</span> <span class="kp-en">' + en + '</span></li>';
+      html += '<li data-vi="' + vi.replace(/"/g, '&quot;') + '"><span class="kp-vi">\uD83D\uDD0A ' + vi + '</span> <span class="kp-en">' + en + '</span></li>';
     });
     html += '</ul>';
     panelBody.innerHTML = html;
@@ -1713,6 +1720,19 @@ if (knownPanelToggle) {
   knownPanelToggle.addEventListener('click', function() {
     knownPanelToggle.classList.toggle('open');
     knownPanelBody.classList.toggle('open');
+  });
+  // Tap a known phrase to hear it
+  knownPanelBody.addEventListener('click', function(e) {
+    var li = e.target.closest('li[data-vi]');
+    if (!li) return;
+    var text = li.getAttribute('data-vi');
+    if (text && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      var utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'vi-VN';
+      utter.rate = 0.85;
+      window.speechSynthesis.speak(utter);
+    }
   });
 }
 

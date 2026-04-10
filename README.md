@@ -1,6 +1,6 @@
 # 🇻🇳 Vietnamese Cheat Sheet
 
-A free, mobile-first Vietnamese language reference with progress tracking — built for learners who need to look something up and use it right now.
+A free, mobile-first Vietnamese language reference and practice tool — with progress tracking, pronoun context switching, and tap-to-pronounce.
 
 **[Open the cheat sheet →](https://expelledboy.github.io/viet-cheatsheet/)**
 
@@ -12,9 +12,19 @@ Whether you're ordering phở at a street stall, bargaining at a market, or tryi
 
 **Reference mode** — everything visible at once, organized into collapsible sections. Scan and find what you need fast.
 
-**Learning mode** — translations hidden behind tap-to-reveal flashcards. Mark phrases as "known" to track your progress. Hide what you've mastered and focus on what's left.
+**Learning mode** — translations hidden behind tap-to-reveal flashcards. Sub-section toggles let you reveal answers one topic at a time. Mark phrases as "known" to track your progress. Hide what you've mastered and focus on what's left.
 
-Switch between them with a single toggle. Your mode, progress, and preferences persist across visits.
+---
+
+## Features
+
+- **Progress tracking** — mark phrases as "known," see progress per section and overall. Your "Phrases You Know" panel grows as you learn. Persists across visits.
+- **Pronoun context** — select who you're speaking to (Formal, Older ♂, Older ♀, Younger, Peer) and all phrases update their pronouns in real time. Teaches the Vietnamese pronoun system naturally.
+- **Tap to pronounce** — 🔊 buttons use your device's Vietnamese speech engine. Available in both modes. Known phrases panel is also tappable for quick audio review.
+- **Category tabs** — horizontal scrollable navigation, always visible. One tap to jump to any category. Active tab highlights as you scroll.
+- **Dark & light mode** — follows your system preference, remembers your choice.
+- **Mobile-first** — designed for phones, scales to desktop.
+- **Zero dependencies** — no frameworks, no CDNs, no build step, no app to install.
 
 ---
 
@@ -27,21 +37,10 @@ Switch between them with a single toggle. Your mode, progress, and preferences p
 - **Grammar** — pronouns (the social engine), sentence structure, time/aspect, classifiers
 - **Vocabulary** — numbers, time words, common verbs
 - **Daily Phrases** — introductions, pleasantries, café ordering
-- **Real Conversations** — full exchanges for ordering food, getting around, bargaining, pharmacy, making friends
-- **Speaking Naturally** — what textbooks skip: natural greetings, sentence-ending particles, filler words, North vs South differences
+- **Real Conversations** — full exchanges for ordering food, getting around, bargaining, pharmacy, hotel check-in, temple visits, making friends
+- **Speaking Naturally** — what textbooks skip: natural greetings, sentence-ending particles, filler words, the được spectrum, chưa vs không, North vs South differences
 - **Culture & Study Guide** — etiquette tips, recommended learning order
 - **Quick Reference** — condensed cheat sheet for screenshots
-
----
-
-## Features
-
-- **Progress tracking** — mark phrases as "known," see progress per section and overall. Persists in your browser.
-- **Tap to pronounce** — 🔊 buttons use your device's Vietnamese speech engine. No audio files.
-- **Dark & light mode** — follows your system preference, remembers your choice.
-- **Mobile-first** — designed for phones, scales to desktop.
-- **Zero dependencies** — no frameworks, no CDNs, no build step, no app to install.
-- **Instant access** — hosted on GitHub Pages, works offline once loaded.
 
 ---
 
@@ -58,10 +57,11 @@ open viet-cheatsheet/index.html
 
 Content lives in `data.js` — a typed JavaScript data model. The renderer (`index.html`) reads it automatically. You never need to touch the HTML.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the data model, block types, and guidelines.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the data model, block types, STATE object, and guidelines.
 
 ```sh
-node test.js  # 28 tests — run before submitting
+npm install   # first time only
+node test.js  # 41 tests — run before submitting
 ```
 
 The spirit of this project: *speak often, even imperfectly.*
