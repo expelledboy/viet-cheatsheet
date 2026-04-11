@@ -62,7 +62,7 @@ console.log('Rendering:');
 test('DATA object exists and rendered content', () => {
   // DATA is defined via const so may not be on window — test via rendered output
   const sections = document.querySelectorAll('.section-card');
-  assert(sections.length === 28, 'DATA should produce 28 sections');
+  assert(sections.length === 30, 'DATA should produce 30 sections');
 });
 
 test('STATE object exists', () => {
@@ -75,7 +75,7 @@ test('STATE object exists', () => {
 
 test('All 28 sections rendered', () => {
   const sections = document.querySelectorAll('.section-card');
-  assert(sections.length === 28, `Expected 28 sections, got ${sections.length}`);
+  assert(sections.length === 30, `Expected 28 sections, got ${sections.length}`);
 });
 
 test('All 11 categories rendered', () => {
@@ -397,6 +397,53 @@ test('refreshPronouns updates displayed text', () => {
   // Reset
   dom.window.STATE.pronounContext = 'formal';
   dom.window.refreshPronouns();
+});
+
+// ── Content Integrity ──
+console.log('Content Integrity:');
+
+test('No Unicode escape sequences in data.js', () => {
+  assert(!/\\u[0-9A-Fa-f]{4}/.test(dataJs),
+    'data.js contains \\uXXXX escape sequences — use native UTF-8 characters');
+});
+
+test('Section IDs are sequential 0..N', () => {
+  const ids = [];
+  const idPattern = /\bid:\s*(\d+)/g;
+  let m;
+  while ((m = idPattern.exec(dataJs)) !== null) ids.push(parseInt(m[1]));
+  for (let i = 0; i < ids.length; i++) {
+    assert(ids[i] === i, `Expected section id ${i}, got ${ids[i]}`);
+  }
+});
+
+test('Subsection numbers match parent section', () => {
+  const sections = document.querySelectorAll('.section-card');
+  sections.forEach(sec => {
+    const title = sec.querySelector('h2')?.textContent || '';
+    const secNum = parseInt(title);
+    if (isNaN(secNum)) return;
+    const h3s = sec.querySelectorAll('h3');
+    h3s.forEach(h3 => {
+      const text = h3.textContent.replace(/◉$/, '');
+      const m = text.match(/^(\d+)\.\d+/);
+      if (m) {
+        assert(parseInt(m[1]) === secNum,
+          `Section "${title}" has mismatched subsection "${text}"`);
+      }
+    });
+  });
+});
+
+test('Every vocab item has non-empty vi and en', () => {
+  const viEls = document.querySelectorAll('.vi-text');
+  const enEls = document.querySelectorAll('.en-text');
+  viEls.forEach(el => {
+    assert(el.textContent.trim().length > 0, 'Empty vi-text found');
+  });
+  enEls.forEach(el => {
+    assert(el.textContent.trim().length > 0, 'Empty en-text found');
+  });
 });
 
 // ── Summary ──
