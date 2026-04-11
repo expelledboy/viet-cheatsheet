@@ -531,21 +531,6 @@ body.learning-mode .flashcard:not(.revealed) .eq-sign {
 body.learning-mode .flashcard:not(.revealed) {
   background: var(--flashcard-unrevealed-bg);
   border: 1px dashed var(--flashcard-unrevealed-border);
-  padding-left: 40px;
-}
-
-body.learning-mode .flashcard:not(.revealed)::before {
-  content: 'tap';
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.6rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--flashcard-unrevealed-text);
-  font-weight: 600;
-  opacity: 0.6;
 }
 
 body.learning-mode .flashcard.revealed {
@@ -1162,8 +1147,8 @@ var PRONOUNS = {
 
 function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
-// Compounds where bạn means "friend" (noun), not "you" (pronoun)
-var PROTECTED = ['k\u1EBFt b\u1EA1n', 'ng\u01B0\u1EDDi b\u1EA1n', 'b\u1EA1n b\u00E8'];
+// Compounds where tôi/bạn is part of a fixed phrase, not a swappable pronoun
+var PROTECTED = ['ch\u00FAng t\u00F4i', 'k\u1EBFt b\u1EA1n', 'ng\u01B0\u1EDDi b\u1EA1n', 'b\u1EA1n b\u00E8'];
 
 function applyPronouns(text) {
   if (!STATE.pronounContext || STATE.pronounContext === 'formal') return text;
