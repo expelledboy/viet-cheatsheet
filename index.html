@@ -1123,9 +1123,9 @@ function updateAllProgress() {
   var panel = document.getElementById('knownPanel');
   var panelBody = document.getElementById('knownPanelBody');
   if (panel && panelBody) {
-    var THRESHOLD = 3;
-    panel.classList.toggle('visible', knownAll >= THRESHOLD);
-    panel.querySelector('.known-panel-count').textContent = '(' + knownAll + ')';
+    var knownTotal = knownSet.size;
+    panel.classList.toggle('visible', knownTotal > 0);
+    panel.querySelector('.known-panel-count').textContent = '(' + knownTotal + ')';
     // Build phrase list from all checked buttons
     var items = document.querySelectorAll('.known-btn.checked');
     var html = '<ul class="known-panel-list">';
