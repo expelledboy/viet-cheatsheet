@@ -62,7 +62,7 @@ console.log('Rendering:');
 test('DATA object exists and rendered content', () => {
   // DATA is defined via const so may not be on window — test via rendered output
   const sections = document.querySelectorAll('.section-card');
-  assert(sections.length === 30, 'DATA should produce 30 sections');
+  assert(sections.length === 31, 'DATA should produce 30 sections');
 });
 
 test('STATE object exists', () => {
@@ -75,7 +75,7 @@ test('STATE object exists', () => {
 
 test('All 28 sections rendered', () => {
   const sections = document.querySelectorAll('.section-card');
-  assert(sections.length === 30, `Expected 28 sections, got ${sections.length}`);
+  assert(sections.length === 31, `Expected 28 sections, got ${sections.length}`);
 });
 
 test('All 11 categories rendered', () => {

@@ -652,7 +652,7 @@ const DATA = {
           title: "14. Daily Pleasantries",
           learnable: true,
           content: [
-            { type: "prose", html: "These are correct but formal. See §22 for what people actually say in daily life." },
+            { type: "prose", html: "These are correct but formal. See §23 for what people actually say in daily life." },
             { type: "h3", text: "14.1 Greetings" },
             { type: "vocab", items: [
               { vi: "Xin chào.", en: "Hello. (formal)" },
@@ -1008,6 +1008,76 @@ const DATA = {
             ]},
             { type: "highlight", html: "<strong>Tạm trú</strong> (temporary residence registration) is a legal requirement. Ask your landlord to register you — landlords who refuse are a red flag." }
           ]
+        },
+        {
+          id: 22,
+          title: "22. Dating &amp; Romance",
+          learnable: true,
+          content: [
+            { type: "prose", html: "<p>Vietnamese flirting is <strong>indirect, teasing, and particle-heavy</strong>. The softening particles (nha, nhé, đi, nè) do enormous emotional work. Master them and you'll sound warm. Ignore them and you'll sound robotic.</p>" },
+            { type: "h3", text: "Showing Interest" },
+            { type: "p", html: "Vietnamese flirting uses teasing (<strong>ghẹo</strong>) and indirectness. Direct compliments are softened; interest is shown playfully." },
+            { type: "vocab", items: [
+              { vi: "Cười duyên quá vậy?", en: "Why is your smile so charming?" },
+              { vi: "Nói chuyện vui ghê, muốn nói tiếp.", en: "Talking with you is so fun, I want to keep going." },
+              { vi: "Hôm nay đẹp dữ, có hẹn hò ai hả?", en: "You look amazing today, got a date? (teasing)" },
+              { vi: "Cho anh xin Zalo nha.", en: "Let me add your Zalo. (the real move)" },
+              { vi: "Ghẹo người ta hoài!", en: "You keep teasing me! (flirtatious)" },
+              { vi: "Bị gì mà cứ nhìn người ta hoài vậy?", en: "Why do you keep looking at me? (they tease you)" }
+            ]},
+            { type: "highlight", html: '<strong>"Người ta"</strong> (people/one) used to refer to oneself is a classic Vietnamese flirting move. If someone says <span lang="vi">người ta</span> meaning "me" — they\'re being playful.' },
+            { type: "h3", text: "Asking Someone Out" },
+            { type: "p", html: '<span lang="vi"><strong>Đi chơi</strong></span> (go hang out) is intentionally vague — it lets both sides save face. Coffee is the standard first date. You don\'t need the word "hẹn hò" (date).' },
+            { type: "vocab", items: [
+              { vi: "Cuối tuần rảnh không? Đi cà phê nha.", en: "Free this weekend? Let's grab coffee." },
+              { vi: "Đi chơi với anh/em đi.", en: "Come hang out with me." },
+              { vi: "Có chỗ hay lắm, muốn dẫn bạn đi.", en: "I know a cool place, I want to take you." },
+              { vi: "Cho anh dẫn đi ăn gì đi.", en: "Let me take you out to eat." },
+              { vi: "Bữa nào rảnh thì hẹn nhau.", en: "Whenever you're free, let's set a time." },
+              { vi: "Lần sau mình đi chơi tiếp nha?", en: "Let's hang out again next time?" }
+            ]},
+            { type: "h3", text: "On a Date" },
+            { type: "vocab", items: [
+              { vi: "Chỗ này không khí hay ghê.", en: "This place has a great vibe." },
+              { vi: "Ăn thử cái này đi, ngon lắm.", en: "Try this, it's really good." },
+              { vi: "Để anh/em trả nha.", en: "Let me pay." },
+              { vi: "Chia đôi đi.", en: "Let's split it." },
+              { vi: "Nói chuyện với bạn vui quá, quên luôn thời gian.", en: "Talking with you is so fun, I lost track of time." },
+              { vi: "Lần sau mình đi đâu tiếp?", en: "Where should we go next time?" },
+              { vi: "Hôm nay vui ghê, cảm ơn nha.", en: "Today was so fun, thank you." },
+              { vi: "Về tới chưa? Nhắn anh/em nha.", en: "Home safe? Text me. (expected post-date)" }
+            ]},
+            { type: "highlight", html: "<strong>Who pays:</strong> The inviter typically pays. Most Vietnamese women still expect the man to offer. Insisting on always splitting can read as stingy. If she says <span lang=\"vi\">Chia đôi đi</span> and means it, respect that." },
+            { type: "h3", text: "Texting" },
+            { type: "p", html: "Zalo dominates. Vietnamese dating involves <strong>constant messaging</strong> — good morning/good night texts are standard. Not replying for hours without reason is read negatively." },
+            { type: "vocab", items: [
+              { vi: "Đang làm gì đó?", en: "What are you doing? (= I'm thinking of you)" },
+              { vi: "Ăn cơm chưa?", en: "Have you eaten? (= I care about you)" },
+              { vi: "Ngủ ngon nha.", en: "Sleep well. (expected good-night text)" },
+              { vi: "Nhớ ghê.", en: "I miss you so much." },
+              { vi: "Gửi hình đi, muốn coi mặt.", en: "Send a selfie, I want to see your face." },
+              { vi: "Anh/em bận, tí nữa nhắn lại nha.", en: "I'm busy, I'll text back soon." }
+            ]},
+            { type: "prose", html: "<strong>Text abbreviations you'll see:</strong> k/ko/kg = không, dc = được, r = rồi, bt = bình thường/biết, ib = inbox (DM me), nhìu = nhiều. Sticker culture is big — 🥺 is used to be cute/pleading, 😘 is flirty, ❤️ is more serious." },
+            { type: "h3", text: "Getting Serious" },
+            { type: "vocab", items: [
+              { vi: "Mình đang là gì của nhau?", en: "What are we to each other?" },
+              { vi: "Em là người yêu anh, đúng không?", en: "You're my girlfriend/boyfriend, right?" },
+              { vi: "Anh muốn giới thiệu em với ba mẹ anh.", en: "I want to introduce you to my parents. (big deal)" },
+              { vi: "Anh yêu em.", en: "I love you. (don't say this lightly)" },
+              { vi: "Bé/cưng ơi.", en: "Baby/sweetie. (common pet names)" }
+            ]},
+            { type: "highlight", html: "<strong>The anh/em shift:</strong> When dating begins, anh/em stops being age-based and becomes romantic. If someone switches from <strong>bạn</strong> to calling you <strong>anh</strong> (or themselves <strong>em</strong>) in a soft voice — that's a relationship signal. Even if she's older, she may use <strong>em</strong> for herself. This is one of the most significant markers in Vietnamese." },
+            { type: "h3", text: "Dating Culture Notes" },
+            { type: "prose", html: "<p><strong>Family is involved early.</strong> A relationship isn't just between two people. \"Where is this going?\" conversations happen sooner than Westerners expect. Meeting parents = serious commitment, not casual.</p>" },
+            { type: "prose", html: "<p><strong>\"Tán\" (courting) culture:</strong> Vietnamese dating involves a pursuit phase — daily texts, bringing food/drinks to their workplace, small gifts, consistent effort. What feels \"too much\" by Western standards is often baseline. Conversely, being too laid-back reads as not serious.</p>" },
+            { type: "ul", items: [
+              "<strong>Don't assume financial motives.</strong> It's insulting and usually wrong.",
+              "<strong>Don't rush physical intimacy.</strong> Let the other person set the pace.",
+              "<strong>Do text consistently.</strong> Going silent for a day without explanation reads as disinterest.",
+              "<strong>Do make effort in Vietnamese.</strong> Even badly — it signals respect and seriousness."
+            ]}
+          ]
         }
       ]
     },
@@ -1015,8 +1085,8 @@ const DATA = {
       name: "Speaking Naturally",
       sections: [
         {
-          id: 22,
-          title: "22. Beyond the Textbook",
+          id: 23,
+          title: "23. Beyond the Textbook",
           learnable: true,
           content: [
             { type: "prose", html: "<p>Textbooks teach phrases that native speakers rarely use. This section covers what people <strong>actually</strong> say.</p>" },
@@ -1101,8 +1171,8 @@ const DATA = {
           ]
         },
         {
-          id: 23,
-          title: "23. Sentence-Ending Particles",
+          id: 24,
+          title: "24. Sentence-Ending Particles",
           learnable: true,
           content: [
             { type: "prose", html: "<p>These tiny words at the end of sentences carry <strong>enormous</strong> social weight. They're what makes Vietnamese sound warm, natural, and human. The same sentence with different particles is a completely different speech act.</p>" },
@@ -1140,8 +1210,8 @@ const DATA = {
           ]
         },
         {
-          id: 24,
-          title: "24. Filler Words & Casual Speech",
+          id: 25,
+          title: "25. Filler Words & Casual Speech",
           learnable: true,
           content: [
             { type: "prose", html: "<p>These are everywhere in natural spoken Vietnamese but completely absent from textbooks. Using them makes you sound like a person having a conversation, not a robot reading a phrasebook.</p>" },
@@ -1195,8 +1265,8 @@ const DATA = {
           ]
         },
         {
-          id: 25,
-          title: "25. North vs South",
+          id: 26,
+          title: "26. North vs South",
           learnable: true,
           content: [
             { type: "prose", html: "<p>Vietnamese has significant regional differences. Most textbooks teach Northern (Hanoi) Vietnamese. If you're in Ho Chi Minh City or the South, these differences matter daily.</p>" },
@@ -1234,8 +1304,8 @@ const DATA = {
       name: "Culture",
       sections: [
         {
-          id: 26,
-          title: "26. Cultural Etiquette",
+          id: 27,
+          title: "27. Cultural Etiquette",
           learnable: false,
           content: [
             { type: "p", html: "Social and cultural behaviors that help daily interaction go more smoothly." },
@@ -1279,8 +1349,8 @@ const DATA = {
       name: "Study Guide",
       sections: [
         {
-          id: 27,
-          title: "27. Study Order",
+          id: 28,
+          title: "28. Study Order",
           learnable: false,
           content: [
             { type: "h3", text: "Recommended Learning Order" },
@@ -1316,8 +1386,8 @@ const DATA = {
       name: "Quick Reference",
       sections: [
         {
-          id: 28,
-          title: "28. Mini Cheat Sheet",
+          id: 29,
+          title: "29. Mini Cheat Sheet",
           learnable: true,
           content: [
             { type: "h3", text: "Pronunciation" },
@@ -1387,8 +1457,8 @@ const DATA = {
           ]
         },
         {
-          id: 29,
-          title: "29. Final Message",
+          id: 30,
+          title: "30. Final Message",
           learnable: false,
           content: [
             { type: "prose", html: "<p>Vietnamese becomes much easier once you stop treating it like English with accents and start treating it like its own sound system.</p><p><strong>Your first wins should be:</strong></p>" },
