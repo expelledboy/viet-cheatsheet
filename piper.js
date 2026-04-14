@@ -48,8 +48,13 @@ const LIB_ESM_URL = `https://cdn.jsdelivr.net/npm/@diffusionstudio/vits-web@${LI
 // which does `import("./piper-DeOu3H9E.js")`. jsDelivr serves the
 // same chunk under `+esm`.
 const PIPER_PHONEMIZE_URL = `https://cdn.jsdelivr.net/npm/@diffusionstudio/vits-web@${LIB_VERSION}/dist/piper-DeOu3H9E.js/+esm`;
-// Piper phonemizer wasm + espeak data (pinned by vits-web@1.0.3).
-const PIPER_WASM_BASE = `https://cdn.jsdelivr.net/npm/@diffusionstudio/piper-wasm@1.0.0/build/piper_phonemize`;
+// Piper phonemizer wasm + espeak data. Self-hosted under `vendor/piper/`
+// because CDN fetches of the 18 MB .data file were unreliable on mobile
+// (Safari kills long fetches mid-stream). Same-origin removes the CORS
+// surface and makes timing predictable. Upstream source + license are
+// documented in vendor/piper/README.md. If LIB_VERSION is bumped, these
+// vendored files must be refreshed to match (see vendor/piper/README.md).
+const PIPER_WASM_BASE = `./vendor/piper/piper_phonemize`;
 const PIPER_WASM_URL = `${PIPER_WASM_BASE}.wasm`;   // ~0.6 MB
 const PIPER_DATA_URL = `${PIPER_WASM_BASE}.data`;   // ~18 MB espeak-ng data
 // OPFS filenames for cached phonemizer assets (persist across reloads).
