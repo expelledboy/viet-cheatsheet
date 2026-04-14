@@ -1794,12 +1794,19 @@ if (knownPanelToggle) {
     knownPanelToggle.classList.toggle('open');
     knownPanelBody.classList.toggle('open');
   });
-  // Tap a known phrase to hear it
+  // Tap a known phrase to hear it — route through window.speakText so
+  // Piper (HQ voice) is used when enabled. Falls back to speechSynthesis
+  // if speakText isn't yet attached (speech IIFE loads asynchronously).
   knownPanelBody.addEventListener('click', function(e) {
     var li = e.target.closest('li[data-vi]');
     if (!li) return;
     var text = li.getAttribute('data-vi');
-    if (text && window.speechSynthesis) {
+    if (!text) return;
+    if (typeof window.speakText === 'function') {
+      window.speakText(text, li);
+      return;
+    }
+    if (window.speechSynthesis) {
       window.speechSynthesis.cancel();
       var utter = new SpeechSynthesisUtterance(text);
       utter.lang = 'vi-VN';
@@ -1973,6 +1980,11 @@ window.addEventListener('scroll', function() {
       makeBtn(function() { return captured; }, cell);
     });
   }
+
+  // Expose the unified speak wrapper so scopes outside this IIFE
+  // (notably the known-panel click handler) route through the same
+  // Piper-aware path as the inline speak buttons.
+  window.speakText = speak;
 
   function init() {
     if (synth.getVoices().length === 0) {
