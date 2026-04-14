@@ -7,7 +7,8 @@ The Vietnamese Cheat Sheet welcomes corrections, new phrases, and cultural notes
 ```
 index.html   — renderer + CSS + interactivity (don't edit for content changes)
 data.js      — all content as a typed JavaScript object (edit this)
-test.js      — 41 jsdom tests (run before submitting)
+piper.js     — optional HQ Vietnamese voice (lazy-loaded on opt-in)
+test.js      — 51 jsdom tests (run before submitting)
 ```
 
 ## The data model
@@ -72,7 +73,9 @@ STATE = {
   mode: 'reference',        // 'reference' | 'learning'
   known: [],                // Vietnamese strings (canonical tôi/bạn form)
   hideKnown: false,         // hide mastered phrases
-  pronounContext: 'formal'  // 'formal' | 'olderMale' | 'olderFemale' | 'youngerM' | 'youngerF' | 'peer'
+  pronounContext: 'formal', // 'formal' | 'olderMale' | 'olderFemale' | 'youngerM' | 'youngerF' | 'peer'
+  piperEnabled: false,      // user has toggled HQ voice on
+  piperCached: false        // HQ voice model is in OPFS
 }
 ```
 
@@ -88,11 +91,22 @@ Phrases containing `tôi` and `bạn` are automatically swapped at display time 
 
 `data.js` has a JSDoc type contract with `// @ts-check`. Open it in VS Code and you'll see red squiggles on malformed sections, missing fields, or wrong block types.
 
+## Optional HQ voice (`piper.js`)
+
+`piper.js` wires up the opt-in Piper TTS download. It's a plain ES module attached to `window.piper`; the main app script probes the global lazily. Never touch `piper.js` for content changes.
+
+Pinned versions live at the top of the file — bumping either requires testing in a real browser (jsdom can't run WASM). Two non-obvious choices worth preserving:
+
+- **jsDelivr, not esm.sh.** esm.sh rewrites the library's Node-guarded `require("fs")` into an eager broken `fs.readFile` call via its `unenv` polyfill. jsDelivr serves the bundle untouched, so the Node guard evaluates `false` in the browser and the emscripten code falls through to `fetch()`. Keep CDN = jsDelivr.
+- **`wasmPaths` freeze.** `vits-web` hardcodes `ort.env.wasm.wasmPaths = "https://cdnjs.cloudflare.com/.../onnxruntime-web/1.18.0/"` — a URL cdnjs never hosted, which 404s at synthesis. We pre-import onnxruntime-web from the same jsDelivr URL vits-web uses (module-instance dedup), set a working `wasmPaths`, and freeze it via `Object.defineProperty` so the library's later assignment is a silent no-op.
+
+Playback rate lives in `PLAYBACK_RATE` (~0.80) — slows speech to a learner-friendly pace while preserving pitch.
+
 ## Testing
 
 ```sh
 npm install   # first time only — installs jsdom
-node test.js  # 41 tests covering rendering, interaction, state, and pronoun system
+node test.js  # 51 tests covering rendering, interaction, state, pronoun system, and piper integration
 ```
 
 Always run tests before submitting. The test suite loads the full page in jsdom and simulates clicks, toggles, and state changes.

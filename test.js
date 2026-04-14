@@ -446,6 +446,124 @@ test('Every vocab item has non-empty vi and en', () => {
   });
 });
 
-// ── Summary ──
-console.log(`\n${passed + failed} tests: ${passed} passed, ${failed} failed\n`);
-process.exit(failed > 0 ? 1 : 0);
+// ── Piper (HQ voice) Integration ──
+console.log('\nPiper Integration:');
+
+test('STATE has piperEnabled + piperCached with safe defaults', () => {
+  assert('piperEnabled' in dom.window.STATE, 'STATE missing piperEnabled');
+  assert('piperCached' in dom.window.STATE, 'STATE missing piperCached');
+  // After other tests may have mutated STATE, we only assert types.
+  assert(typeof dom.window.STATE.piperEnabled === 'boolean', 'piperEnabled must be boolean');
+  assert(typeof dom.window.STATE.piperCached === 'boolean', 'piperCached must be boolean');
+});
+
+test('saveState round-trips piperEnabled/piperCached through localStorage', () => {
+  dom.window.STATE.piperEnabled = true;
+  dom.window.STATE.piperCached = true;
+  dom.window.saveState();
+  const raw = dom.window.localStorage.getItem('state');
+  const parsed = JSON.parse(raw);
+  assert(parsed.piperEnabled === true, 'localStorage should have piperEnabled=true');
+  assert(parsed.piperCached === true, 'localStorage should have piperCached=true');
+  // Restore defaults so later tests aren't polluted.
+  dom.window.STATE.piperEnabled = false;
+  dom.window.STATE.piperCached = false;
+  dom.window.saveState();
+});
+
+test('Voice row + selector + action button exist in DOM', () => {
+  const row   = document.getElementById('voiceRow');
+  const sel   = document.getElementById('voiceSelect');
+  const btn   = document.getElementById('piperActionBtn');
+  const stat  = document.getElementById('piperStatus');
+  assert(row, 'voiceRow missing');
+  assert(sel, 'voiceSelect missing');
+  assert(btn, 'piperActionBtn missing');
+  assert(stat, 'piperStatus missing');
+});
+
+test('Voice selector has both device and HQ options', () => {
+  const sel = document.getElementById('voiceSelect');
+  const opts = Array.from(sel.options).map(o => o.value);
+  assert(opts.indexOf('device') !== -1, 'missing device option');
+  assert(opts.indexOf('piper') !== -1, 'missing piper option');
+});
+
+test('Voice row hidden when no piper module is present', () => {
+  // Default jsdom run: window.piper was never defined (module src=./piper.js
+  // is not fetched in jsdom). The UI IIFE should hide the row.
+  const row = document.getElementById('voiceRow');
+  assert(row.style.display === 'none', 'voice row should be hidden when window.piper is absent');
+});
+
+// Async fallback test — isolated jsdom with a mock piper that rejects.
+(function piperFallbackTest() {
+  const name = 'Piper speak rejection falls back to native and clears piperEnabled';
+  (async function() {
+    try {
+      const html2 = html.replace(
+        '<script src="data.js"></script>',
+        '<script>' + dataJs + '</script>'
+      );
+      const nativeCalls = [];
+      const dom2 = new JSDOM(html2, {
+        runScripts: 'dangerously',
+        pretendToBeVisual: true,
+        url: 'https://expelledboy.github.io/viet-cheatsheet/',
+        beforeParse(window) {
+          window.matchMedia = function(query) {
+            return { matches: false, media: query, addEventListener() {}, removeEventListener() {} };
+          };
+          window.confirm = function() { return true; };
+          window.localStorage.setItem('state', JSON.stringify({
+            theme: 'light', mode: 'reference', known: [], hideKnown: false,
+            pronounContext: 'formal', piperEnabled: true, piperCached: true
+          }));
+          window.speechSynthesis = {
+            cancel() {},
+            speak(utter) { nativeCalls.push(utter); },
+            getVoices() { return [{ lang: 'vi-VN', name: 'MockVi' }]; },
+            addEventListener() {},
+            removeEventListener() {}
+          };
+          // jsdom doesn't have SpeechSynthesisUtterance — shim it.
+          window.SpeechSynthesisUtterance = function(text) {
+            this.text = text; this.voice = null; this.lang = ''; this.rate = 1;
+            this.onend = null; this.onerror = null; this.volume = 1;
+          };
+          window.piper = {
+            isSupported: () => true,
+            isReady: () => true,
+            isCached: async () => true,
+            download: async () => {},
+            speak: async () => { throw new Error('mock piper failure'); },
+            clear: async () => {}
+          };
+        }
+      });
+      // Wait a tick for scripts to finish.
+      await new Promise((r) => setTimeout(r, 50));
+      const doc2 = dom2.window.document;
+      assert(dom2.window.STATE.piperEnabled === true, 'precondition: piperEnabled=true');
+      // Find any vocab speak-btn and click it.
+      const speakBtn = doc2.querySelector('.vocab-item .speak-btn');
+      assert(speakBtn, 'no speak-btn to click');
+      speakBtn.click();
+      // Wait for the rejected promise to settle + fallback to run.
+      await new Promise((r) => setTimeout(r, 50));
+      assert(nativeCalls.length >= 1, 'speechSynthesis.speak should have been called after piper rejection');
+      assert(dom2.window.STATE.piperEnabled === false,
+        'piperEnabled should flip to false after piper.speak rejected');
+      console.log('  ✅ ' + name);
+      passed++;
+    } catch (e) {
+      console.log('  ❌ ' + name);
+      console.log('     ' + e.message);
+      failed++;
+    } finally {
+      // ── Summary ──
+      console.log(`\n${passed + failed} tests: ${passed} passed, ${failed} failed\n`);
+      process.exit(failed > 0 ? 1 : 0);
+    }
+  })();
+})();

@@ -20,17 +20,17 @@ Whether you're ordering phở at a street stall, bargaining at a market, or tryi
 
 - **Progress tracking** — mark phrases as "known," see progress per section and overall. Your "Phrases You Know" panel grows as you learn. Persists across visits.
 - **Pronoun context** — select who you're speaking to (Formal, Older ♂, Older ♀, Younger, Peer) and all phrases update their pronouns in real time. Teaches the Vietnamese pronoun system naturally.
-- **Tap to pronounce** — 🔊 buttons use your device's Vietnamese speech engine. Available in both modes. Known phrases panel is also tappable for quick audio review.
+- **Tap to pronounce** — 🔊 buttons use your device's Vietnamese speech engine. Available in both modes. Known phrases panel is also tappable for quick audio review. If your device's stock voice is rough, you can opt-in to download a higher-quality Hanoi voice (one-time 76 MB, cached on-device).
 - **Category tabs** — horizontal scrollable navigation, always visible. One tap to jump to any category. Active tab highlights as you scroll.
 - **Dark & light mode** — follows your system preference, remembers your choice.
 - **Mobile-first** — designed for phones, scales to desktop.
-- **Zero dependencies** — no frameworks, no CDNs, no build step, no app to install.
+- **Zero build step** — no frameworks, no bundlers, no app to install. The core app uses only your device's voice and a single `data.js` file. (The optional HQ voice loads from a pinned CDN on demand, if you ask for it.)
 
 ---
 
 ## What's inside
 
-28 sections organized situation-first — practical stuff up top, theory when you need it:
+31 sections organized situation-first — practical stuff up top, theory when you need it:
 
 - **Essentials** — survival phrases, the 13 things you need on day one
 - **Sound System** — tones, vowels, pronunciation rules
@@ -53,6 +53,20 @@ open viet-cheatsheet/index.html
 
 ---
 
+## Higher-quality Vietnamese voice (optional)
+
+Your device's built-in Vietnamese voice can be rough — absent on older Android phones, robotic on many iOS devices. The app offers an opt-in download of a permissively-licensed Piper TTS voice (Hanoi / Northern dialect) that runs entirely on-device.
+
+- One-time ~76 MB download, cached in your browser's OPFS storage
+- Works offline after first download
+- Any failure falls back silently to your device voice
+- Toggle between device voice and HQ voice in the control card
+- Remove at any time to free the storage
+
+The voice is `vi_VN-vais1000-medium` from [rhasspy/piper-voices](https://huggingface.co/rhasspy/piper-voices), loaded via [`@diffusionstudio/vits-web`](https://github.com/diffusionstudio/vits-web). Southern dialect is not yet available — no open permissively-licensed Southern Vietnamese TTS model is browser-ready in 2026.
+
+---
+
 ## Contributing
 
 Content lives in `data.js` — a typed JavaScript data model. The renderer (`index.html`) reads it automatically. You never need to touch the HTML.
@@ -61,7 +75,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the data model, block types, STATE ob
 
 ```sh
 npm install   # first time only
-node test.js  # 41 tests — run before submitting
+node test.js  # 51 tests — run before submitting
 ```
 
 The spirit of this project: *speak often, even imperfectly.*
