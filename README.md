@@ -20,7 +20,7 @@ Whether you're ordering phở at a street stall, bargaining at a market, or tryi
 
 - **Progress tracking** — mark phrases as "known," see progress per section and overall. Your "Phrases You Know" panel grows as you learn. Persists across visits.
 - **Pronoun context** — select who you're speaking to (Formal, Older ♂, Older ♀, Younger, Peer) and all phrases update their pronouns in real time. Teaches the Vietnamese pronoun system naturally.
-- **Tap to pronounce** — 🔊 buttons use your device's Vietnamese speech engine. Available in both modes. Known phrases panel is also tappable for quick audio review. If your device's stock voice is rough, you can opt-in to download a higher-quality Hanoi voice (one-time 76 MB, cached on-device).
+- **Tap to pronounce** — 🔊 buttons use your device's Vietnamese speech engine. Available in both modes. Known phrases panel is also tappable for quick audio review. If your device's stock voice is rough, you can opt-in to download a higher-quality Hanoi voice (one-time 79 MB, cached on-device).
 - **Category tabs** — horizontal scrollable navigation, always visible. One tap to jump to any category. Active tab highlights as you scroll.
 - **Dark & light mode** — follows your system preference, remembers your choice.
 - **Mobile-first** — designed for phones, scales to desktop.
@@ -57,7 +57,7 @@ open viet-cheatsheet/index.html
 
 Your device's built-in Vietnamese voice can be rough — absent on older Android phones, robotic on many iOS devices. The app offers an opt-in download of a permissively-licensed Piper TTS voice (Hanoi / Northern dialect) that runs entirely on-device.
 
-- One-time ~76 MB download, cached in your browser's OPFS storage
+- One-time ~79 MB download, cached in your browser's OPFS storage
 - Works offline after first download
 - Any failure falls back silently to your device voice
 - Toggle between device voice and HQ voice in the control card

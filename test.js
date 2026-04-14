@@ -472,14 +472,12 @@ test('saveState round-trips piperEnabled/piperCached through localStorage', () =
 });
 
 test('Voice row + selector + action button exist in DOM', () => {
-  const row   = document.getElementById('voiceRow');
-  const sel   = document.getElementById('voiceSelect');
-  const btn   = document.getElementById('piperActionBtn');
-  const stat  = document.getElementById('piperStatus');
+  const row = document.getElementById('voiceRow');
+  const sel = document.getElementById('voiceSelect');
+  const btn = document.getElementById('piperActionBtn');
   assert(row, 'voiceRow missing');
   assert(sel, 'voiceSelect missing');
   assert(btn, 'piperActionBtn missing');
-  assert(stat, 'piperStatus missing');
 });
 
 test('Voice selector has both device and HQ options', () => {

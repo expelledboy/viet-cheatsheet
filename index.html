@@ -909,21 +909,6 @@ body.hide-known .vocab-item.known-item {
   cursor: not-allowed;
 }
 
-.piper-status {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  flex-basis: 100%;
-  min-height: 0;
-}
-
-.piper-status.err {
-  color: var(--red);
-}
-
-.piper-status.ok {
-  color: #38a06c;
-}
-
 html.no-piper-support .piper-row {
   display: none;
 }
@@ -1353,8 +1338,7 @@ function applyPronouns(text) {
       '<option value="device">Device voice</option>' +
       '<option value="piper">HQ voice (Hanoi)</option>' +
     '</select>' +
-    '<button id="piperActionBtn" class="piper-btn" type="button"></button>' +
-    '<span id="piperStatus" class="piper-status" role="status" aria-live="polite"></span>';
+    '<button id="piperActionBtn" class="piper-btn" type="button"></button>';
   controlCard.appendChild(voiceRow);
 
   // Row 3: mode toggle + progress bar + reset
@@ -1949,10 +1933,8 @@ window.addEventListener('scroll', function() {
         STATE.piperEnabled = false;
         saveState();
         if (typeof window.piperUpdateUi === 'function') window.piperUpdateUi();
-        if (typeof window.piperToast === 'function') {
-          window.piperToast('HQ voice failed — switched to device voice.', 'err');
-        }
         try { console.warn('Piper speak failed:', err); } catch (_) {}
+        alert('HQ voice failed — switched to device voice.');
         speakNative(text, btn);
       });
       return;
@@ -2026,8 +2008,7 @@ window.addEventListener('scroll', function() {
   var voiceRow      = document.getElementById('voiceRow');
   var voiceSelect   = document.getElementById('voiceSelect');
   var actionBtn     = document.getElementById('piperActionBtn');
-  var statusEl      = document.getElementById('piperStatus');
-  if (!voiceRow || !voiceSelect || !actionBtn || !statusEl) return;
+  if (!voiceRow || !voiceSelect || !actionBtn) return;
 
   // Start hidden — only reveal once we confirm window.piper is present AND
   // reports support. Avoids a flicker of the row on unsupported browsers
@@ -2038,11 +2019,6 @@ window.addEventListener('scroll', function() {
   var downloadPct = 0;
 
   function piper() { return window.piper; }
-
-  function setStatus(text, kind) {
-    statusEl.textContent = text || '';
-    statusEl.className = 'piper-status' + (kind ? ' ' + kind : '');
-  }
 
   function updateUi() {
     var p = piper();
@@ -2055,9 +2031,11 @@ window.addEventListener('scroll', function() {
     voiceRow.style.display = '';
 
     voiceSelect.value = STATE.piperEnabled ? 'piper' : 'device';
-    // Disable the HQ option in the select only while actually downloading.
+    // Disable the HQ option whenever it can't be used — during download, and
+    // when the voice isn't cached yet. Prevents the "flip to HQ with no
+    // model" state entirely at the UI level.
     var hqOpt = voiceSelect.querySelector('option[value="piper"]');
-    if (hqOpt) hqOpt.disabled = downloading;
+    if (hqOpt) hqOpt.disabled = downloading || !STATE.piperCached;
     voiceSelect.disabled = downloading;
 
     if (downloading) {
@@ -2066,18 +2044,17 @@ window.addEventListener('scroll', function() {
       actionBtn.classList.remove('primary');
     } else if (STATE.piperCached) {
       actionBtn.disabled = false;
-      actionBtn.textContent = 'Remove HQ (76 MB)';
+      actionBtn.textContent = 'Remove HQ (79 MB)';
       actionBtn.classList.remove('primary');
     } else {
       actionBtn.disabled = false;
-      actionBtn.textContent = 'Download HQ voice (76 MB)';
+      actionBtn.textContent = 'Download HQ voice (79 MB)';
       actionBtn.classList.add('primary');
     }
   }
 
-  // Expose so the speak() fallback can trigger UI updates + toasts.
+  // Expose so the speak() fallback can re-render after flipping state.
   window.piperUpdateUi = updateUi;
-  window.piperToast = function(msg, kind) { setStatus(msg, kind); };
 
   // On boot, ask the module whether the voice is already cached.
   function refreshCached() {
@@ -2115,15 +2092,14 @@ window.addEventListener('scroll', function() {
 
   voiceSelect.addEventListener('change', function() {
     var want = voiceSelect.value === 'piper';
+    // The HQ option is disabled when not cached, so this branch is a
+    // safety net (e.g. programmatic change).
     if (want && !STATE.piperCached) {
-      // Can't enable without cache — revert and nudge user to the button.
       voiceSelect.value = 'device';
-      setStatus('Download the HQ voice first (one-time, ~76 MB).');
       return;
     }
     STATE.piperEnabled = want;
     saveState();
-    setStatus(want ? 'Using HQ voice (Hanoi).' : 'Using device voice.', want ? 'ok' : null);
     var p = piper();
     if (want && p && typeof p.preload === 'function') p.preload();
     updateUi();
@@ -2135,26 +2111,23 @@ window.addEventListener('scroll', function() {
     if (!p) return;
     if (STATE.piperCached) {
       // Remove cached voice.
-      if (!confirm('Remove the HQ Vietnamese voice (~76 MB) from this device?')) return;
+      if (!confirm('Remove the HQ Vietnamese voice (~79 MB) from this device?')) return;
       actionBtn.disabled = true;
-      setStatus('Removing HQ voice…');
       Promise.resolve(p.clear()).then(function() {
         STATE.piperCached = false;
         STATE.piperEnabled = false;
         saveState();
-        setStatus('HQ voice removed.', 'ok');
         updateUi();
       }).catch(function(err) {
-        setStatus('Remove failed: ' + (err && err.message ? err.message : err), 'err');
+        alert('Remove failed: ' + (err && err.message ? err.message : err));
         updateUi();
       });
       return;
     }
     // Download flow.
-    if (!confirm('Download the high-quality Vietnamese voice?\n\n~76 MB one-time download — Wi-Fi recommended.\nStored on-device; works offline after.')) return;
+    if (!confirm('Download the high-quality Vietnamese voice?\n\n~79 MB one-time download — Wi-Fi recommended.\nStored on-device; works offline after.')) return;
     downloading = true;
     downloadPct = 0;
-    setStatus('Starting download…');
     updateUi();
     Promise.resolve(p.download(function(frac) {
       downloadPct = Math.max(0, Math.min(100, (frac || 0) * 100));
@@ -2164,14 +2137,13 @@ window.addEventListener('scroll', function() {
       STATE.piperCached = true;
       STATE.piperEnabled = true; // opt the user straight in after a successful download
       saveState();
-      setStatus('HQ voice ready — now using Hanoi voice.', 'ok');
       updateUi();
     }).catch(function(err) {
       downloading = false;
       STATE.piperCached = false;
       STATE.piperEnabled = false;
       saveState();
-      setStatus('Download failed: ' + (err && err.message ? err.message : err), 'err');
+      alert('Download failed: ' + (err && err.message ? err.message : err));
       updateUi();
     });
   });

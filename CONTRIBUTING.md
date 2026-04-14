@@ -95,12 +95,18 @@ Phrases containing `tôi` and `bạn` are automatically swapped at display time 
 
 `piper.js` wires up the opt-in Piper TTS download. It's a plain ES module attached to `window.piper`; the main app script probes the global lazily. Never touch `piper.js` for content changes.
 
-Pinned versions live at the top of the file — bumping either requires testing in a real browser (jsdom can't run WASM). Two non-obvious choices worth preserving:
+Pinned versions live at the top of the file — bumping either requires testing in a real browser (jsdom can't run WASM). Three non-obvious choices worth preserving:
 
 - **jsDelivr, not esm.sh.** esm.sh rewrites the library's Node-guarded `require("fs")` into an eager broken `fs.readFile` call via its `unenv` polyfill. jsDelivr serves the bundle untouched, so the Node guard evaluates `false` in the browser and the emscripten code falls through to `fetch()`. Keep CDN = jsDelivr.
-- **`wasmPaths` freeze.** `vits-web` hardcodes `ort.env.wasm.wasmPaths = "https://cdnjs.cloudflare.com/.../onnxruntime-web/1.18.0/"` — a URL cdnjs never hosted, which 404s at synthesis. We pre-import onnxruntime-web from the same jsDelivr URL vits-web uses (module-instance dedup), set a working `wasmPaths`, and freeze it via `Object.defineProperty` so the library's later assignment is a silent no-op.
+- **`wasmPaths` freeze.** `vits-web` hardcodes `ort.env.wasm.wasmPaths = "https://cdnjs.cloudflare.com/.../onnxruntime-web@1.18.0/"` — a URL cdnjs never hosted, which 404s at synthesis. We pre-import onnxruntime-web from the same jsDelivr URL vits-web uses (module-instance dedup), set a working `wasmPaths`, and freeze it via `Object.defineProperty` so the library's later assignment is a silent no-op.
+- **Warm session + cached phonemizer assets.** vits-web's `predict()` is stateless — every call spins up a fresh `ort.InferenceSession` AND re-fetches the 18 MB espeak `.data` file, giving ~6–33 s per-tap latency. We bypass `predict()`, keep one long-lived `InferenceSession` per voice, pre-fetch `piper_phonemize.wasm` + `.data` into OPFS on download, pre-compile the WebAssembly.Module once, and pass all three to emscripten via `wasmBinary` + `instantiateWasm` + `getPreloadedPackage`. Post-warmup synthesis is ~150 ms per unique phrase; an LRU blob cache makes repeat taps instant.
 
-Playback rate lives in `PLAYBACK_RATE` (~0.80) — slows speech to a learner-friendly pace while preserving pitch.
+Tunables (top of `piper.js`):
+
+- `PLAYBACK_RATE` (`0.80`) — HTMLAudioElement playback speed. Browsers preserve pitch by default.
+- `LENGTH_SCALE_MULT` (`1.3`) — VITS phoneme-duration multiplier for phrases. Higher = slower enunciation, more natural than playback-rate slowdown.
+- `LENGTH_SCALE_MULT_SHORT` (`1.5`) — applied when the text has no whitespace (single-word utterances). Learners want isolated words drawn out.
+- `LRU_MAX` (`100`) — output-blob cache cap.
 
 ## Testing
 

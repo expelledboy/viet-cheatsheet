@@ -700,7 +700,7 @@ const DATA = {
             ]},
             { type: "h3", text: "Toasting" },
             { type: "vocab", items: [
-              { vi: "Một, hai, ba, vô!", en: "One, two, three, cheers!" }
+              { vi: "Một! Hai! Ba! Vô!", en: "One, two, three, cheers!" }
             ]}
           ]
         }
