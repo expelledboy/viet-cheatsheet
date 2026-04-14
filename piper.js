@@ -285,22 +285,12 @@ export async function download(onProgress) {
   if (onProgress) onProgress(VOICE_WEIGHT);
 
   // Pull the phonemizer wasm + .data into OPFS now so the first speak()
-  // isn't paying ~100 s of CDN fetch for the 18 MB espeak data. These
-  // are independent files — kick them off in parallel.
-  await Promise.all([
-    (async () => {
-      if (await _readOpfsFile(OPFS_PHON_WASM)) return;
-      const res = await fetch(PIPER_WASM_URL);
-      if (!res.ok) throw new Error(`phonemizer wasm fetch: ${res.status}`);
-      await _writeOpfsFile(OPFS_PHON_WASM, await res.blob());
-    })(),
-    (async () => {
-      if (await _readOpfsFile(OPFS_PHON_DATA)) return;
-      const res = await fetch(PIPER_DATA_URL);
-      if (!res.ok) throw new Error(`phonemizer data fetch: ${res.status}`);
-      await _writeOpfsFile(OPFS_PHON_DATA, await res.blob());
-    })(),
-  ]);
+  // isn't paying ~100 s of CDN fetch for the 18 MB espeak data.
+  // Sequential (not parallel): mobile Safari is flakier with concurrent
+  // large downloads. Each call retries internally on transient failures.
+  await _fetchToOpfs(PIPER_WASM_URL, OPFS_PHON_WASM);
+  if (onProgress) onProgress(VOICE_WEIGHT + (1 - VOICE_WEIGHT) * 0.05);
+  await _fetchToOpfs(PIPER_DATA_URL, OPFS_PHON_DATA);
   if (onProgress) onProgress(1);
 }
 
@@ -328,6 +318,33 @@ async function _writeOpfsFile(name, blob) {
     await w.write(blob);
     await w.close();
   } catch (_) { /* best-effort */ }
+}
+
+/**
+ * Fetch a URL into OPFS with retry + backoff. Idempotent — skips if already
+ * cached. Built for mobile Safari, which can kill long fetches silently
+ * mid-stream. Bubbles up an error NAMING the asset, so the user-facing
+ * alert is useful instead of just "Failed to fetch".
+ */
+async function _fetchToOpfs(url, opfsName, maxRetries = 2) {
+  if (await _readOpfsFile(opfsName)) return;
+  let lastErr;
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const blob = await res.blob();
+      await _writeOpfsFile(opfsName, blob);
+      return;
+    } catch (e) {
+      lastErr = e;
+      if (attempt < maxRetries) {
+        await new Promise((r) => setTimeout(r, 1000 * (attempt + 1)));
+      }
+    }
+  }
+  const detail = (lastErr && lastErr.message) || String(lastErr || 'unknown');
+  throw new Error(`Failed to fetch ${opfsName} after ${maxRetries + 1} attempts: ${detail}`);
 }
 
 /**
@@ -430,32 +447,22 @@ async function _ensurePhonemizerAssets() {
   if (_phonAssetsPromise) return _phonAssetsPromise;
 
   _phonAssetsPromise = (async () => {
-    // .wasm — tiny (~0.6 MB). Load from OPFS or fetch and persist.
+    // .wasm — tiny (~0.6 MB). Load from OPFS or fetch (with retry) and persist.
     if (!_phonWasmBin) {
-      let file = await _readOpfsFile(OPFS_PHON_WASM);
-      if (!file) {
-        const res = await fetch(PIPER_WASM_URL);
-        if (!res.ok) throw new Error(`Failed to fetch phonemizer wasm: ${res.status}`);
-        const blob = await res.blob();
-        await _writeOpfsFile(OPFS_PHON_WASM, blob);
-        file = blob;
-      }
+      await _fetchToOpfs(PIPER_WASM_URL, OPFS_PHON_WASM);
+      const file = await _readOpfsFile(OPFS_PHON_WASM);
+      if (!file) throw new Error('phonemizer wasm missing from OPFS after fetch');
       _phonWasmBin = await file.arrayBuffer();
     }
     // Compile once. Subsequent instantiations are ~50 ms.
     if (!_phonWasmModule) {
       _phonWasmModule = await WebAssembly.compile(_phonWasmBin);
     }
-    // .data — big (~18 MB). Same OPFS-or-fetch pattern.
+    // .data — big (~18 MB). Same pattern.
     if (!_phonDataBin) {
-      let file = await _readOpfsFile(OPFS_PHON_DATA);
-      if (!file) {
-        const res = await fetch(PIPER_DATA_URL);
-        if (!res.ok) throw new Error(`Failed to fetch phonemizer data: ${res.status}`);
-        const blob = await res.blob();
-        await _writeOpfsFile(OPFS_PHON_DATA, blob);
-        file = blob;
-      }
+      await _fetchToOpfs(PIPER_DATA_URL, OPFS_PHON_DATA);
+      const file = await _readOpfsFile(OPFS_PHON_DATA);
+      if (!file) throw new Error('phonemizer data missing from OPFS after fetch');
       _phonDataBin = await file.arrayBuffer();
     }
     return { wasmBin: _phonWasmBin, wasmModule: _phonWasmModule, dataBin: _phonDataBin };
