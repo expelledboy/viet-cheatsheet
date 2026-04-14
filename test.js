@@ -62,7 +62,7 @@ console.log('Rendering:');
 test('DATA object exists and rendered content', () => {
   // DATA is defined via const so may not be on window — test via rendered output
   const sections = document.querySelectorAll('.section-card');
-  assert(sections.length === 31, 'DATA should produce 30 sections');
+  assert(sections.length === 38, 'DATA should produce 38 sections');
 });
 
 test('STATE object exists', () => {
@@ -75,17 +75,17 @@ test('STATE object exists', () => {
 
 test('All 28 sections rendered', () => {
   const sections = document.querySelectorAll('.section-card');
-  assert(sections.length === 31, `Expected 28 sections, got ${sections.length}`);
+  assert(sections.length === 38, `Expected 38 sections, got ${sections.length}`);
 });
 
 test('All 11 categories rendered', () => {
   const dividers = document.querySelectorAll('.category-divider');
-  assert(dividers.length === 11, `Expected 11 category dividers, got ${dividers.length}`);
+  assert(dividers.length === 12, `Expected 12 category dividers, got ${dividers.length}`);
 });
 
 test('Category tabs rendered for all 11 categories', () => {
   const tabs = document.querySelectorAll('.category-tab');
-  assert(tabs.length === 11, `Expected 11 category tabs, got ${tabs.length}`);
+  assert(tabs.length === 12, `Expected 12 category tabs, got ${tabs.length}`);
 });
 
 test('Banner rendered', () => {
@@ -147,7 +147,7 @@ console.log('\nCategory Tabs:');
 test('Category tabs match category names', () => {
   const tabs = document.querySelectorAll('.category-tab');
   assert(tabs[0].textContent === 'Essentials', 'First tab should be Essentials, got: ' + tabs[0].textContent);
-  assert(tabs[tabs.length - 1].textContent === 'Quick Reference', 'Last tab should be Quick Reference');
+  assert(tabs[tabs.length - 1].textContent === 'Getting to Know You', 'Last tab should be Getting to Know You');
 });
 
 // ── Learning Mode Tests ──

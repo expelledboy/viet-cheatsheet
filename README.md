@@ -30,7 +30,7 @@ Whether you're ordering phở at a street stall, bargaining at a market, or tryi
 
 ## What's inside
 
-31 sections organized situation-first — practical stuff up top, theory when you need it:
+38 sections organized situation-first — practical stuff up top, theory when you need it:
 
 - **Essentials** — survival phrases, the 13 things you need on day one
 - **Sound System** — tones, vowels, pronunciation rules
@@ -41,6 +41,7 @@ Whether you're ordering phở at a street stall, bargaining at a market, or tryi
 - **Speaking Naturally** — what textbooks skip: natural greetings, sentence-ending particles, filler words, the được spectrum, chưa vs không, North vs South differences
 - **Culture & Study Guide** — etiquette tips, recommended learning order
 - **Quick Reference** — condensed cheat sheet for screenshots
+- **Getting to Know You** — the probing questions Vietnamese people ask once they realise you speak some: age & pronoun reset, where you're from, time in Vietnam, compliments & why you're learning, family & marital status, work, food & impressions
 
 ---
 

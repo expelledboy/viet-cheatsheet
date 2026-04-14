@@ -1474,6 +1474,169 @@ const DATA = {
           ]
         }
       ]
+    },
+    {
+      name: "Getting to Know You",
+      sections: [
+        {
+          id: 31,
+          title: "31. Age &amp; Pronoun Reset",
+          learnable: true,
+          content: [
+            { type: "p", html: "Once you show any Vietnamese, age comes up fast — not to be nosy, but to lock in the right pronouns (see §6). Expect to hear one of these, and expect the pronouns to shift mid-conversation once ages are known." },
+            { type: "vocab", items: [
+              { vi: "Anh/Chị bao nhiêu tuổi?", en: "How old are you? (to someone apparently older)" },
+              { vi: "Em bao nhiêu tuổi?", en: "How old are you? (to someone apparently younger)" },
+              { vi: "Em sinh năm bao nhiêu?", en: "What year were you born? (often preferred between peers)" },
+              { vi: "Em năm nay ba mươi tuổi.", en: "I'm 30 this year. (năm nay is more natural than bare age)" },
+              { vi: "Em hơn anh hai tuổi.", en: "I'm two years older than you." },
+              { vi: "Em kém chị một tuổi.", en: "I'm one year younger than you." },
+              { vi: "Vậy em phải gọi anh là anh rồi.", en: "Then I have to call you anh. (the pronoun-reset moment)" }
+            ]},
+            { type: "highlight", html: "<strong>Why the age question isn't rude:</strong> Vietnamese has no neutral \"you\" — every pronoun encodes age. Asking is infrastructural, not small talk. Deflecting (\"it's a secret\") blocks the conversation. Answer directly and the pronouns will settle within seconds." },
+            { type: "prose", html: "A zodiac variant you'll also hear: <strong>Em tuổi con gì?</strong> (\"What animal year are you?\") — same question, age via zodiac. Northern speakers add <strong>ạ</strong> when addressing elders: <strong>Bác năm nay bao nhiêu tuổi ạ?</strong>" }
+          ]
+        },
+        {
+          id: 32,
+          title: "32. Where You're From",
+          learnable: true,
+          content: [
+            { type: "p", html: "The default guess is \"American?\" — be ready to correct it. If you're from somewhere small, be ready to geo-locate." },
+            { type: "vocab", items: [
+              { vi: "Anh là người nước nào?", en: "What country are you from? (most natural spoken form)" },
+              { vi: "Anh đến từ đâu?", en: "Where do you come from? (textbook variant)" },
+              { vi: "Anh là người Mỹ à?", en: "Are you American? (the default guess — à is the soft-confirm particle)" },
+              { vi: "Dạ không, em là người Nam Phi.", en: "No, I'm South African." },
+              { vi: "Em là người Nam Phi, nhưng tiếng mẹ đẻ là tiếng Anh.", en: "I'm South African, but my mother tongue is English. (heads off the \"do you speak African?\" follow-up)" },
+              { vi: "Quê anh ở đâu?", en: "Where's your hometown? (Southern phrasing — often means country, when asked of foreigners)" }
+            ]},
+            { type: "h3", text: "Countries They'll Ask About" },
+            { type: "table", headers: ["Vietnamese", "Country"], rows: [
+              { cells: ["Mỹ", "USA"] },
+              { cells: ["Anh", "UK / England (also means \"older brother\" — context distinguishes)"] },
+              { cells: ["Úc", "Australia"] },
+              { cells: ["Nam Phi", "South Africa"] },
+              { cells: ["Đức", "Germany"] },
+              { cells: ["Pháp", "France"] },
+              { cells: ["Hàn Quốc", "South Korea"] },
+              { cells: ["Nhật Bản", "Japan"] },
+              { cells: ["Trung Quốc", "China"] },
+              { cells: ["Canada", "Canada (also written Ca-na-đa)"] },
+              { cells: ["Nga", "Russia"] }
+            ]},
+            { type: "prose", html: "Formula: <strong>người + [country]</strong> = \"[nationality] person.\" So <strong>người Mỹ</strong>, <strong>người Đức</strong>, <strong>người Nam Phi</strong>." }
+          ]
+        },
+        {
+          id: 33,
+          title: "33. Time in Vietnam",
+          learnable: true,
+          content: [
+            { type: "p", html: "Expect this question every time you meet someone new. The <strong>được … rồi</strong> pattern is the natural way to state elapsed time." },
+            { type: "vocab", items: [
+              { vi: "Anh ở Việt Nam bao lâu rồi?", en: "How long have you been in Vietnam? (also: sống ở Việt Nam bao lâu rồi)" },
+              { vi: "Anh sang Việt Nam khi nào?", en: "When did you come to Vietnam? (N sang / S qua)" },
+              { vi: "Em ở đây được ba năm rồi.", en: "I've been here three years now." },
+              { vi: "Em mới sang hai tháng thôi.", en: "I've only just come two months ago. (mới … thôi = only recently … just)" },
+              { vi: "Anh định ở Việt Nam bao lâu?", en: "How long do you plan to stay? (định = intend to)" },
+              { vi: "Em chưa biết, chắc vài năm nữa.", en: "I don't know yet, probably a few more years." }
+            ]},
+            { type: "prose", html: "<strong>Sài Gòn</strong> is still used colloquially over <strong>TP Hồ Chí Minh</strong>, even in the North. Saying you've been in Hà Nội or Sài Gòn for years earns warmth; saying you're new invites help." }
+          ]
+        },
+        {
+          id: 34,
+          title: "34. Compliments &amp; Why You're Learning",
+          learnable: true,
+          content: [
+            { type: "h3", text: "When they praise your Vietnamese" },
+            { type: "p", html: "You <em>will</em> be told your Vietnamese is good — often after one sentence. Accepting the compliment directly sounds arrogant. Deflecting is expected, and usually triggers a warmer second compliment." },
+            { type: "vocab", items: [
+              { vi: "Tiếng Việt của anh giỏi quá!", en: "Your Vietnamese is so good!" },
+              { vi: "Anh nói tiếng Việt giỏi ghê!", en: "You speak Vietnamese so well! (ghê = colloquial intensifier)" },
+              { vi: "Dạ đâu có, em nói còn kém lắm.", en: "Oh no, I still speak quite poorly. (đâu có = \"not at all\" — the classic deflection)" },
+              { vi: "Dạ, em mới học thôi, nói chưa giỏi đâu.", en: "I've only just started, I don't speak well yet." },
+              { vi: "Em nói được một chút thôi.", en: "I can only speak a little." },
+              { vi: "Em nghe hiểu nhiều hơn là nói.", en: "I understand more than I can speak. (honest hedge)" }
+            ]},
+            { type: "h3", text: "Why &amp; how you're learning" },
+            { type: "vocab", items: [
+              { vi: "Sao anh học tiếng Việt?", en: "Why are you learning Vietnamese?" },
+              { vi: "Ai dạy anh tiếng Việt?", en: "Who taught you Vietnamese?" },
+              { vi: "Anh học tiếng Việt bao lâu rồi?", en: "How long have you studied Vietnamese?" },
+              { vi: "Em tự học trên mạng.", en: "I self-study online." },
+              { vi: "Em học với cô giáo.", en: "I study with a (female) teacher." },
+              { vi: "Em học vì em sống ở đây, muốn hiểu văn hóa Việt Nam.", en: "I'm learning because I live here and want to understand Vietnamese culture. (lands extremely well)" }
+            ]},
+            { type: "highlight", html: "<strong>Don't say \"cảm ơn\" to the compliment.</strong> The cultural expectation is humble deflection. <strong>Đâu có</strong> is the one-word move that nails it." }
+          ]
+        },
+        {
+          id: 35,
+          title: "35. Family &amp; Marital Status",
+          learnable: true,
+          content: [
+            { type: "p", html: "Asked early and directly. The <strong>có … chưa</strong> frame (\"yet?\") presumes you will eventually — that's cultural, not judgmental." },
+            { type: "vocab", items: [
+              { vi: "Anh có vợ chưa?", en: "Do you have a wife yet? (to a man — most common spoken form)" },
+              { vi: "Chị có chồng chưa?", en: "Do you have a husband yet? (to a woman)" },
+              { vi: "Dạ em chưa.", en: "Not yet." },
+              { vi: "Dạ rồi, em có vợ rồi.", en: "Yes, I'm married." },
+              { vi: "Anh có người yêu chưa?", en: "Do you have a partner yet? (người yêu is gender-neutral)" },
+              { vi: "Anh có mấy cháu rồi?", en: "How many kids do you have? (cháu = niece/nephew from their perspective)" },
+              { vi: "Em có hai con, một trai một gái.", en: "I have two kids, one boy and one girl." },
+              { vi: "Nhà anh có mấy anh chị em?", en: "How many siblings are in your family?" }
+            ]},
+            { type: "prose", html: "More formal variants exist: <strong>Anh lập gia đình chưa?</strong> (\"started a family yet\") and <strong>Anh kết hôn chưa?</strong> (\"are you married\") — the latter is written register. In casual speech, <strong>có vợ/chồng chưa</strong> wins. Northern <strong>bố/mẹ</strong> becomes Southern <strong>ba/má</strong> for parents." }
+          ]
+        },
+        {
+          id: 36,
+          title: "36. Work &amp; Livelihood",
+          learnable: true,
+          content: [
+            { type: "p", html: "Work comes up alongside family. Vietnamese assume foreigners are English teachers by default — if you're not, be ready to clarify." },
+            { type: "vocab", items: [
+              { vi: "Anh làm nghề gì?", en: "What's your profession? (nghề = trade/profession)" },
+              { vi: "Anh làm (việc) ở đâu?", en: "Where do you work?" },
+              { vi: "Em là giáo viên tiếng Anh.", en: "I'm an English teacher. (the default assumption)" },
+              { vi: "Em là kỹ sư phần mềm.", en: "I'm a software engineer." },
+              { vi: "Em làm việc từ xa cho công ty nước ngoài.", en: "I work remotely for a foreign company." },
+              { vi: "Em làm tự do.", en: "I'm freelance / self-employed." },
+              { vi: "Em đã nghỉ hưu rồi.", en: "I'm retired." }
+            ]},
+            { type: "prose", html: "Southern speakers often shorten <strong>làm nghề gì</strong> to just <strong>làm gì</strong> in casual speech. <strong>Làm từ xa</strong> (remote work) is now widely understood — you won't need to explain it." }
+          ]
+        },
+        {
+          id: 37,
+          title: "37. Food &amp; Your Impressions",
+          learnable: true,
+          content: [
+            { type: "p", html: "Nearly every shared meal starts with \"can you eat spicy?\" — and your general impressions of Vietnam will be asked constantly. Enthusiasm is expected and rewarded." },
+            { type: "h3", text: "At the table" },
+            { type: "vocab", items: [
+              { vi: "Anh ăn cay được không?", en: "Can you eat spicy? (được không = able to or not)" },
+              { vi: "Dạ được, em ăn cay được.", en: "Yes, I can. (mirror the verb — don't just say \"yes\")" },
+              { vi: "Dạ không, em không ăn cay được.", en: "No, I can't eat spicy." },
+              { vi: "Anh dùng đũa giỏi ghê!", en: "You use chopsticks so well! (expect this compliment)" },
+              { vi: "Anh ăn được mắm tôm chưa?", en: "Can you eat shrimp paste yet? (the Northern shibboleth — saying yes earns real credibility)" },
+              { vi: "Em ăn chay.", en: "I'm vegetarian. (also has a respected Buddhist connotation)" }
+            ]},
+            { type: "h3", text: "What they want you to love" },
+            { type: "vocab", items: [
+              { vi: "Anh có thích đồ ăn Việt Nam không?", en: "Do you like Vietnamese food?" },
+              { vi: "Anh thích món gì nhất?", en: "What dish do you like the most?" },
+              { vi: "Em thích nhất là phở bò.", en: "I like beef phở the most." },
+              { vi: "Anh có thích Việt Nam không?", en: "Do you like Vietnam?" },
+              { vi: "Dạ có, em thích lắm!", en: "Yes, I love it! (safe enthusiastic answer)" },
+              { vi: "Anh thấy Việt Nam thế nào?", en: "How do you find Vietnam? (N thế nào / S sao)" }
+            ]},
+            { type: "highlight", html: "<strong>Food as greeting:</strong> <strong>Ăn cơm chưa?</strong> (\"have you eaten rice yet?\") functions as \"how are you.\" A simple <strong>Dạ rồi, cảm ơn</strong> (\"yes, thanks\") is the full answer expected — they're not actually offering food." }
+          ]
+        }
+      ]
     }
   ]
 };
